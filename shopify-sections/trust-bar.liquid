@@ -1,0 +1,165 @@
+{{ 'section-trust-bar.css' | asset_url | stylesheet_tag }}
+
+<section class="trust-bar" id="trust-bar">
+  <div class="page-width">
+    <div class="trust-bar__grid">
+      {% for block in section.blocks %}
+        <div class="trust-bar__item" {{ block.shopify_attributes }}>
+          <div class="trust-bar__icon">
+            {% if block.settings.icon == 'shipping' %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            {% elsif block.settings.icon == 'returns' %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            {% elsif block.settings.icon == 'secure' %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            {% elsif block.settings.icon == 'quality' %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            {% endif %}
+          </div>
+          <div class="trust-bar__text">
+            <h4 class="trust-bar__title">{{ block.settings.title }}</h4>
+            <p class="trust-bar__caption">{{ block.settings.caption }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-bar {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--color-border, #2a2a2a);
+    border-bottom: 1px solid var(--color-border, #2a2a2a);
+    background-color: var(--color-bg-card, #141414);
+  }
+
+  .trust-bar__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .trust-bar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .trust-bar__icon {
+    color: var(--color-accent, #e8d5b5);
+    opacity: 0.9;
+  }
+
+  .trust-bar__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .trust-bar__title {
+    font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text, #f5f5f0);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .trust-bar__caption {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.78rem;
+    color: var(--color-text-muted, #a0a09a);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .trust-bar__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "tag": "section",
+  "class": "section-trust-bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "secure", "label": "Secure" },
+            { "value": "quality", "label": "Quality" }
+          ],
+          "default": "shipping"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "On all domestic orders"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Shipping",
+            "caption": "On all domestic orders"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "returns",
+            "title": "Easy Returns",
+            "caption": "30-day return policy"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "secure",
+            "title": "Secure Checkout",
+            "caption": "Encrypted payment"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "quality",
+            "title": "Premium Quality",
+            "caption": "Handpicked materials"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
