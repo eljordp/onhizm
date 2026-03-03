@@ -54,6 +54,18 @@ a {
   color: inherit;
 }
 
+.inline-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.3s ease;
+}
+
+.inline-link:hover {
+  color: var(--accent-hover);
+}
+
 ::selection {
   background: var(--accent);
   color: var(--bg);
