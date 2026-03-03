@@ -67,90 +67,80 @@
 
       <!-- Row 1: Full width -->
       <div class="lb-row lb-row--full">
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-full-outfit-jacket-sweatpants">
           <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/DSC03109_2.jpg?v=1734717047&width=1000" alt="ONHIZM Editorial" loading="lazy">
           <div class="lb-item__caption">
-            <span>01</span>
-            <p>The Foundation</p>
+            <p>ONHIZM Full Outfit</p>
           </div>
         </div>
       </div>
 
       <!-- Row 2: Two column -->
       <div class="lb-row lb-row--two">
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-full-outfit-jacket-sweatpants">
           <img src="https://onhizm.com/cdn/shop/files/DSC00140.jpg?v=1734319962&width=3840" alt="ONHIZM Editorial" loading="lazy">
           <div class="lb-item__caption">
-            <span>02</span>
-            <p>Street Ready</p>
+            <p>Zip Up Jacket</p>
           </div>
         </div>
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-sweatpants">
           <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/DSC03534.jpg?v=1734717047&width=1000" alt="ONHIZM Editorial" loading="lazy">
           <div class="lb-item__caption">
-            <span>03</span>
-            <p>In Motion</p>
+            <p>ONHIZM Sweatpants</p>
           </div>
         </div>
       </div>
 
       <!-- Row 3: Three column -->
       <div class="lb-row lb-row--three">
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-full-outfit-jacket-sweatpants">
           <img src="https://onhizm.com/cdn/shop/files/DSC09347.heic?v=1740178967&width=533" alt="ONHIZM Full Outfit" loading="lazy">
           <div class="lb-item__caption">
-            <span>04</span>
             <p>Full Outfit</p>
           </div>
         </div>
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-collection-2">
           <img src="https://onhizm.com/cdn/shop/files/1F8F1C61-5ED5-4C75-A33C-10CDAE68DC30.jpg?v=1734717047&width=533" alt="ONHIZM Zip Up" loading="lazy">
           <div class="lb-item__caption">
-            <span>05</span>
             <p>Zip Up Jacket</p>
           </div>
         </div>
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-bay-bridge-classic-tee">
           <img src="https://onhizm.com/cdn/shop/files/IMG_9539.jpg?v=1752704660&width=533" alt="ONHIZM Bay Bridge Tee" loading="lazy">
           <div class="lb-item__caption">
-            <span>06</span>
-            <p>Bay Bridge Classic</p>
+            <p>Bay Bridge Classic Tee</p>
           </div>
         </div>
       </div>
 
       <!-- Row 4: Wide left -->
       <div class="lb-row lb-row--wide-left">
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/onhizm-full-outfit-jacket-sweatpants">
           <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/DSC03726.jpg?v=1734717047&width=1000" alt="ONHIZM Editorial" loading="lazy">
           <div class="lb-item__caption">
-            <span>07</span>
-            <p>The Details</p>
+            <p>ONHIZM Full Outfit</p>
           </div>
         </div>
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/valentines-day-collection-limited-drop-full-sweatsuit">
           <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Collection" loading="lazy">
           <div class="lb-item__caption">
-            <span>08</span>
-            <p>Valentines Drop</p>
+            <p>Valentines Day Collection</p>
           </div>
         </div>
       </div>
 
       <!-- Row 5: Two column -->
       <div class="lb-row lb-row--two">
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/club-shirt">
           <img src="https://onhizm.com/cdn/shop/files/00BC56EC-0B69-4AF0-81E4-34FFE0D5818F.jpg?v=1757815720&width=533" alt="Club Shirt" loading="lazy">
           <div class="lb-item__caption">
-            <span>09</span>
             <p>Club Shirt</p>
           </div>
         </div>
-        <div class="lb-item">
+        <div class="lb-item" data-link="https://onhizm.com/products/jersey">
           <img src="https://onhizm.com/cdn/shop/files/5CC8DAE4-AAF4-4AA6-B175-DA553B9E850A.jpg?v=1757816302&width=533" alt="Jersey" loading="lazy">
           <div class="lb-item__caption">
-            <span>10</span>
-            <p>The Jersey</p>
+            <p>Jersey</p>
           </div>
         </div>
       </div>
@@ -198,6 +188,20 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">&#8250;</button>
+    <div class="lightbox__content">
+      <img src="" alt="" id="lightboxImg">
+      <div class="lightbox__info">
+        <p class="lightbox__name" id="lightboxName"></p>
+        <a href="#" class="lightbox__link" id="lightboxLink" target="_blank" rel="noopener">Shop This Piece</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -229,6 +233,58 @@
       el.classList.add('reveal');
       el.style.transitionDelay = `${(i % 3) * 0.1}s`;
       observer.observe(el);
+    });
+
+    // Lightbox
+    const items = Array.from(document.querySelectorAll('.lb-item'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbName = document.getElementById('lightboxName');
+    const lbLink = document.getElementById('lightboxLink');
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const item = items[index];
+      const img = item.querySelector('img');
+      const caption = item.querySelector('.lb-item__caption p');
+      const link = item.dataset.link;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbName.textContent = caption ? caption.textContent : '';
+      lbLink.href = link || '#';
+      lbLink.style.display = link ? '' : 'none';
+      lightbox.classList.add('open');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+    }
+
+    function navigate(dir) {
+      currentIndex = (currentIndex + dir + items.length) % items.length;
+      openLightbox(currentIndex);
+    }
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => navigate(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => navigate(1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
     });
   </script>
 </body>
