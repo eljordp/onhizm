@@ -355,6 +355,10 @@ a {
   max-width: 1320px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
 }
 
 .hero__label {
@@ -385,6 +389,7 @@ a {
   line-height: 1.7;
   max-width: 420px;
   margin-bottom: 2rem;
+  margin-left: auto;
 }
 
 /* ---------- Trust Bar ---------- */
