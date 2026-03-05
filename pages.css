@@ -816,6 +816,139 @@
 }
 
 /* ==========================================================================
+   POLICY PAGE
+   ========================================================================== */
+
+.policy-page {
+  padding-top: 140px;
+  padding-bottom: 5rem;
+}
+
+.policy-page__header {
+  max-width: 640px;
+  margin-bottom: 4rem;
+}
+
+.policy-page__header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.policy-page__header p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.policy-content {
+  max-width: 720px;
+}
+
+.policy-block {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.policy-block h2 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+
+.policy-block p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.policy-block p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-block strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.policy-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0;
+}
+
+.policy-block ul li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.policy-block ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.policy-block a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+.policy-block a:hover {
+  color: var(--accent-hover);
+}
+
+.policy-block--contact {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.policy-contact-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.policy-contact-links a {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 
@@ -1037,6 +1170,30 @@
 
   .about-cta__buttons .btn {
     width: 100%;
+  }
+
+  /* Policy */
+  .policy-page {
+    padding-top: 100px;
+    padding-bottom: 3rem;
+  }
+
+  .policy-page__header {
+    margin-bottom: 2.5rem;
+  }
+
+  .policy-block {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .policy-block--contact {
+    padding: 2rem 1.25rem;
+  }
+
+  .policy-contact-links {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
   /* Sizing */
