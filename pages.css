@@ -379,6 +379,16 @@
   font-weight: 300;
 }
 
+.culture-card__handle a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.culture-card__handle a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* ==========================================================================
    SHOP PAGE
    ========================================================================== */
