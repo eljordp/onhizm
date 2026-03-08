@@ -62,11 +62,19 @@
 
         <div class="product-page__details">
           <span class="product-page__badge product-page__badge--limited">Limited Drop</span>
-          <h1 class="product-page__title">Valentines Day Collection &mdash; Full Sweatsuit</h1>
-          <p class="product-page__price">$200</p>
+          <h1 class="product-page__title">Valentines Day Collection</h1>
+          <p class="product-page__price" id="productPrice">$200</p>
           <span class="product-page__tag">Pearls &amp; Rhinestones</span>
-          <p class="product-page__description">Very limited sizes. Ready to ship in 2-3 business days. Once it's gone, it's gone &mdash; this piece will never release again.</p>
+          <p class="product-page__desc">Very limited sizes. Ready to ship in 2-3 business days. Once it's gone, it's gone &mdash; this piece will never release again.</p>
 
+          <div class="product-page__sizes">
+            <span class="product-page__sizes-label">Item</span>
+            <div class="product-page__size-options">
+              <button class="variant-btn variant-btn--active" data-price="$200">Full Sweatsuit</button>
+              <button class="variant-btn" data-price="$110">Just Hoodie</button>
+              <button class="variant-btn" data-price="$110">Just Sweats</button>
+            </div>
+          </div>
           <div class="product-page__sizes">
             <p class="product-page__sizes-label">Size</p>
             <div class="product-page__size-options">
@@ -137,6 +145,14 @@
       btn.addEventListener('click', () => {
         document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
         btn.classList.add('size-btn--active');
+      });
+    });
+    // Variant picker
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
+        btn.classList.add('variant-btn--active');
+        document.getElementById('productPrice').textContent = btn.dataset.price;
       });
     });
     // Thumbnail gallery

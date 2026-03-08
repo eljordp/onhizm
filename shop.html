@@ -56,7 +56,7 @@
           <span class="label">Collection</span>
           <h1>All Pieces</h1>
         </div>
-        <p class="shop-page__count">12 products</p>
+        <p class="shop-page__count">10 products</p>
       </div>
 
       <div class="shop-grid">
@@ -68,9 +68,14 @@
             <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Day Collection Full Sweatsuit" loading="lazy">
           </div>
           <div class="product-card__info">
-            <h3>Valentines Day Collection — Full Sweatsuit</h3>
-            <span class="product-card__price">$200</span>
+            <h3>Valentines Day Collection</h3>
+            <span class="product-card__price" data-variant-price>$200</span>
             <span class="product-card__tag">Pearls & Rhinestones</span>
+            <div class="variant-picker">
+              <button class="variant-btn variant-btn--active" data-price="$200">Full Sweatsuit</button>
+              <button class="variant-btn" data-price="$110">Just Hoodie</button>
+              <button class="variant-btn" data-price="$110">Just Sweats</button>
+            </div>
           </div>
         </a>
 
@@ -82,36 +87,6 @@
           <div class="product-card__info">
             <h3>Camo Classic Zip Up Jacket</h3>
             <span class="product-card__price">$120</span>
-          </div>
-        </a>
-
-        <a href="products/hoodie.html" class="product-card" data-color-card>
-          <div class="product-card__media">
-            <img src="images/blackhoodie.jpeg" alt="ONHIZM Hoodie — Black" loading="lazy" data-color-img>
-          </div>
-          <div class="product-card__info">
-            <h3>ONHIZM Hoodie</h3>
-            <span class="product-card__price">$100</span>
-            <div class="color-swatches">
-              <button class="color-swatch color-swatch--active" data-img="images/blackhoodie.jpeg" style="background:#1a1a1a" aria-label="Black"></button>
-              <button class="color-swatch" data-img="images/greyhoodie.jpeg" style="background:#8a8a84" aria-label="Grey"></button>
-              <button class="color-swatch" data-img="images/pinkhoodie.jpeg" style="background:#e8a0b5" aria-label="Pink"></button>
-            </div>
-          </div>
-        </a>
-
-        <a href="products/sweats.html" class="product-card" data-color-card>
-          <div class="product-card__media">
-            <img src="images/blakcsweats1.jpeg" alt="ONHIZM Sweats — Black" loading="lazy" data-color-img>
-          </div>
-          <div class="product-card__info">
-            <h3>ONHIZM Sweats</h3>
-            <span class="product-card__price">$100</span>
-            <div class="color-swatches">
-              <button class="color-swatch color-swatch--active" data-img="images/blakcsweats1.jpeg" style="background:#1a1a1a" aria-label="Black"></button>
-              <button class="color-swatch" data-img="images/blakcsweats1.jpeg" style="background:#8a8a84" aria-label="Grey"></button>
-              <button class="color-swatch" data-img="images/blakcsweats1.jpeg" style="background:#e8a0b5" aria-label="Pink"></button>
-            </div>
           </div>
         </a>
 
@@ -148,33 +123,23 @@
           </div>
         </a>
 
-        <a href="products/full-outfit.html" class="product-card">
+        <a href="products/full-outfit.html" class="product-card" data-color-card>
           <div class="product-card__media">
-            <img src="https://onhizm.com/cdn/shop/files/DSC09347.heic?v=1740178967&width=533" alt="ONHIZM Full Outfit" loading="lazy">
+            <img src="images/blackhoodie.jpeg" alt="ONHIZM Collection — Black" loading="lazy" data-color-img>
           </div>
           <div class="product-card__info">
-            <h3>Full Outfit (Jacket + Sweatpants)</h3>
-            <span class="product-card__price">$200</span>
-          </div>
-        </a>
-
-        <a href="products/grey-full-outfit.html" class="product-card">
-          <div class="product-card__media">
-            <img src="https://onhizm.com/cdn/shop/files/IMG_2710.heic?v=1762126655&width=533" alt="ONHIZM Grey Full Outfit" loading="lazy">
-          </div>
-          <div class="product-card__info">
-            <h3>Grey Full Outfit (Jacket + Sweats)</h3>
-            <span class="product-card__price">$200</span>
-          </div>
-        </a>
-
-        <a href="products/sweatpants.html" class="product-card">
-          <div class="product-card__media">
-            <img src="https://onhizm.com/cdn/shop/files/DSC09367.heic?v=1740178956&width=533" alt="ONHIZM Sweatpants" loading="lazy">
-          </div>
-          <div class="product-card__info">
-            <h3>ONHIZM Sweatpants</h3>
-            <span class="product-card__price">$100</span>
+            <h3>ONHIZM Collection</h3>
+            <span class="product-card__price" data-variant-price>$200</span>
+            <div class="color-swatches">
+              <button class="color-swatch color-swatch--active" data-img="images/blackhoodie.jpeg" style="background:#1a1a1a" aria-label="Black"></button>
+              <button class="color-swatch" data-img="images/greyhoodie.jpeg" style="background:#8a8a84" aria-label="Grey"></button>
+              <button class="color-swatch" data-img="images/pinkhoodie.jpeg" style="background:#e8a0b5" aria-label="Pink"></button>
+            </div>
+            <div class="variant-picker">
+              <button class="variant-btn variant-btn--active" data-price="$200">Full Outfit</button>
+              <button class="variant-btn" data-price="$100">Hoodie</button>
+              <button class="variant-btn" data-price="$100">Sweats</button>
+            </div>
           </div>
         </a>
 
@@ -264,6 +229,19 @@
           img.src = swatch.dataset.img;
           img.alt = img.alt.replace(/—\s*.+$/, '— ' + swatch.getAttribute('aria-label'));
         });
+      });
+    });
+
+    // Variant picker price swap
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = btn.closest('.product-card');
+        card.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
+        btn.classList.add('variant-btn--active');
+        const priceEl = card.querySelector('[data-variant-price]');
+        if (priceEl) priceEl.textContent = btn.dataset.price;
       });
     });
 

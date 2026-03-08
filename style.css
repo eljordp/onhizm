@@ -907,6 +907,40 @@ a {
   transform: scale(1.15);
 }
 
+/* ---------- Variant Picker (shop cards) ---------- */
+.variant-picker {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.variant-btn {
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+.variant-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.variant-btn--active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
