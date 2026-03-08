@@ -381,6 +381,22 @@
       });
     });
 
+    // Auto-rotate color swatches on cards
+    document.querySelectorAll('[data-color-card]').forEach(card => {
+      const swatches = card.querySelectorAll('.color-swatch');
+      if (swatches.length < 2) return;
+      let idx = 0;
+      const rotate = setInterval(() => {
+        idx = (idx + 1) % swatches.length;
+        swatches.forEach(s => s.classList.remove('color-swatch--active'));
+        swatches[idx].classList.add('color-swatch--active');
+        const img = card.querySelector('[data-color-img]');
+        img.src = swatches[idx].dataset.img;
+        img.alt = img.alt.replace(/—\s*.+$/, '— ' + swatches[idx].getAttribute('aria-label'));
+      }, 3000);
+      swatches.forEach(s => s.addEventListener('click', () => clearInterval(rotate)));
+    });
+
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {

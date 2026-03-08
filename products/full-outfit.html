@@ -162,9 +162,21 @@
         btn.classList.add('size-btn--active');
       });
     });
+    // Auto-rotate gallery
+    window.autoRotate = setInterval(() => {
+      const thumbs = document.querySelectorAll('.product-page__thumb');
+      if (thumbs.length < 2) return;
+      const active = document.querySelector('.product-page__thumb--active');
+      const idx = Array.from(thumbs).indexOf(active);
+      const next = (idx + 1) % thumbs.length;
+      thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
+      thumbs[next].classList.add('product-page__thumb--active');
+      document.querySelector('.product-page__main-img img').src = thumbs[next].querySelector('img').src;
+    }, 3000);
     // Color swatch switching
     document.querySelectorAll('.product-page__swatches .color-swatch').forEach(swatch => {
       swatch.addEventListener('click', () => {
+        clearInterval(window.autoRotate);
         document.querySelectorAll('.product-page__swatches .color-swatch').forEach(s => s.classList.remove('color-swatch--active'));
         swatch.classList.add('color-swatch--active');
         document.querySelector('.product-page__main-img img').src = swatch.dataset.img;
@@ -186,9 +198,9 @@
         document.getElementById('productPrice').textContent = btn.dataset.price;
       });
     });
-    // Thumbnail gallery
     document.querySelectorAll('.product-page__thumb').forEach(thumb => {
       thumb.addEventListener('click', () => {
+        clearInterval(window.autoRotate);
         document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
         thumb.classList.add('product-page__thumb--active');
         document.querySelector('.product-page__main-img img').src = thumb.querySelector('img').src;
