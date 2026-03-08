@@ -727,7 +727,7 @@ a {
 }
 
 .lookbook__item:not(.lookbook__item--tall) {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 5;
 }
 
 /* ---------- Newsletter ---------- */
