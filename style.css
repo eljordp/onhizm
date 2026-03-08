@@ -700,7 +700,6 @@ a {
 .lookbook__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 1.5rem;
 }
 
@@ -713,7 +712,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease);
+  transition: transform 0.8s var(--ease), opacity 0.5s ease;
   display: block;
 }
 
@@ -722,12 +721,8 @@ a {
 }
 
 .lookbook__item--tall {
-  grid-row: 1 / 3;
   min-height: 500px;
-}
-
-.lookbook__item:not(.lookbook__item--tall) {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
 }
 
 /* ---------- Newsletter ---------- */
@@ -1202,10 +1197,6 @@ a {
     grid-row: auto;
     min-height: 280px;
     aspect-ratio: 3 / 4;
-  }
-
-  .lookbook__item:not(.lookbook__item--tall) {
-    aspect-ratio: 16 / 10;
   }
 
   /* Newsletter */

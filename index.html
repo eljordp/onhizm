@@ -267,10 +267,10 @@
       </div>
       <div class="lookbook__grid">
         <div class="lookbook__item lookbook__item--tall">
-          <img src="images/onhizm26.JPEG" alt="Tee Grizzley in ONHIZM" loading="lazy">
+          <img src="images/onhizm26.JPEG" alt="The Culture" loading="lazy" id="cultureImg1">
         </div>
-        <div class="lookbook__item">
-          <img src="images/onhizm31.jpeg" alt="ALLBLACK in ONHIZM" loading="lazy">
+        <div class="lookbook__item lookbook__item--tall">
+          <img src="images/onhizm31.jpeg" alt="The Culture" loading="lazy" id="cultureImg2">
         </div>
       </div>
       <div class="collection__cta">
@@ -413,6 +413,41 @@
         }, 400);
       }, 3000);
     });
+
+    // Shuffle culture preview images
+    const cultureImages = [
+      'images/onhizm1.jpeg','images/onhizm2.jpg','images/onhizm3.JPG',
+      'images/onhizm4.jpg','images/onhizm5.jpg','images/onhizm6.jpg',
+      'images/onhizm7.jpg','images/onhizm8.jpg','images/onhizm9.jpeg',
+      'images/onhizm10.jpeg','images/onhizm11.jpg','images/onhizm12.jpeg',
+      'images/onhizm13.jpeg','images/onhizm14.JPG','images/onhizm15.JPG',
+      'images/onhizm20.png','images/onhizm21.jpeg','images/onhizm22.jpeg',
+      'images/onhizm23.jpeg','images/onhizm24.jpeg','images/onhizm25.jpeg',
+      'images/onhizm28.jpeg','images/onhizm29.jpeg','images/onhizm30.jpeg',
+      'images/onhizm31.jpeg','images/onhizm32.jpeg','images/onhizm33.jpeg',
+      'images/onhizm34.jpeg','images/onhizm26.JPEG'
+    ];
+    const img1 = document.getElementById('cultureImg1');
+    const img2 = document.getElementById('cultureImg2');
+    let showing = [cultureImages.indexOf('images/onhizm26.JPEG'), cultureImages.indexOf('images/onhizm31.jpeg')];
+    function randExcluding(excludes) {
+      let r;
+      do { r = Math.floor(Math.random() * cultureImages.length); } while (excludes.includes(r));
+      return r;
+    }
+    let turn = 0;
+    setInterval(() => {
+      const el = turn % 2 === 0 ? img1 : img2;
+      const slot = turn % 2;
+      const next = randExcluding(showing);
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.src = cultureImages[next];
+        el.onload = () => { el.style.opacity = 1; };
+        showing[slot] = next;
+      }, 500);
+      turn++;
+    }, 4000);
 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
