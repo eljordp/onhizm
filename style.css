@@ -1248,6 +1248,84 @@ a {
     padding: 0.2rem 0; /* better touch targets */
     font-size: 0.82rem;
   }
+
+  /* Mobile nav — bigger tap targets */
+  .mobile-nav {
+    gap: 1rem;
+  }
+
+  .mobile-nav__link {
+    font-size: 1.3rem;
+    padding: 0.6rem 1.5rem;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Color swatches — bigger for touch */
+  .color-swatch {
+    width: 24px;
+    height: 24px;
+  }
+
+  .color-swatch::after {
+    inset: -4px;
+  }
+
+  .color-swatch:hover {
+    transform: none; /* no hover on touch */
+  }
+
+  /* Variant buttons — bigger tap targets */
+  .variant-btn {
+    font-size: 0.58rem;
+    padding: 0.5rem 0.8rem;
+    min-height: 34px;
+  }
+
+  /* Hide variant pickers inside small product cards — too cramped in 2-col grid */
+  .product-card .variant-picker {
+    display: none;
+  }
+
+  /* Keep variant pickers on featured cards and standalone featured product */
+  .product-card--featured .variant-picker,
+  .featured-product .variant-picker {
+    display: flex;
+  }
+
+  /* Featured product variant buttons — full mobile treatment */
+  .featured-product .variant-btn {
+    padding: 0.6rem 1rem;
+    min-height: 40px;
+    font-size: 0.62rem;
+  }
+
+  /* Disable hover transforms on touch */
+  .product-card:hover .product-card__media img {
+    transform: none;
+  }
+
+  .brand-story__media:hover img,
+  .lookbook__item:hover img,
+  .featured-product__media:hover .featured-product__img {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Tap-friendly active states instead of hover */
+  .btn:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+
+  .product-card:active {
+    opacity: 0.85;
+  }
 }
 
 /* Small mobile */
