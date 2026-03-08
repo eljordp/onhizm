@@ -482,8 +482,8 @@
 }
 
 .product-card--sold .product-card__media img {
-  opacity: 0.5;
-  filter: grayscale(30%);
+  opacity: 0.6;
+  filter: grayscale(20%);
 }
 
 .product-card--sold .product-card__price {

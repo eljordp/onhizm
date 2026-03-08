@@ -267,7 +267,7 @@
       const images = img.dataset.gallery.split('|');
       if (images.length < 2) return;
       let idx = 0;
-      const baseOpacity = img.closest('.product-card--sold') ? 0.5 : 1;
+      const baseOpacity = img.closest('.product-card--sold') ? 0.6 : 1;
       setInterval(() => {
         idx = (idx + 1) % images.length;
         img.style.opacity = 0;
