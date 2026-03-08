@@ -56,17 +56,17 @@
         <!-- Gallery -->
         <div class="product-page__gallery">
           <div class="product-page__main-img">
-            <img src="../images/blackhoodie.jpeg" alt="ONHIZM Collection — Black">
+            <img src="../images/pinkhoodie.jpeg" alt="ONHIZM Collection — Pink">
           </div>
           <div class="product-page__thumbs">
             <button class="product-page__thumb product-page__thumb--active">
-              <img src="../images/blackhoodie.jpeg" alt="View 1">
+              <img src="../images/pinkhoodie.jpeg" alt="View 1">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/blackhoodie1.jpeg" alt="View 2">
+              <img src="../images/pinkhoodie2.jpeg" alt="View 2">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/blakcsweats1.jpeg" alt="View 3">
+              <img src="../images/pinkhoodie2.jpeg" alt="View 3">
             </button>
           </div>
         </div>
@@ -76,11 +76,11 @@
           <p class="product-page__price" id="productPrice">$200</p>
           <p class="product-page__desc">Premium ONHIZM pieces with rhinestone and pearl detailing. Available as a full outfit or individually.</p>
           <div class="product-page__colors">
-            <span class="product-page__colors-label">Color — <span id="colorName">Black</span></span>
+            <span class="product-page__colors-label">Color — <span id="colorName">Pink</span></span>
             <div class="product-page__swatches">
-              <button class="color-swatch color-swatch--active" data-img="../images/blackhoodie.jpeg" data-name="Black" style="background:#1a1a1a" aria-label="Black"></button>
-              <button class="color-swatch" data-img="../images/greyhoodie.jpeg" data-name="Grey" style="background:#8a8a84" aria-label="Grey"></button>
-              <button class="color-swatch" data-img="../images/pinkhoodie.jpeg" data-name="Pink" style="background:#e8a0b5" aria-label="Pink"></button>
+              <button class="color-swatch color-swatch--active" data-img="../images/pinkhoodie.jpeg" data-name="Pink" data-thumb1="../images/pinkhoodie.jpeg" data-thumb2="../images/pinkhoodie2.jpeg" data-thumb3="../images/pinkhoodie2.jpeg" style="background:#e8a0b5" aria-label="Pink"></button>
+              <button class="color-swatch" data-img="https://onhizm.com/cdn/shop/files/DSC03623.jpg?v=1734717048&width=1946" data-name="Black" data-thumb1="https://onhizm.com/cdn/shop/files/DSC03623.jpg?v=1734717048&width=533" data-thumb2="https://onhizm.com/cdn/shop/files/DSC09248.heic?v=1740178967&width=533" data-thumb3="https://onhizm.com/cdn/shop/files/DSC09367.heic?v=1740178956&width=533" style="background:#1a1a1a" aria-label="Black"></button>
+              <button class="color-swatch" data-img="https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946" data-name="Grey" data-thumb1="https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=533" data-thumb2="https://onhizm.com/cdn/shop/files/IMG_3178.jpg?v=1762126654&width=533" data-thumb3="https://onhizm.com/cdn/shop/files/IMG_3166.jpg?v=1762126654&width=533" style="background:#8a8a84" aria-label="Grey"></button>
             </div>
           </div>
           <div class="product-page__sizes">
@@ -169,6 +169,13 @@
         swatch.classList.add('color-swatch--active');
         document.querySelector('.product-page__main-img img').src = swatch.dataset.img;
         document.getElementById('colorName').textContent = swatch.dataset.name;
+        // Swap thumbnails
+        const thumbImgs = document.querySelectorAll('.product-page__thumb img');
+        if (thumbImgs[0] && swatch.dataset.thumb1) thumbImgs[0].src = swatch.dataset.thumb1;
+        if (thumbImgs[1] && swatch.dataset.thumb2) thumbImgs[1].src = swatch.dataset.thumb2;
+        if (thumbImgs[2] && swatch.dataset.thumb3) thumbImgs[2].src = swatch.dataset.thumb3;
+        document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+        document.querySelector('.product-page__thumb').classList.add('product-page__thumb--active');
       });
     });
     // Variant picker
