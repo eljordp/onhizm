@@ -60,13 +60,16 @@
           </div>
           <div class="product-page__thumbs">
             <button class="product-page__thumb product-page__thumb--active">
-              <img src="../images/pinkhoodie.jpeg" alt="View 1">
+              <img src="../images/pinkhoodie.jpeg" alt="Hoodie Front">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/pinkhoodie2.jpeg" alt="View 2">
+              <img src="../images/pinkhoodie2.jpeg" alt="Hoodie Detail">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/pinkhoodie2.jpeg" alt="View 3">
+              <img src="../images/pinksweats.jpeg" alt="Sweats Front">
+            </button>
+            <button class="product-page__thumb">
+              <img src="../images/pinksweats2.jpeg" alt="Sweats Detail">
             </button>
           </div>
         </div>
@@ -86,9 +89,9 @@
           <div class="product-page__sizes">
             <span class="product-page__sizes-label">Item</span>
             <div class="product-page__size-options">
-              <button class="variant-btn variant-btn--active" data-price="$200">Full Outfit</button>
-              <button class="variant-btn" data-price="$100">Hoodie</button>
-              <button class="variant-btn" data-price="$100">Sweats</button>
+              <button class="variant-btn variant-btn--active" data-price="$200" data-img="../images/pinkhoodie.jpeg">Full Outfit</button>
+              <button class="variant-btn" data-price="$100" data-img="../images/pinkhoodie.jpeg">Hoodie</button>
+              <button class="variant-btn" data-price="$100" data-img="../images/pinksweats.jpeg">Sweats</button>
             </div>
           </div>
           <div class="product-page__sizes">
@@ -190,12 +193,17 @@
         document.querySelector('.product-page__thumb').classList.add('product-page__thumb--active');
       });
     });
-    // Variant picker
+    // Variant picker — swap price + main image
     document.querySelectorAll('.variant-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
         btn.classList.add('variant-btn--active');
         document.getElementById('productPrice').textContent = btn.dataset.price;
+        if (btn.dataset.img) {
+          const mainImg = document.querySelector('.product-page__main-img img');
+          mainImg.src = btn.dataset.img;
+          document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+        }
       });
     });
     document.querySelectorAll('.product-page__thumb').forEach(thumb => {

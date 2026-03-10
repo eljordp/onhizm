@@ -58,15 +58,21 @@
           <div class="product-page__main-img">
             <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Day Collection Full Sweatsuit">
           </div>
-          <div class="product-page__thumbs">
+          <div class="product-page__thumbs" id="thumbStrip">
             <button class="product-page__thumb product-page__thumb--active">
-              <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=533" alt="View 1">
+              <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=533" alt="Full Sweatsuit">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/pinkhoodie.jpeg" alt="View 2">
+              <img src="../images/pinkhoodie.jpeg" alt="Hoodie Front">
             </button>
             <button class="product-page__thumb">
-              <img src="../images/pinkhoodie2.jpeg" alt="View 3">
+              <img src="../images/pinkhoodie2.jpeg" alt="Hoodie Detail">
+            </button>
+            <button class="product-page__thumb">
+              <img src="../images/pinksweats.jpeg" alt="Sweats Front">
+            </button>
+            <button class="product-page__thumb">
+              <img src="../images/pinksweats2.jpeg" alt="Sweats Detail">
             </button>
           </div>
         </div>
@@ -81,9 +87,9 @@
           <div class="product-page__sizes">
             <span class="product-page__sizes-label">Item</span>
             <div class="product-page__size-options">
-              <button class="variant-btn variant-btn--active" data-price="$200">Full Sweatsuit</button>
-              <button class="variant-btn" data-price="$110">Just Hoodie</button>
-              <button class="variant-btn" data-price="$110">Just Sweats</button>
+              <button class="variant-btn variant-btn--active" data-price="$200" data-img="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946">Full Sweatsuit</button>
+              <button class="variant-btn" data-price="$100" data-img="../images/pinkhoodie.jpeg">Just Hoodie</button>
+              <button class="variant-btn" data-price="$100" data-img="../images/pinksweats.jpeg">Just Sweats</button>
             </div>
           </div>
           <div class="product-page__sizes">
@@ -158,12 +164,18 @@
         btn.classList.add('size-btn--active');
       });
     });
-    // Variant picker
+    // Variant picker — swap price + main image
     document.querySelectorAll('.variant-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
         btn.classList.add('variant-btn--active');
         document.getElementById('productPrice').textContent = btn.dataset.price;
+        if (btn.dataset.img) {
+          clearInterval(window.autoRotate);
+          const mainImg = document.querySelector('.product-page__main-img img');
+          mainImg.src = btn.dataset.img;
+          document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+        }
       });
     });
     // Auto-rotate gallery

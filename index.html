@@ -125,7 +125,7 @@
       <div class="featured-product__grid">
         <div class="featured-product__media">
           <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Day Collection" class="featured-product__img" loading="lazy"
-            data-gallery="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946|images/pinkhoodie.jpeg|images/pinkhoodie2.jpeg">
+            data-gallery="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946|images/pinkhoodie.jpeg|images/pinkhoodie2.jpeg|images/pinksweats.jpeg|images/pinksweats2.jpeg">
         </div>
         <div class="featured-product__content">
           <span class="label">Limited Drop</span>
@@ -134,9 +134,9 @@
           <p class="featured-product__desc">Very limited sizes. Ready to ship in 2-3 business days. Once it's gone, it's gone — this piece will never release again.</p>
           <div class="featured-product__price" data-variant-price>$200</div>
           <div class="variant-picker">
-            <button class="variant-btn variant-btn--active" data-price="$200">Full Sweatsuit</button>
-            <button class="variant-btn" data-price="$110">Just Hoodie</button>
-            <button class="variant-btn" data-price="$110">Just Sweats</button>
+            <button class="variant-btn variant-btn--active" data-price="$200" data-img="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946">Full Sweatsuit</button>
+            <button class="variant-btn" data-price="$100" data-img="images/pinkhoodie.jpeg">Just Hoodie</button>
+            <button class="variant-btn" data-price="$100" data-img="images/pinksweats.jpeg">Just Sweats</button>
           </div>
           <a href="products/valentines-sweatsuit.html" class="btn btn--primary">Add to Cart</a>
         </div>
@@ -166,9 +166,9 @@
               <button class="color-swatch" data-img="https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=533" style="background:#8a8a84" aria-label="Grey"></button>
             </div>
             <div class="variant-picker">
-              <button class="variant-btn variant-btn--active" data-price="$200">Full Outfit</button>
-              <button class="variant-btn" data-price="$100">Hoodie</button>
-              <button class="variant-btn" data-price="$100">Sweats</button>
+              <button class="variant-btn variant-btn--active" data-price="$200" data-img="images/pinkhoodie.jpeg">Full Outfit</button>
+              <button class="variant-btn" data-price="$100" data-img="images/pinkhoodie.jpeg">Hoodie</button>
+              <button class="variant-btn" data-price="$100" data-img="images/pinksweats.jpeg">Sweats</button>
             </div>
           </div>
         </a>
@@ -369,16 +369,24 @@
       });
     });
 
-    // Variant picker price swap
+    // Variant picker price + image swap
     document.querySelectorAll('.variant-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const card = btn.closest('.product-card, .featured-product__content');
-        card.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
+        const card = btn.closest('.product-card, .featured-product');
+        const inner = btn.closest('.product-card, .featured-product__content');
+        inner.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
         btn.classList.add('variant-btn--active');
-        const priceEl = card.querySelector('[data-variant-price]');
+        const priceEl = inner.querySelector('[data-variant-price]');
         if (priceEl) priceEl.textContent = btn.dataset.price;
+        if (btn.dataset.img && card) {
+          const img = card.querySelector('.featured-product__img, .product-card__media img');
+          if (img) {
+            img.style.opacity = 0;
+            setTimeout(() => { img.src = btn.dataset.img; img.onload = () => { img.style.opacity = 1; }; }, 400);
+          }
+        }
       });
     });
 
