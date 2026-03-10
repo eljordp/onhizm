@@ -311,33 +311,31 @@
   padding: 5rem 0;
 }
 
-.culture-carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 0 3rem;
-}
-
-.culture-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.culture-carousel__track {
-  display: flex;
+/* Lookbook row system */
+.lb-row {
+  display: grid;
   gap: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lb-row--two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.lb-row--three {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .culture-card {
   position: relative;
-  flex: 0 0 380px;
   aspect-ratio: 3 / 4;
   border-radius: var(--radius);
   overflow: hidden;
-  scroll-snap-align: start;
   cursor: pointer;
+}
+
+.culture-card--big {
+  aspect-ratio: 3 / 4;
 }
 
 .culture-card img {
@@ -361,6 +359,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.culture-card--big .culture-card__name {
+  font-size: 1.3rem;
 }
 
 .culture-card__name {
@@ -1205,28 +1207,36 @@
     font-size: 0.88rem;
   }
 
-  /* Culture carousel */
+  /* Culture lookbook */
   .culture-section {
     padding: 3rem 0;
   }
 
-  .culture-carousel {
-    padding: 0 1.25rem;
-  }
-
-  .culture-carousel__track {
+  .lb-row {
     gap: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 
-  .culture-card {
-    flex: 0 0 75vw;
-    max-width: 320px;
+  .lb-row--two {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lb-row--three {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lb-row--three .culture-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
   }
 
   .culture-card__overlay {
     padding: 1.5rem 1rem;
-    opacity: 1;
-    transform: translateY(0);
+  }
+
+  .culture-card--big .culture-card__name {
+    font-size: 1rem;
   }
 
   .culture-card__name {
@@ -1571,8 +1581,16 @@
     display: flex;
   }
 
-  .culture-card {
-    flex: 0 0 85vw;
+  .lb-row--three {
+    grid-template-columns: 1fr;
+  }
+
+  .lb-row--three .culture-card:last-child {
+    max-width: 100%;
+  }
+
+  .lb-row--two {
+    grid-template-columns: 1fr;
   }
 
   .sizing-how__grid {
