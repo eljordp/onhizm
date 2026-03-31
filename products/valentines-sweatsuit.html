@@ -198,36 +198,15 @@
       });
     });
 
-    // Add to Cart
-    document.getElementById('addToCartBtn').addEventListener('click', async () => {
+    // Buy Now
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
       const selectedSize = document.querySelector('.size-btn--active');
       if (!selectedSize) {
         alert('Please select a size.');
         return;
       }
       const variantId = selectedSize.dataset.variantId;
-      const btn = document.getElementById('addToCartBtn');
-      btn.textContent = 'Loading...';
-      btn.disabled = true;
-      try {
-        const res = await fetch('/api/cart', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ variantId, quantity: 1 }),
-        });
-        const data = await res.json();
-        if (data.checkoutUrl) {
-          window.location.href = data.checkoutUrl;
-        } else {
-          alert('Something went wrong. Try again.');
-          btn.textContent = 'Buy Now';
-          btn.disabled = false;
-        }
-      } catch (e) {
-        alert('Something went wrong. Try again.');
-        btn.textContent = 'Add to Cart';
-        btn.disabled = false;
-      }
+      window.location.href = `https://onhizm.com/cart/${variantId}:1`;
     });
   </script>
 </body>
