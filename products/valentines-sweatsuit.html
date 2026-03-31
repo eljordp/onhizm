@@ -95,10 +95,10 @@
           <div class="product-page__sizes">
             <p class="product-page__sizes-label">Size</p>
             <div class="product-page__size-options">
-              <button class="size-btn" data-variant-id="52552411119913">S</button>
-              <button class="size-btn" data-variant-id="52552411152681">M</button>
-              <button class="size-btn" data-variant-id="52552411185449">L</button>
-              <button class="size-btn" data-variant-id="52552411218217">XL</button>
+              <button class="size-btn size-btn--soldout" disabled data-variant-id="52552411119913">S</button>
+              <button class="size-btn size-btn--soldout" disabled data-variant-id="52552411152681">M</button>
+              <button class="size-btn size-btn--soldout" disabled data-variant-id="52552411185449">L</button>
+              <button class="size-btn size-btn--soldout" disabled data-variant-id="52552411218217">XL</button>
             </div>
           </div>
 
@@ -198,47 +198,16 @@
       });
     });
 
-    // Availability check
+    // Buy Now
     const buyBtn = document.getElementById('addToCartBtn');
     const sizeBtns = document.querySelectorAll('.size-btn');
 
-    async function checkAvailability() {
-      await Promise.all(Array.from(sizeBtns).map(async (btn) => {
-        const id = btn.dataset.variantId;
-        try {
-          const res = await fetch(`https://onhizm.com/variants/${id}.js`);
-          const data = await res.json();
-          if (!data.available) {
-            btn.disabled = true;
-            btn.classList.add('size-btn--soldout');
-          }
-        } catch (e) {}
-      }));
-      updateBuyBtn();
+    const allSoldOut = Array.from(sizeBtns).every(b => b.disabled);
+    if (allSoldOut) {
+      buyBtn.textContent = 'Sold Out';
+      buyBtn.disabled = true;
     }
 
-    function updateBuyBtn() {
-      const allSoldOut = Array.from(sizeBtns).every(b => b.disabled);
-      if (allSoldOut) {
-        buyBtn.textContent = 'Sold Out';
-        buyBtn.disabled = true;
-        return;
-      }
-      const selected = document.querySelector('.size-btn--active');
-      if (selected && selected.disabled) {
-        selected.classList.remove('size-btn--active');
-      }
-      buyBtn.textContent = 'Buy Now';
-      buyBtn.disabled = false;
-    }
-
-    checkAvailability();
-
-    sizeBtns.forEach(btn => {
-      btn.addEventListener('click', updateBuyBtn);
-    });
-
-    // Buy Now
     buyBtn.addEventListener('click', () => {
       const selectedSize = document.querySelector('.size-btn--active');
       if (!selectedSize) {
