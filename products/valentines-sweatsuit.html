@@ -95,14 +95,14 @@
           <div class="product-page__sizes">
             <p class="product-page__sizes-label">Size</p>
             <div class="product-page__size-options">
-              <button class="size-btn">S</button>
-              <button class="size-btn">M</button>
-              <button class="size-btn">L</button>
-              <button class="size-btn">XL</button>
+              <button class="size-btn" data-variant-id="52552411119913">S</button>
+              <button class="size-btn" data-variant-id="52552411152681">M</button>
+              <button class="size-btn" data-variant-id="52552411185449">L</button>
+              <button class="size-btn" data-variant-id="52552411218217">XL</button>
             </div>
           </div>
 
-          <button class="btn btn--primary">Add to Cart</button>
+          <button class="btn btn--primary" id="addToCartBtn">Buy Now</button>
         </div>
       </div>
     </div>
@@ -196,6 +196,38 @@
         thumb.classList.add('product-page__thumb--active');
         document.querySelector('.product-page__main-img img').src = thumb.querySelector('img').src;
       });
+    });
+
+    // Add to Cart
+    document.getElementById('addToCartBtn').addEventListener('click', async () => {
+      const selectedSize = document.querySelector('.size-btn--active');
+      if (!selectedSize) {
+        alert('Please select a size.');
+        return;
+      }
+      const variantId = selectedSize.dataset.variantId;
+      const btn = document.getElementById('addToCartBtn');
+      btn.textContent = 'Loading...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ variantId, quantity: 1 }),
+        });
+        const data = await res.json();
+        if (data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+        } else {
+          alert('Something went wrong. Try again.');
+          btn.textContent = 'Buy Now';
+          btn.disabled = false;
+        }
+      } catch (e) {
+        alert('Something went wrong. Try again.');
+        btn.textContent = 'Add to Cart';
+        btn.disabled = false;
+      }
     });
   </script>
 </body>
