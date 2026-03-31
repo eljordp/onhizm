@@ -1151,6 +1151,14 @@
   border-color: var(--accent);
 }
 
+.size-btn--soldout,
+.size-btn[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+
 .product-page__actions {
   display: flex;
   flex-direction: column;
