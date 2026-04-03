@@ -72,7 +72,14 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero__media">
-      <img src="https://onhizm.com/cdn/shop/files/DSC00610.jpg?v=1734320057&width=3840" alt="ONHIZM Collection" class="hero__img">
+      <div class="hero__slides" id="heroSlides">
+        <img src="https://onhizm.com/cdn/shop/files/DSC03623.jpg?v=1734717048&width=3840" alt="ONHIZM Collection" class="hero__slide hero__slide--active">
+        <img src="https://onhizm.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="ONHIZM Collection" class="hero__slide">
+        <img src="https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946" alt="ONHIZM Collection" class="hero__slide">
+        <img src="images/pinkhoodie.jpeg" alt="ONHIZM Collection" class="hero__slide">
+        <img src="https://onhizm.com/cdn/shop/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270&width=1946" alt="ONHIZM Collection" class="hero__slide">
+        <img src="https://onhizm.com/cdn/shop/files/DSC00610.jpg?v=1734320057&width=3840" alt="ONHIZM Collection" class="hero__slide">
+      </div>
       <div class="hero__overlay"></div>
     </div>
     <div class="hero__content">
@@ -325,6 +332,15 @@
   </footer>
 
   <script>
+    // Hero slideshow
+    const heroSlides = document.querySelectorAll('.hero__slide');
+    let heroIdx = 0;
+    setInterval(() => {
+      heroSlides[heroIdx].classList.remove('hero__slide--active');
+      heroIdx = (heroIdx + 1) % heroSlides.length;
+      heroSlides[heroIdx].classList.add('hero__slide--active');
+    }, 3500);
+
     // Sticky header
     const header = document.getElementById('header');
     let lastScroll = 0;
