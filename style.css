@@ -374,9 +374,8 @@ a {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 10, 10, 0.9) 0%,
-    rgba(10, 10, 10, 0.4) 40%,
-    rgba(10, 10, 10, 0.15) 100%
+    rgba(10, 10, 10, 0.55) 0%,
+    transparent 35%
   );
 }
 
@@ -391,6 +390,7 @@ a {
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 
 .hero__label {
@@ -564,7 +564,7 @@ a {
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background: var(--bg-card);
+  background: var(--bg);
 }
 
 .product-card__media img {

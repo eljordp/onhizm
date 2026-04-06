@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "culture_lookbook": {
+      "type": "culture-lookbook",
+      "settings": {}
+    }
+  },
+  "order": ["culture_lookbook"]
+}

@@ -215,25 +215,8 @@
       });
     });
 
-    // Buy Now
-    const buyBtn = document.getElementById('addToCartBtn');
-    const sizeBtns = document.querySelectorAll('.size-btn');
-
-    const allSoldOut = Array.from(sizeBtns).every(b => b.disabled);
-    if (allSoldOut) {
-      buyBtn.textContent = 'Sold Out';
-      buyBtn.disabled = true;
-    }
-
-    buyBtn.addEventListener('click', () => {
-      const selectedSize = document.querySelector('.size-btn--active');
-      if (!selectedSize) {
-        alert('Please select a size.');
-        return;
-      }
-      const variantId = selectedSize.dataset.variantId;
-      window.location.href = `https://onhizm.com/cart/${variantId}:1?return_to=https://onhizm-site.vercel.app/`;
-    });
   </script>
+  <script src="../shopify.js"></script>
+  <script>initProductPageByVariants();</script>
 </body>
 </html>
