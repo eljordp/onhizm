@@ -51,7 +51,20 @@
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero__media">
-      <img src="images/onhizm1.jpeg" alt="ONHIZM The Culture">
+      <div class="culture-hero-slides" id="cultureHeroSlides">
+        <img src="images/onhizm15.JPG" alt="Rio Da Yung OG" class="culture-hero-slide active">
+        <img src="images/onhizm6.jpg" alt="Babytron" class="culture-hero-slide">
+        <img src="images/garyp.jpg" alt="Gary Payton" class="culture-hero-slide">
+        <img src="images/onhizm26.JPEG" alt="Tee Grizzley" class="culture-hero-slide">
+        <img src="images/onhizm4.jpg" alt="Daboii" class="culture-hero-slide">
+        <img src="images/mickeysingh.png" alt="Mickey Singh" class="culture-hero-slide">
+        <img src="images/aalexiamaga.jpg" alt="Alexia Maga" class="culture-hero-slide">
+        <img src="images/shordieshordie.jpeg" alt="Shordie Shordie" class="culture-hero-slide">
+        <img src="images/onhizm31.jpeg" alt="ALLBLACK" class="culture-hero-slide">
+        <img src="images/onhizm30.jpeg" alt="Kaash Paige" class="culture-hero-slide">
+        <img src="images/onhizm5.jpg" alt="Sada Baby" class="culture-hero-slide">
+        <img src="images/onhizm29.jpeg" alt="Lou Deezi" class="culture-hero-slide">
+      </div>
       <div class="page-hero__overlay"></div>
     </div>
     <div class="page-hero__content">
@@ -60,6 +73,28 @@
       <p>Real ones wearing ONHIZM. No paid placements — just love.</p>
     </div>
   </section>
+
+  <style>
+    .culture-hero-slides { position: absolute; inset: 0; }
+    .culture-hero-slide {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .culture-hero-slide.active { opacity: 1; }
+  </style>
+
+  <script>
+    const cSlides = document.querySelectorAll('.culture-hero-slide');
+    let cIdx = 0;
+    setInterval(() => {
+      cSlides[cIdx].classList.remove('active');
+      cIdx = (cIdx + 1) % cSlides.length;
+      cSlides[cIdx].classList.add('active');
+    }, 2000);
+  </script>
 
   <!-- Lookbook -->
   <section class="culture-section">

@@ -94,6 +94,10 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.lb-row--four {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .lb-row--wide-left {
   grid-template-columns: 1.6fr 1fr;
 }
