@@ -58,20 +58,7 @@
           <div class="product-page__main-img">
             <img src="../images/pinkhoodie.jpeg" alt="ONHIZM Collection — Pink">
           </div>
-          <div class="product-page__thumbs">
-            <button class="product-page__thumb product-page__thumb--active">
-              <img src="../images/pinkhoodie.jpeg" alt="Hoodie Front">
-            </button>
-            <button class="product-page__thumb">
-              <img src="../images/pinkhoodie2.jpeg" alt="Hoodie Detail">
-            </button>
-            <button class="product-page__thumb">
-              <img src="../images/pinksweats.jpeg" alt="Sweats Front">
-            </button>
-            <button class="product-page__thumb">
-              <img src="../images/pinksweats2.jpeg" alt="Sweats Detail">
-            </button>
-          </div>
+          <div class="product-page__thumbs" id="productThumbs"></div>
         </div>
         <!-- Details -->
         <div class="product-page__details">
@@ -158,63 +145,98 @@
         document.body.classList.remove('no-scroll');
       });
     });
-    // Size selector
-    document.querySelectorAll('.size-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
-        btn.classList.add('size-btn--active');
+
+    // Image map: color → item → images
+    const imageMap = {
+      Pink: {
+        'Full Outfit': ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg', '../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
+        'Hoodie':      ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg'],
+        'Sweats':      ['../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
+      },
+      Black: {
+        'Full Outfit': ['../images/blakcsweats1.jpeg', '../images/blackhoodie.jpeg', '../images/blacksweats2.jpeg', '../images/blackhoodie1.jpeg', '../images/blacksweats3.jpeg', '../images/blackhoodie2.jpeg'],
+        'Hoodie':      ['../images/blackhoodie.jpeg', '../images/blackhoodie1.jpeg', '../images/blackhoodie2.jpeg'],
+        'Sweats':      ['../images/blakcsweats1.jpeg', '../images/blacksweats2.jpeg', '../images/blacksweats3.jpeg'],
+      },
+      Grey: {
+        'Full Outfit': ['https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946', 'https://onhizm.com/cdn/shop/files/IMG_3178.jpg?v=1762126654&width=533', 'https://onhizm.com/cdn/shop/files/IMG_3166.jpg?v=1762126654&width=533'],
+        'Hoodie':      ['https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946', 'https://onhizm.com/cdn/shop/files/IMG_3178.jpg?v=1762126654&width=533'],
+        'Sweats':      ['https://onhizm.com/cdn/shop/files/IMG_3166.jpg?v=1762126654&width=533'],
+      },
+    };
+
+    let currentColor = 'Pink';
+    let currentItem = 'Full Outfit';
+
+    function updateGallery(color, item) {
+      currentColor = color;
+      currentItem = item;
+      clearInterval(window.autoRotate);
+
+      const images = imageMap[color]?.[item] || imageMap[color]['Full Outfit'];
+      const mainImg = document.querySelector('.product-page__main-img img');
+      const thumbsEl = document.getElementById('productThumbs');
+
+      mainImg.src = images[0];
+      thumbsEl.innerHTML = images.map((src, i) => `
+        <button class="product-page__thumb${i === 0 ? ' product-page__thumb--active' : ''}">
+          <img src="${src}" alt="">
+        </button>
+      `).join('');
+
+      thumbsEl.querySelectorAll('.product-page__thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          clearInterval(window.autoRotate);
+          thumbsEl.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+          thumb.classList.add('product-page__thumb--active');
+          mainImg.src = thumb.querySelector('img').src;
+        });
       });
-    });
-    // Auto-rotate gallery
-    window.autoRotate = setInterval(() => {
-      const thumbs = document.querySelectorAll('.product-page__thumb');
-      if (thumbs.length < 2) return;
-      const active = document.querySelector('.product-page__thumb--active');
-      const idx = Array.from(thumbs).indexOf(active);
-      const next = (idx + 1) % thumbs.length;
-      thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
-      thumbs[next].classList.add('product-page__thumb--active');
-      document.querySelector('.product-page__main-img img').src = thumbs[next].querySelector('img').src;
-    }, 3000);
-    // Color swatch switching
+
+      if (images.length > 1) {
+        window.autoRotate = setInterval(() => {
+          const thumbs = thumbsEl.querySelectorAll('.product-page__thumb');
+          const active = thumbsEl.querySelector('.product-page__thumb--active');
+          const idx = Array.from(thumbs).indexOf(active);
+          const next = (idx + 1) % thumbs.length;
+          thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
+          thumbs[next].classList.add('product-page__thumb--active');
+          mainImg.src = thumbs[next].querySelector('img').src;
+        }, 3000);
+      }
+    }
+
+    // Color swatch
     document.querySelectorAll('.product-page__swatches .color-swatch').forEach(swatch => {
       swatch.addEventListener('click', () => {
-        clearInterval(window.autoRotate);
         document.querySelectorAll('.product-page__swatches .color-swatch').forEach(s => s.classList.remove('color-swatch--active'));
         swatch.classList.add('color-swatch--active');
-        document.querySelector('.product-page__main-img img').src = swatch.dataset.img;
         document.getElementById('colorName').textContent = swatch.dataset.name;
-        // Swap thumbnails
-        const thumbImgs = document.querySelectorAll('.product-page__thumb img');
-        if (thumbImgs[0] && swatch.dataset.thumb1) thumbImgs[0].src = swatch.dataset.thumb1;
-        if (thumbImgs[1] && swatch.dataset.thumb2) thumbImgs[1].src = swatch.dataset.thumb2;
-        if (thumbImgs[2] && swatch.dataset.thumb3) thumbImgs[2].src = swatch.dataset.thumb3;
-        document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
-        document.querySelector('.product-page__thumb').classList.add('product-page__thumb--active');
+        updateGallery(swatch.dataset.name, currentItem);
       });
     });
-    // Variant picker — swap price + main image
+
+    // Item variant picker
     document.querySelectorAll('.variant-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('variant-btn--active'));
         btn.classList.add('variant-btn--active');
         document.getElementById('productPrice').textContent = btn.dataset.price;
-        if (btn.dataset.img) {
-          const mainImg = document.querySelector('.product-page__main-img img');
-          mainImg.src = btn.dataset.img;
-          document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
-        }
-      });
-    });
-    document.querySelectorAll('.product-page__thumb').forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        clearInterval(window.autoRotate);
-        document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
-        thumb.classList.add('product-page__thumb--active');
-        document.querySelector('.product-page__main-img img').src = thumb.querySelector('img').src;
+        updateGallery(currentColor, btn.textContent.trim());
       });
     });
 
+    // Size selector
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.disabled) return;
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
+        btn.classList.add('size-btn--active');
+      });
+    });
+
+    // Init gallery
+    updateGallery('Pink', 'Full Outfit');
   </script>
   <script src="../shopify.js"></script>
   <script>initProductPageByVariants();</script>
