@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/cart/:path*", "destination": "https://p0kd5k-mn.myshopify.com/cart/:path*" },
+    { "source": "/checkouts/:path*", "destination": "https://p0kd5k-mn.myshopify.com/checkouts/:path*" },
+    { "source": "/payments/:path*", "destination": "https://p0kd5k-mn.myshopify.com/payments/:path*" }
+  ]
+}
