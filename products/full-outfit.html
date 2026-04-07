@@ -56,38 +56,45 @@
         <!-- Gallery -->
         <div class="product-page__gallery">
           <div class="product-page__main-img">
-            <img src="../images/pinkhoodie.jpeg" alt="ONHIZM Collection — Pink">
+            <img src="../images/blakcsweats1.jpeg" alt="ONHIZM Black Sweatsuit" id="mainImg" loading="lazy">
           </div>
-          <div class="product-page__thumbs" id="productThumbs"></div>
+          <div class="product-page__thumbs" id="productThumbs">
+            <button class="product-page__thumb product-page__thumb--active"><img src="../images/blakcsweats1.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blacksweats2.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blacksweats3.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blackhoodie.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blackhoodie1.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blackhoodie2.jpeg" alt="" loading="lazy"></button>
+          </div>
         </div>
         <!-- Details -->
         <div class="product-page__details">
-          <h1 class="product-page__title">ONHIZM Collection</h1>
+          <h1 class="product-page__title">ONHIZM Sweatsuit</h1>
           <p class="product-page__price" id="productPrice">$200</p>
-          <p class="product-page__desc">Premium ONHIZM pieces with rhinestone and pearl detailing. Available as a full outfit or individually.</p>
-          <div class="product-page__colors">
-            <span class="product-page__colors-label">Color — <span id="colorName">Pink</span></span>
-            <div class="product-page__swatches">
-              <button class="color-swatch color-swatch--soldout" data-img="../images/pinkhoodie.jpeg" data-name="Pink" style="background:#e8a0b5" aria-label="Pink"></button>
-              <button class="color-swatch color-swatch--active" data-img="https://p0kd5k-mn.myshopify.com/cdn/shop/files/DSC03623.jpg?v=1734717048&width=1946" data-name="Black" style="background:#1a1a1a" aria-label="Black"></button>
-              <button class="color-swatch color-swatch--soldout" data-img="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946" data-name="Grey" style="background:#8a8a84" aria-label="Grey"></button>
+          <p class="product-page__desc">The ONHIZM sweatsuit. Available as a full outfit or individually.</p>
+          <div class="product-page__sizes">
+            <span class="product-page__sizes-label">Color — <span id="colorName">Black</span></span>
+            <div class="product-page__size-options product-page__swatches">
+              <button class="color-swatch color-swatch--active" data-name="Black" style="background:#1a1a1a" aria-label="Black"></button>
+              <button class="color-swatch color-swatch--soldout" data-name="Grey" style="background:#8a8a84" aria-label="Grey"></button>
+              <button class="color-swatch color-swatch--soldout" data-name="Pink" style="background:#e8a0b5" aria-label="Pink"></button>
             </div>
           </div>
           <div class="product-page__sizes">
             <span class="product-page__sizes-label">Item</span>
             <div class="product-page__size-options">
-              <button class="variant-btn variant-btn--active" data-price="$200" data-img="../images/pinkhoodie.jpeg">Full Outfit</button>
-              <button class="variant-btn" data-price="$100" data-img="../images/pinkhoodie.jpeg">Hoodie</button>
-              <button class="variant-btn" data-price="$100" data-img="../images/pinksweats.jpeg">Sweats</button>
+              <button class="variant-btn variant-btn--active" data-price="$200">Full Outfit</button>
+              <button class="variant-btn" data-price="$120">Hoodie</button>
+              <button class="variant-btn" data-price="$120">Sweats</button>
             </div>
           </div>
           <div class="product-page__sizes">
             <span class="product-page__sizes-label">Size</span>
             <div class="product-page__size-options">
-              <button class="size-btn" data-variant-id="51465701130537">S</button>
-              <button class="size-btn size-btn--soldout" disabled data-variant-id="51465701163305">M</button>
-              <button class="size-btn size-btn--soldout" disabled data-variant-id="52795470184745">L</button>
-              <button class="size-btn size-btn--soldout" disabled data-variant-id="52795470217513">XL</button>
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn">L</button>
+              <button class="size-btn">XL</button>
             </div>
           </div>
           <button class="btn btn--primary" id="addToCartBtn">Buy Now</button>
@@ -146,44 +153,41 @@
       });
     });
 
-    // Image map: color → item → images
     const imageMap = {
-      Pink: {
-        'Full Outfit': ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg', '../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
-        'Hoodie':      ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg'],
-        'Sweats':      ['../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
-      },
       Black: {
-        'Full Outfit': ['../images/blakcsweats1.jpeg', '../images/blackhoodie.jpeg', '../images/blacksweats2.jpeg', '../images/blackhoodie1.jpeg', '../images/blacksweats3.jpeg', '../images/blackhoodie2.jpeg'],
+        'Full Outfit': ['../images/blakcsweats1.jpeg', '../images/blacksweats2.jpeg', '../images/blacksweats3.jpeg'],
         'Hoodie':      ['../images/blackhoodie.jpeg', '../images/blackhoodie1.jpeg', '../images/blackhoodie2.jpeg'],
         'Sweats':      ['../images/blakcsweats1.jpeg', '../images/blacksweats2.jpeg', '../images/blacksweats3.jpeg'],
       },
       Grey: {
-        'Full Outfit': ['https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946', 'https://onhizm.com/cdn/shop/files/IMG_3178.jpg?v=1762126654&width=533', 'https://onhizm.com/cdn/shop/files/IMG_3166.jpg?v=1762126654&width=533'],
-        'Hoodie':      ['https://onhizm.com/cdn/shop/files/IMG_3176.jpg?v=1762126654&width=1946', 'https://onhizm.com/cdn/shop/files/IMG_3178.jpg?v=1762126654&width=533'],
-        'Sweats':      ['https://onhizm.com/cdn/shop/files/IMG_3166.jpg?v=1762126654&width=533'],
+        'Full Outfit': ['../images/greyhoodie.jpeg', '../images/greyhoodie2.jpeg', '../images/greyhoodie3.jpeg', '../images/greyhoodie4.jpeg'],
+        'Hoodie':      ['../images/greyhoodie.jpeg', '../images/greyhoodie2.jpeg', '../images/greyhoodie3.jpeg', '../images/greyhoodie4.jpeg'],
+        'Sweats':      ['../images/greyhoodie.jpeg', '../images/greyhoodie2.jpeg', '../images/greyhoodie3.jpeg', '../images/greyhoodie4.jpeg'],
+      },
+      Pink: {
+        'Full Outfit': ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg', '../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
+        'Hoodie':      ['../images/pinkhoodie.jpeg', '../images/pinkhoodie2.jpeg'],
+        'Sweats':      ['../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
       },
     };
 
     let currentColor = 'Black';
     let currentItem = 'Full Outfit';
 
+    const mainImg = document.querySelector('.product-page__main-img img');
+    const thumbsEl = document.getElementById('productThumbs');
+
     function updateGallery(color, item) {
       currentColor = color;
       currentItem = item;
       clearInterval(window.autoRotate);
-
-      const images = imageMap[color]?.[item] || imageMap[color]['Full Outfit'];
-      const mainImg = document.querySelector('.product-page__main-img img');
-      const thumbsEl = document.getElementById('productThumbs');
-
+      const images = imageMap[color][item];
       mainImg.src = images[0];
       thumbsEl.innerHTML = images.map((src, i) => `
         <button class="product-page__thumb${i === 0 ? ' product-page__thumb--active' : ''}">
-          <img src="${src}" alt="">
+          <img src="${src}" alt="" loading="lazy">
         </button>
       `).join('');
-
       thumbsEl.querySelectorAll('.product-page__thumb').forEach(thumb => {
         thumb.addEventListener('click', () => {
           clearInterval(window.autoRotate);
@@ -192,7 +196,6 @@
           mainImg.src = thumb.querySelector('img').src;
         });
       });
-
       if (images.length > 1) {
         window.autoRotate = setInterval(() => {
           const thumbs = thumbsEl.querySelectorAll('.product-page__thumb');
@@ -235,7 +238,6 @@
       });
     });
 
-    // Init gallery
     updateGallery('Black', 'Full Outfit');
   </script>
   <script src="../shopify.js"></script>
