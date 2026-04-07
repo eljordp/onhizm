@@ -216,7 +216,7 @@ async function refreshCartUI() {
 
   footer.style.display = 'block';
   subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  checkoutBtn.href = cart.checkoutUrl.replace('onhizm.com', 'p0kd5k-mn.myshopify.com');
+  checkoutBtn.href = cart.checkoutUrl;
 
   body.querySelectorAll('.cart-item__remove').forEach(btn => {
     btn.addEventListener('click', async () => {
