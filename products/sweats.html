@@ -74,7 +74,15 @@
         <div class="product-page__details">
           <h1 class="product-page__title">ONHIZM Sweatpants</h1>
           <p class="product-page__price" id="productPrice">$120</p>
-          <p class="product-page__desc">The ONHIZM sweatpants. Black. All sizes available.</p>
+          <p class="product-page__desc">The ONHIZM sweatpants. Available in black.</p>
+          <div class="product-page__sizes">
+            <span class="product-page__sizes-label">Color — <span id="colorName">Black</span></span>
+            <div class="product-page__size-options product-page__swatches">
+              <button class="color-swatch color-swatch--active" data-name="Black" style="background:#1a1a1a" aria-label="Black"></button>
+              <button class="color-swatch color-swatch--soldout" data-name="Pink" style="background:#e8a0b5" aria-label="Pink"></button>
+              <button class="color-swatch color-swatch--soldout" data-name="Grey" style="background:#8a8a84" aria-label="Grey"></button>
+            </div>
+          </div>
           <div class="product-page__sizes">
             <span class="product-page__sizes-label">Size</span>
             <div class="product-page__size-options">
@@ -157,6 +165,52 @@
         document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
         thumb.classList.add('product-page__thumb--active');
         document.getElementById('mainImg').src = thumb.querySelector('img').src;
+      });
+    });
+
+    const colorImages = {
+      Black: ['../images/blakcsweats1.jpeg', '../images/blacksweats2.jpeg', '../images/blacksweats3.jpeg'],
+      Pink:  ['../images/pinksweats.jpeg', '../images/pinksweats2.jpeg'],
+      Grey:  ['../images/greyhoodie.jpeg', '../images/greyhoodie2.jpeg', '../images/greyhoodie3.jpeg'],
+    };
+
+    function setColor(name) {
+      const images = colorImages[name];
+      document.getElementById('mainImg').src = images[0];
+      document.getElementById('colorName').textContent = name;
+      const thumbsEl = document.getElementById('productThumbs');
+      clearInterval(window.autoRotate);
+      thumbsEl.innerHTML = images.map((src, i) => `
+        <button class="product-page__thumb${i === 0 ? ' product-page__thumb--active' : ''}">
+          <img src="${src}" alt="" loading="lazy">
+        </button>
+      `).join('');
+      thumbsEl.querySelectorAll('.product-page__thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          clearInterval(window.autoRotate);
+          thumbsEl.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+          thumb.classList.add('product-page__thumb--active');
+          document.getElementById('mainImg').src = thumb.querySelector('img').src;
+        });
+      });
+      if (images.length > 1) {
+        window.autoRotate = setInterval(() => {
+          const thumbs = thumbsEl.querySelectorAll('.product-page__thumb');
+          const active = thumbsEl.querySelector('.product-page__thumb--active');
+          const idx = Array.from(thumbs).indexOf(active);
+          const next = (idx + 1) % thumbs.length;
+          thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
+          thumbs[next].classList.add('product-page__thumb--active');
+          document.getElementById('mainImg').src = thumbs[next].querySelector('img').src;
+        }, 3000);
+      }
+    }
+
+    document.querySelectorAll('.product-page__swatches .color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.product-page__swatches .color-swatch').forEach(s => s.classList.remove('color-swatch--active'));
+        swatch.classList.add('color-swatch--active');
+        setColor(swatch.dataset.name);
       });
     });
 
