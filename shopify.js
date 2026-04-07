@@ -5,7 +5,7 @@
 // Settings → Apps and sales channels → Develop apps → [your app] → API credentials
 // =============================================================================
 
-const SHOPIFY_DOMAIN = 'onhizm.myshopify.com'; // ← confirm this is correct
+const SHOPIFY_DOMAIN = 'p0kd5k-mn.myshopify.com';
 const STOREFRONT_TOKEN = '631d6b99c6a4a8e5729a0043328cd068';
 
 // =============================================================================
