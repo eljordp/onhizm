@@ -929,6 +929,27 @@ a {
   transform: scale(1.15);
 }
 
+.color-swatch--soldout {
+  opacity: 0.4;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.color-swatch--soldout::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    transparent calc(50% - 0.5px),
+    #e00 calc(50% - 0.5px),
+    #e00 calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+  border-radius: inherit;
+  z-index: 1;
+}
+
 /* ---------- Variant Picker (shop cards) ---------- */
 .variant-picker {
   display: flex;
