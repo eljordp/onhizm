@@ -251,7 +251,6 @@ a {
   height: 42px;
   width: auto;
   transition: opacity 0.3s;
-  filter: invert(1);
 }
 
 .logo-img:hover {
