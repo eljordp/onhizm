@@ -1591,3 +1591,28 @@ a {
   cursor: not-allowed;
   text-decoration: line-through;
 }
+
+/* Mute Button */
+#muteBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  background: rgba(10,10,10,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+#muteBtn:hover {
+  background: rgba(30,30,30,0.9);
+  transform: scale(1.08);
+}
