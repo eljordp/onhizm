@@ -1464,6 +1464,7 @@ a {
   right: 0;
   width: min(400px, 100vw);
   height: 100vh;
+  height: 100dvh;
   background: var(--bg);
   border-left: 1px solid var(--border);
   z-index: 1000;
@@ -1572,7 +1573,9 @@ a {
 
 .cart-panel__footer {
   padding: 1.5rem;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
   border-top: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .cart-subtotal {
@@ -1584,6 +1587,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 1rem;
+}
+
+#cartCheckoutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
 }
 
 .size-btn--sold-out {

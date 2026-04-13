@@ -1393,7 +1393,9 @@
     min-width: 64px;
   }
 
-  .product-page__actions .btn {
+  .product-page__actions .btn,
+  .product-page__details .btn,
+  .product-page__details #addToCartBtn {
     min-height: 52px;
     width: 100%;
     font-size: 0.75rem;
