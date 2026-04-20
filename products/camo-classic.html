@@ -211,5 +211,62 @@
       });
     });
   </script>
+
+  <!-- Background Audio -->
+  <audio id="bgAudio" src="../audio/Anti.mp3" loop preload="auto"></audio>
+  <button id="muteBtn" aria-label="Mute audio">
+    <svg id="iconSound" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+    <svg id="iconMute" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+  <script>
+    const audio = document.getElementById('bgAudio');
+    const muteBtn = document.getElementById('muteBtn');
+    const iconSound = document.getElementById('iconSound');
+    const iconMute = document.getElementById('iconMute');
+    let playing = false;
+
+    // Check if user muted on another page
+    if (localStorage.getItem('onhizm-muted') === 'true') {
+      audio.muted = true;
+      iconSound.style.display = 'none';
+      iconMute.style.display = '';
+    }
+
+    function startAudio() {
+      audio.volume = 0.4;
+      audio.play().then(() => {
+        playing = true;
+      }).catch(() => {});
+      document.removeEventListener('click', startAudio);
+      document.removeEventListener('scroll', startAudio);
+    }
+
+    document.addEventListener('click', startAudio, { once: true });
+    document.addEventListener('scroll', startAudio, { once: true });
+
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!playing) {
+        audio.volume = 0.4;
+        audio.play().then(() => { playing = true; }).catch(() => {});
+        iconSound.style.display = '';
+        iconMute.style.display = 'none';
+        localStorage.setItem('onhizm-muted', 'false');
+        return;
+      }
+      audio.muted = !audio.muted;
+      localStorage.setItem('onhizm-muted', audio.muted ? 'true' : 'false');
+      iconSound.style.display = audio.muted ? 'none' : '';
+      iconMute.style.display = audio.muted ? '' : 'none';
+    });
+  </script>
 </body>
 </html>

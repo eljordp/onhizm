@@ -653,6 +653,13 @@
     const iconMute = document.getElementById('iconMute');
     let playing = false;
 
+    // Check if user muted on another page
+    if (localStorage.getItem('onhizm-muted') === 'true') {
+      audio.muted = true;
+      iconSound.style.display = 'none';
+      iconMute.style.display = '';
+    }
+
     function startAudio() {
       audio.volume = 0.4;
       audio.play().then(() => {
@@ -672,9 +679,11 @@
         audio.play().then(() => { playing = true; }).catch(() => {});
         iconSound.style.display = '';
         iconMute.style.display = 'none';
+        localStorage.setItem('onhizm-muted', 'false');
         return;
       }
       audio.muted = !audio.muted;
+      localStorage.setItem('onhizm-muted', audio.muted ? 'true' : 'false');
       iconSound.style.display = audio.muted ? 'none' : '';
       iconMute.style.display = audio.muted ? '' : 'none';
     });
