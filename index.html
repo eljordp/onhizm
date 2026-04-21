@@ -549,6 +549,20 @@
       });
     });
 
+    // Auto-rotate featured product images
+    const featuredImages = ['images/blue1.jpeg', 'images/blue2.jpeg', 'images/blue3.jpeg', 'images/blue4.jpeg', 'images/blue5.jpeg'];
+    let featuredIdx = 0;
+    setInterval(() => {
+      featuredIdx = (featuredIdx + 1) % featuredImages.length;
+      if (featuredImg) {
+        featuredImg.style.opacity = 0;
+        setTimeout(() => {
+          featuredImg.src = featuredImages[featuredIdx];
+          featuredImg.onload = () => { featuredImg.style.opacity = 1; };
+        }, 200);
+      }
+    }, 3000);
+
     // Auto-rotate color swatches on cards
     document.querySelectorAll('[data-color-card]').forEach(card => {
       const swatches = card.querySelectorAll('.color-swatch');
