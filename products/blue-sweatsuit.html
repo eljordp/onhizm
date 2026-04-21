@@ -92,7 +92,14 @@
         <!-- Gallery -->
         <div class="product-page__gallery">
           <div class="product-page__main-img">
-            <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852" alt="ONHIZM Baby Blue Sweatsuit" id="mainImg" loading="lazy">
+            <img src="../images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" id="mainImg" loading="lazy">
+          </div>
+          <div class="product-page__thumbs" id="productThumbs">
+            <button class="product-page__thumb product-page__thumb--active"><img src="../images/blue1.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blue2.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blue3.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blue4.jpeg" alt="" loading="lazy"></button>
+            <button class="product-page__thumb"><img src="../images/blue5.jpeg" alt="" loading="lazy"></button>
           </div>
         </div>
         <!-- Details -->
@@ -172,6 +179,26 @@
         btn.classList.add('size-btn--active');
       });
     });
+
+    // Thumbnail gallery
+    const mainImg = document.getElementById('mainImg');
+    document.querySelectorAll('.product-page__thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        clearInterval(window.autoRotate);
+        document.querySelectorAll('.product-page__thumb').forEach(t => t.classList.remove('product-page__thumb--active'));
+        thumb.classList.add('product-page__thumb--active');
+        mainImg.src = thumb.querySelector('img').src;
+      });
+    });
+    window.autoRotate = setInterval(() => {
+      const thumbs = document.querySelectorAll('.product-page__thumb');
+      const active = document.querySelector('.product-page__thumb--active');
+      const idx = Array.from(thumbs).indexOf(active);
+      const next = (idx + 1) % thumbs.length;
+      thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
+      thumbs[next].classList.add('product-page__thumb--active');
+      mainImg.src = thumbs[next].querySelector('img').src;
+    }, 3000);
   </script>
   <script src="../shopify.js"></script>
   <script>initProductPageByVariants();</script>
