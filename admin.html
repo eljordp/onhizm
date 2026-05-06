@@ -222,7 +222,7 @@
     <div class="admin-summary">
       <div class="stat"><div class="stat__label">In Stock</div><div class="stat__value" id="statIn">–</div></div>
       <div class="stat"><div class="stat__label">Sold Out</div><div class="stat__value" id="statOut">–</div></div>
-      <div class="stat"><div class="stat__label">Mismatches</div><div class="stat__value" id="statMis">–</div></div>
+      <div class="stat"><div class="stat__label">Sizes Available</div><div class="stat__value" id="statMis">–</div></div>
     </div>
 
     <div id="productList" class="loading">Loading inventory…</div>
@@ -232,18 +232,20 @@
   <script>
     const ADMIN_PASSWORD = 'onhizm2026';
 
+    // Site = Shopify (auto-synced). Just need to know which Shopify products
+    // map to which page on the site.
     const SITE_PRODUCTS = [
-      { handle: 'baby-blue-sweatsuit',                                site: '/products/blue-sweatsuit.html',         siteAvailable: true,  cardOnSite: true },
-      { handle: 'onhizm-full-outfit-jacket-sweatpants',              site: '/products/full-outfit.html',            siteAvailable: true,  cardOnSite: true },
-      { handle: 'onhizm-sweatpants',                                  site: '/products/sweats.html',                 siteAvailable: true,  cardOnSite: true },
-      { handle: 'valentines-day-collection-limited-drop-full-sweatsuit', site: '/products/valentines-sweatsuit.html', siteAvailable: true, cardOnSite: true },
-      { handle: 'onhizm-collection-2',                                site: '/products/zip-up-jacket.html',          siteAvailable: true,  cardOnSite: true },
-      { handle: 'camo-classic-jacket-zip-up-jacket',                  site: '/products/camo-classic.html',           siteAvailable: false, cardOnSite: true },
-      { handle: 'club-shirt',                                         site: '/products/club-shirt.html',             siteAvailable: false, cardOnSite: true },
-      { handle: 'shorts',                                             site: '/products/shorts.html',                 siteAvailable: false, cardOnSite: true },
-      { handle: 'jersey',                                             site: '/products/jersey.html',                 siteAvailable: false, cardOnSite: true },
-      { handle: 'onhizm-bay-bridge-classic-tee',                      site: '/products/bay-bridge-tee.html',         siteAvailable: false, cardOnSite: true },
-      { handle: 'onhizm-grey-full-outfit-jacket-sweatpants',          site: null,                                    siteAvailable: null,  cardOnSite: false }
+      { handle: 'baby-blue-sweatsuit',                                  site: '/products/blue-sweatsuit.html',         cardOnSite: true },
+      { handle: 'onhizm-full-outfit-jacket-sweatpants',                 site: '/products/full-outfit.html',            cardOnSite: true },
+      { handle: 'onhizm-sweatpants',                                    site: '/products/sweats.html',                 cardOnSite: true },
+      { handle: 'valentines-day-collection-limited-drop-full-sweatsuit', site: '/products/valentines-sweatsuit.html',  cardOnSite: true },
+      { handle: 'onhizm-collection-2',                                  site: '/products/zip-up-jacket.html',          cardOnSite: true },
+      { handle: 'camo-classic-jacket-zip-up-jacket',                    site: '/products/camo-classic.html',           cardOnSite: true },
+      { handle: 'club-shirt',                                           site: '/products/club-shirt.html',             cardOnSite: true },
+      { handle: 'shorts',                                               site: '/products/shorts.html',                 cardOnSite: true },
+      { handle: 'jersey',                                               site: '/products/jersey.html',                 cardOnSite: true },
+      { handle: 'onhizm-bay-bridge-classic-tee',                        site: '/products/bay-bridge-tee.html',         cardOnSite: true },
+      { handle: 'onhizm-grey-full-outfit-jacket-sweatpants',            site: null,                                    cardOnSite: false }
     ];
 
     // Login
@@ -310,11 +312,11 @@
       }
       for (const p of shopifyProducts) {
         if (!seen.has(p.handle)) {
-          ordered.push({ cfg: { handle: p.handle, site: null, siteAvailable: null, cardOnSite: false }, shopify: p });
+          ordered.push({ cfg: { handle: p.handle, site: null, cardOnSite: false }, shopify: p });
         }
       }
 
-      let inStock = 0, soldOut = 0, mismatches = 0;
+      let inStock = 0, soldOut = 0, totalSizes = 0;
       const list = document.getElementById('productList');
       list.classList.remove('loading');
       list.innerHTML = '';
@@ -324,9 +326,7 @@
         const variants = (shopify.variants?.edges || []).map(e => e.node);
         const anyAvail = variants.some(v => v.availableForSale);
         if (anyAvail) inStock++; else soldOut++;
-
-        const isMismatch = cfg.cardOnSite && cfg.siteAvailable !== null && cfg.siteAvailable !== anyAvail;
-        if (isMismatch) mismatches++;
+        totalSizes += variants.filter(v => v.availableForSale).length;
 
         const img = shopify.images?.edges?.[0]?.node?.url || 'images/onhizmlogo.png';
         const variantPills = variants.map(v => `
@@ -337,12 +337,8 @@
           ? `<span class="badge badge--in-stock">In Stock</span>`
           : `<span class="badge badge--sold-out">Sold Out</span>`;
 
-        const mismatchBadge = isMismatch
-          ? `<span class="badge badge--mismatch">Site Mismatch</span>`
-          : '';
-
         const row = document.createElement('div');
-        row.className = 'product-row' + (isMismatch ? ' product-row--mismatch' : '');
+        row.className = 'product-row';
         row.innerHTML = `
           <img src="${img}" alt="" class="product-row__img">
           <div class="product-row__info">
@@ -352,7 +348,6 @@
           </div>
           <div class="product-row__status">
             ${statusBadge}
-            ${mismatchBadge}
             <div class="product-row__actions">
               <a class="btn-link" target="_blank" href="https://admin.shopify.com/store/p0kd5k-mn/products?query=${encodeURIComponent(shopify.title)}">Edit</a>
               ${cfg.site ? `<a class="btn-link" target="_blank" href="${cfg.site}">View</a>` : ''}
@@ -364,7 +359,7 @@
 
       document.getElementById('statIn').textContent  = inStock;
       document.getElementById('statOut').textContent = soldOut;
-      document.getElementById('statMis').textContent = mismatches;
+      document.getElementById('statMis').textContent = totalSizes;
       document.getElementById('lastSync').textContent = 'Synced ' + new Date().toLocaleTimeString();
     }
 
