@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Dashboard — ONHIZM</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/onhizmlogo.png" type="image/png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .admin-wrap { max-width: 1100px; margin: 0 auto; }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .admin-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .admin-header .last-sync {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .admin-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat {
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+    .stat__label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .stat__value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .product-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .product-row--mismatch {
+      border-color: #ff8c42;
+      background: rgba(255,140,66,0.06);
+    }
+    .product-row__img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+    }
+    .product-row__info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .product-row__info p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .product-row__variants {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .variant-pill {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .variant-pill--available {
+      background: rgba(70, 200, 130, 0.18);
+      color: #5fd99a;
+    }
+    .variant-pill--soldout {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.4);
+      text-decoration: line-through;
+    }
+    .product-row__status {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      align-items: flex-end;
+    }
+    .badge {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .badge--in-stock {
+      background: rgba(70, 200, 130, 0.18);
+      color: #5fd99a;
+    }
+    .badge--sold-out {
+      background: rgba(255,80,80,0.18);
+      color: #ff7575;
+    }
+    .badge--mismatch {
+      background: rgba(255,140,66,0.2);
+      color: #ffae6e;
+    }
+    .product-row__actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .btn-link {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-link:hover { background: rgba(255,255,255,0.12); }
+    .login {
+      max-width: 380px;
+      margin: 6rem auto;
+      padding: 2.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+    }
+    .login h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+    .login input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .login button {
+      width: 100%;
+      padding: 0.9rem;
+      background: #fff;
+      border: none;
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .login .err { color: #ff7575; font-size: 0.8rem; margin-bottom: 1rem; }
+    .loading { text-align: center; padding: 3rem; color: rgba(255,255,255,0.5); }
+  </style>
+</head>
+<body>
+
+  <div id="loginGate" class="login" style="display:none">
+    <h1>Inventory</h1>
+    <div id="loginErr" class="err" style="display:none">Wrong code.</div>
+    <input type="password" id="passInput" placeholder="Access code" autofocus>
+    <button id="loginBtn">Enter</button>
+  </div>
+
+  <div id="adminApp" class="admin-wrap" style="display:none">
+    <div class="admin-header">
+      <h1>ONHIZM Inventory</h1>
+      <div class="last-sync" id="lastSync">Loading…</div>
+    </div>
+
+    <div class="admin-summary">
+      <div class="stat"><div class="stat__label">In Stock</div><div class="stat__value" id="statIn">–</div></div>
+      <div class="stat"><div class="stat__label">Sold Out</div><div class="stat__value" id="statOut">–</div></div>
+      <div class="stat"><div class="stat__label">Mismatches</div><div class="stat__value" id="statMis">–</div></div>
+    </div>
+
+    <div id="productList" class="loading">Loading inventory…</div>
+  </div>
+
+  <script src="shopify.js"></script>
+  <script>
+    const ADMIN_PASSWORD = 'onhizm2026';
+
+    const SITE_PRODUCTS = [
+      { handle: 'baby-blue-sweatsuit',                                site: '/products/blue-sweatsuit.html',         siteAvailable: true,  cardOnSite: true },
+      { handle: 'onhizm-full-outfit-jacket-sweatpants',              site: '/products/full-outfit.html',            siteAvailable: true,  cardOnSite: true },
+      { handle: 'onhizm-sweatpants',                                  site: '/products/sweats.html',                 siteAvailable: true,  cardOnSite: true },
+      { handle: 'valentines-day-collection-limited-drop-full-sweatsuit', site: '/products/valentines-sweatsuit.html', siteAvailable: true, cardOnSite: true },
+      { handle: 'onhizm-collection-2',                                site: '/products/zip-up-jacket.html',          siteAvailable: true,  cardOnSite: true },
+      { handle: 'camo-classic-jacket-zip-up-jacket',                  site: '/products/camo-classic.html',           siteAvailable: false, cardOnSite: true },
+      { handle: 'club-shirt',                                         site: '/products/club-shirt.html',             siteAvailable: false, cardOnSite: true },
+      { handle: 'shorts',                                             site: '/products/shorts.html',                 siteAvailable: false, cardOnSite: true },
+      { handle: 'jersey',                                             site: '/products/jersey.html',                 siteAvailable: false, cardOnSite: true },
+      { handle: 'onhizm-bay-bridge-classic-tee',                      site: '/products/bay-bridge-tee.html',         siteAvailable: false, cardOnSite: true },
+      { handle: 'onhizm-grey-full-outfit-jacket-sweatpants',          site: null,                                    siteAvailable: null,  cardOnSite: false }
+    ];
+
+    // Login
+    const loginGate = document.getElementById('loginGate');
+    const adminApp  = document.getElementById('adminApp');
+
+    if (sessionStorage.getItem('onhizm-admin') === 'ok') {
+      loginGate.style.display = 'none';
+      adminApp.style.display = 'block';
+      loadInventory();
+    } else {
+      loginGate.style.display = 'block';
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', tryLogin);
+    document.getElementById('passInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') tryLogin(); });
+
+    function tryLogin() {
+      const v = document.getElementById('passInput').value;
+      if (v === ADMIN_PASSWORD) {
+        sessionStorage.setItem('onhizm-admin', 'ok');
+        loginGate.style.display = 'none';
+        adminApp.style.display = 'block';
+        loadInventory();
+      } else {
+        document.getElementById('loginErr').style.display = 'block';
+      }
+    }
+
+    async function loadInventory() {
+      const query = `{
+        products(first: 30) {
+          edges {
+            node {
+              handle
+              title
+              images(first: 1) { edges { node { url } } }
+              variants(first: 20) {
+                edges { node { title availableForSale price { amount } } }
+              }
+            }
+          }
+        }
+      }`;
+
+      let result;
+      try {
+        result = await shopifyFetch(query);
+      } catch (e) {
+        document.getElementById('productList').textContent = 'Failed to load inventory.';
+        return;
+      }
+
+      const shopifyProducts = (result?.products?.edges || []).map(e => e.node);
+      const shopifyMap = Object.fromEntries(shopifyProducts.map(p => [p.handle, p]));
+
+      // Use site config order, then any extra Shopify products at the end
+      const seen = new Set();
+      const ordered = [];
+      for (const cfg of SITE_PRODUCTS) {
+        const sp = shopifyMap[cfg.handle];
+        ordered.push({ cfg, shopify: sp });
+        seen.add(cfg.handle);
+      }
+      for (const p of shopifyProducts) {
+        if (!seen.has(p.handle)) {
+          ordered.push({ cfg: { handle: p.handle, site: null, siteAvailable: null, cardOnSite: false }, shopify: p });
+        }
+      }
+
+      let inStock = 0, soldOut = 0, mismatches = 0;
+      const list = document.getElementById('productList');
+      list.classList.remove('loading');
+      list.innerHTML = '';
+
+      for (const { cfg, shopify } of ordered) {
+        if (!shopify) continue;
+        const variants = (shopify.variants?.edges || []).map(e => e.node);
+        const anyAvail = variants.some(v => v.availableForSale);
+        if (anyAvail) inStock++; else soldOut++;
+
+        const isMismatch = cfg.cardOnSite && cfg.siteAvailable !== null && cfg.siteAvailable !== anyAvail;
+        if (isMismatch) mismatches++;
+
+        const img = shopify.images?.edges?.[0]?.node?.url || 'images/onhizmlogo.png';
+        const variantPills = variants.map(v => `
+          <span class="variant-pill variant-pill--${v.availableForSale ? 'available' : 'soldout'}">${escape(v.title)}</span>
+        `).join('');
+
+        const statusBadge = anyAvail
+          ? `<span class="badge badge--in-stock">In Stock</span>`
+          : `<span class="badge badge--sold-out">Sold Out</span>`;
+
+        const mismatchBadge = isMismatch
+          ? `<span class="badge badge--mismatch">Site Mismatch</span>`
+          : '';
+
+        const row = document.createElement('div');
+        row.className = 'product-row' + (isMismatch ? ' product-row--mismatch' : '');
+        row.innerHTML = `
+          <img src="${img}" alt="" class="product-row__img">
+          <div class="product-row__info">
+            <h3>${escape(shopify.title)}</h3>
+            <p>${cfg.cardOnSite ? cfg.site : 'Not on site'}</p>
+            <div class="product-row__variants">${variantPills || '<span style="font-size:0.7rem;color:rgba(255,255,255,0.4)">No variants</span>'}</div>
+          </div>
+          <div class="product-row__status">
+            ${statusBadge}
+            ${mismatchBadge}
+            <div class="product-row__actions">
+              <a class="btn-link" target="_blank" href="https://admin.shopify.com/store/p0kd5k-mn/products?query=${encodeURIComponent(shopify.title)}">Edit</a>
+              ${cfg.site ? `<a class="btn-link" target="_blank" href="${cfg.site}">View</a>` : ''}
+            </div>
+          </div>
+        `;
+        list.appendChild(row);
+      }
+
+      document.getElementById('statIn').textContent  = inStock;
+      document.getElementById('statOut').textContent = soldOut;
+      document.getElementById('statMis').textContent = mismatches;
+      document.getElementById('lastSync').textContent = 'Synced ' + new Date().toLocaleTimeString();
+    }
+
+    function escape(str) {
+      return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+  </script>
+</body>
+</html>
