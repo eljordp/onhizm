@@ -31,17 +31,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onhizm.com/products/full-outfit.html</loc>
+    <loc>https://onhizm.com/products/grey-sweatsuit.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://onhizm.com/products/sweats.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://onhizm.com/products/zip-up-jacket.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
