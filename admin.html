@@ -724,7 +724,7 @@
 
   <script src="shopify.js?v=availability-1"></script>
   <script>
-    const ADMIN_PASSWORD = 'onhizm2026';
+    const SHOPIFY_ADMIN_URL = 'https://admin.shopify.com/store/p0kd5k-mn';
 
     const SITE_PRODUCTS = [
       { handle: 'baby-blue-sweatsuit', site: '/products/blue-sweatsuit.html', cardOnSite: true },
@@ -765,35 +765,29 @@
       tab.addEventListener('click', () => showView(tab.dataset.view));
     });
 
-    if (sessionStorage.getItem('onhizm-admin') === 'ok') {
-      unlockDashboard();
-    } else {
-      loginGate.style.display = 'block';
-      adminApp.style.display = 'none';
-    }
+    disableDashboard();
 
     function tryLogin() {
-      if (passInput.value === ADMIN_PASSWORD) {
-        sessionStorage.setItem('onhizm-admin', 'ok');
-        loginErr.style.display = 'none';
-        unlockDashboard();
-      } else {
-        loginErr.style.display = 'block';
-      }
+      window.location.href = SHOPIFY_ADMIN_URL;
+    }
+
+    function disableDashboard() {
+      sessionStorage.removeItem('onhizm-admin');
+      loginGate.style.display = 'block';
+      adminApp.style.display = 'none';
+      document.querySelector('#loginGate h1').textContent = 'Admin moved';
+      loginErr.style.display = 'block';
+      loginErr.textContent = 'This public owner dashboard has been disabled. Use Shopify Admin for private store operations.';
+      passInput.type = 'hidden';
+      document.getElementById('loginBtn').textContent = 'Open Shopify Admin';
     }
 
     function unlockDashboard() {
-      loginGate.style.display = 'none';
-      adminApp.style.display = 'block';
-      if (!state.loaded) loadInventory();
+      disableDashboard();
     }
 
     function lockDashboard() {
-      sessionStorage.removeItem('onhizm-admin');
-      adminApp.style.display = 'none';
-      loginGate.style.display = 'block';
-      passInput.value = '';
-      passInput.focus();
+      disableDashboard();
     }
 
     function showView(viewName) {
