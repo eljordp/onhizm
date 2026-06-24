@@ -3,288 +3,676 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory Dashboard — ONHIZM</title>
+  <title>ONHIZM Admin - Owner Dashboard</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --panel-2: #171717;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --text: #f7f4ef;
+      --muted: rgba(247, 244, 239, 0.64);
+      --soft: rgba(247, 244, 239, 0.08);
+      --green: #7bd88f;
+      --red: #ff6b6b;
+      --amber: #ffbf69;
+      --blue: #77a7ff;
+    }
     body {
-      font-family: 'Inter', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
       min-height: 100vh;
-      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", Arial, sans-serif;
+      line-height: 1.5;
     }
-    .admin-wrap { max-width: 1100px; margin: 0 auto; }
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .admin-header h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .admin-header .last-sync {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-    }
-    .admin-summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .stat {
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-    }
-    .stat__label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 0.5rem;
-    }
-    .stat__value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    .product-row {
-      display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 1.25rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
-    }
-    .product-row--mismatch {
-      border-color: #ff8c42;
-      background: rgba(255,140,66,0.06);
-    }
-    .product-row__img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.05);
-    }
-    .product-row__info h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-    .product-row__info p {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.55);
-    }
-    .product-row__variants {
-      margin-top: 0.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-    .variant-pill {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-    .variant-pill--available {
-      background: rgba(70, 200, 130, 0.18);
-      color: #5fd99a;
-    }
-    .variant-pill--soldout {
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.4);
-      text-decoration: line-through;
-    }
-    .product-row__status {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      align-items: flex-end;
-    }
-    .badge {
-      font-size: 0.65rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .badge--in-stock {
-      background: rgba(70, 200, 130, 0.18);
-      color: #5fd99a;
-    }
-    .badge--sold-out {
-      background: rgba(255,80,80,0.18);
-      color: #ff7575;
-    }
-    .badge--mismatch {
-      background: rgba(255,140,66,0.2);
-      color: #ffae6e;
-    }
-    .product-row__actions {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .btn-link {
-      font-size: 0.7rem;
-      padding: 0.4rem 0.8rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-link:hover { background: rgba(255,255,255,0.12); }
+    a { color: inherit; }
+    button, input { font: inherit; }
     .login {
-      max-width: 380px;
-      margin: 6rem auto;
-      padding: 2.5rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      width: min(420px, calc(100% - 32px));
+      margin: 9vh auto;
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
       border-radius: 8px;
     }
-    .login h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem;
+    .eyebrow {
+      color: var(--amber);
+      font: 700 0.74rem/1 "Space Grotesk", sans-serif;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .login h1,
+    .admin-title h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.7rem, 4vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .login p,
+    .admin-title p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.93rem;
     }
     .login input {
       width: 100%;
-      padding: 0.9rem 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      color: #fff;
-      font-family: inherit;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      margin: 22px 0 10px;
+      padding: 14px 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: #0c0c0c;
+      color: var(--text);
+      outline: none;
     }
-    .login button {
-      width: 100%;
-      padding: 0.9rem;
-      background: #fff;
-      border: none;
-      color: #000;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
+    .login input:focus { border-color: var(--amber); }
+    .login .err {
+      display: none;
+      color: var(--red);
+      font-size: 0.85rem;
+      margin: 0 0 10px;
+    }
+    .admin-shell {
+      width: min(1360px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+      display: none;
+    }
+    .admin-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .top-actions,
+    .tabs,
+    .product-row__actions,
+    .quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+    .btn:hover { background: rgba(255, 255, 255, 0.14); }
+    .btn--primary {
+      border-color: var(--text);
+      background: var(--text);
+      color: #050505;
+    }
+    .btn--ghost { background: transparent; }
+    .tabs {
+      margin: 18px 0 20px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0d0d0d;
+      width: fit-content;
+      max-width: 100%;
+    }
+    .tab {
+      min-height: 36px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+    .tab.is-active {
+      background: var(--text);
+      color: #050505;
+    }
+    .view { display: none; }
+    .view.is-active { display: block; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat {
+      min-height: 112px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .stat__label,
+    .section-label,
+    .row-label {
+      color: var(--muted);
+      font: 700 0.72rem/1 "Space Grotesk", sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .stat__value {
+      margin-top: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.15rem;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .stat__note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 16px;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+    .panel__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .panel__head h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .panel__body { padding: 18px; }
+    .status-list,
+    .check-list,
+    .link-list {
+      display: grid;
+      gap: 10px;
+    }
+    .status-row,
+    .check-row,
+    .link-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .status-row:last-child,
+    .check-row:last-child,
+    .link-row:last-child { border-bottom: 0; }
+    .row-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .row-note {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .badge {
+      display: inline-flex;
+      min-height: 24px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 9px;
+      border-radius: 5px;
+      font: 800 0.68rem/1 "Space Grotesk", sans-serif;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
+      white-space: nowrap;
     }
-    .login .err { color: #ff7575; font-size: 0.8rem; margin-bottom: 1rem; }
-    .loading { text-align: center; padding: 3rem; color: rgba(255,255,255,0.5); }
+    .badge--green { background: rgba(123, 216, 143, 0.16); color: var(--green); }
+    .badge--red { background: rgba(255, 107, 107, 0.16); color: var(--red); }
+    .badge--amber { background: rgba(255, 191, 105, 0.16); color: var(--amber); }
+    .badge--blue { background: rgba(119, 167, 255, 0.16); color: var(--blue); }
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .toolbar input,
+    .toolbar select {
+      min-height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--text);
+      outline: none;
+    }
+    .toolbar input:focus,
+    .toolbar select:focus { border-color: var(--amber); }
+    .product-list {
+      display: grid;
+      gap: 10px;
+    }
+    .product-row {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .product-row__img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--soft);
+    }
+    .product-row h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+    .product-row p {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .variant-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .variant-pill {
+      display: inline-flex;
+      min-height: 24px;
+      align-items: center;
+      padding: 0 8px;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+    }
+    .variant-pill--available {
+      background: rgba(123, 216, 143, 0.14);
+      color: var(--green);
+    }
+    .variant-pill--soldout {
+      color: rgba(247, 244, 239, 0.42);
+      text-decoration: line-through;
+    }
+    .product-row__status {
+      display: grid;
+      justify-items: end;
+      gap: 10px;
+    }
+    .loading,
+    .empty-state {
+      padding: 34px;
+      color: var(--muted);
+      text-align: center;
+      border: 1px dashed var(--line-strong);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .drop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .drop-item {
+      min-height: 148px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .drop-item h3 {
+      margin-top: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+    }
+    .drop-item p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .admin-footer {
+      margin-top: 22px;
+      color: rgba(247, 244, 239, 0.42);
+      font-size: 0.78rem;
+    }
+    @media (max-width: 980px) {
+      .admin-header,
+      .grid-2,
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+      .stat-grid,
+      .drop-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .tabs { width: 100%; }
+      .tab { flex: 1 1 140px; }
+    }
+    @media (max-width: 640px) {
+      .admin-shell { width: min(100% - 20px, 1360px); padding-top: 18px; }
+      .stat-grid,
+      .drop-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-row {
+        grid-template-columns: 72px minmax(0, 1fr);
+      }
+      .product-row__img {
+        width: 72px;
+        height: 72px;
+      }
+      .product-row__status {
+        grid-column: 1 / -1;
+        justify-items: start;
+      }
+      .top-actions .btn,
+      .quick-actions .btn {
+        flex: 1 1 160px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <div id="loginGate" class="login" style="display:none">
-    <h1>Inventory</h1>
-    <div id="loginErr" class="err" style="display:none">Wrong code.</div>
-    <input type="password" id="passInput" placeholder="Access code" autofocus>
-    <button id="loginBtn">Enter</button>
+  <div id="loginGate" class="login">
+    <div class="eyebrow">Owner Access</div>
+    <h1>ONHIZM Admin</h1>
+    <p>Inventory, drop readiness, Shopify links, and SEO checks in one place.</p>
+    <input type="password" id="passInput" placeholder="Access code" autocomplete="current-password" autofocus>
+    <div id="loginErr" class="err">Wrong code.</div>
+    <button id="loginBtn" class="btn btn--primary" type="button">Enter dashboard</button>
   </div>
 
-  <div id="adminApp" class="admin-wrap" style="display:none">
-    <div class="admin-header">
-      <h1>ONHIZM Inventory</h1>
-      <div class="last-sync" id="lastSync">Loading…</div>
-    </div>
+  <div id="adminApp" class="admin-shell">
+    <header class="admin-header">
+      <div class="admin-title">
+        <div class="eyebrow">ONHIZM Owner</div>
+        <h1>Control Room</h1>
+        <p id="lastSync">Loading Shopify inventory...</p>
+      </div>
+      <div class="top-actions">
+        <a class="btn btn--ghost" href="/" target="_blank">Storefront</a>
+        <a class="btn btn--ghost" href="https://admin.shopify.com/store/p0kd5k-mn" target="_blank" rel="noopener">Shopify</a>
+        <button id="logoutBtn" class="btn" type="button">Lock</button>
+      </div>
+    </header>
 
-    <div class="admin-summary">
-      <div class="stat"><div class="stat__label">In Stock</div><div class="stat__value" id="statIn">–</div></div>
-      <div class="stat"><div class="stat__label">Sold Out</div><div class="stat__value" id="statOut">–</div></div>
-      <div class="stat"><div class="stat__label">Sizes Available</div><div class="stat__value" id="statMis">–</div></div>
-    </div>
+    <nav class="tabs" aria-label="Admin views">
+      <button class="tab is-active" type="button" data-view="overview">Overview</button>
+      <button class="tab" type="button" data-view="inventory">Inventory</button>
+      <button class="tab" type="button" data-view="drops">Drop Ops</button>
+      <button class="tab" type="button" data-view="seo">SEO</button>
+    </nav>
 
-    <div id="productList" class="loading">Loading inventory…</div>
+    <main>
+      <section id="view-overview" class="view is-active">
+        <div class="stat-grid">
+          <div class="stat"><div class="stat__label">Products Live</div><div class="stat__value" id="statIn">-</div><div class="stat__note">Available in Shopify</div></div>
+          <div class="stat"><div class="stat__label">Sold Out</div><div class="stat__value" id="statOut">-</div><div class="stat__note">No variants available</div></div>
+          <div class="stat"><div class="stat__label">Sizes Live</div><div class="stat__value" id="statSizes">-</div><div class="stat__note">Available variants</div></div>
+          <div class="stat"><div class="stat__label">Not On Site</div><div class="stat__value" id="statHidden">-</div><div class="stat__note">Shopify products without cards</div></div>
+        </div>
+
+        <div class="grid-2">
+          <section class="panel">
+            <div class="panel__head">
+              <h2>Current Drop</h2>
+              <span class="badge badge--green">Live</span>
+            </div>
+            <div class="panel__body">
+              <div class="status-list" id="dropStatusList">
+                <div class="status-row">
+                  <div>
+                    <div class="row-title">Black Sweatsuit</div>
+                    <div class="row-note">Primary product on the homepage and shop grid.</div>
+                  </div>
+                  <span class="badge badge--blue">Featured</span>
+                </div>
+                <div class="status-row">
+                  <div>
+                    <div class="row-title">Shopify Checkout</div>
+                    <div class="row-note">Public site routes customers into the Shopify checkout.</div>
+                  </div>
+                  <span class="badge badge--green">Connected</span>
+                </div>
+                <div class="status-row">
+                  <div>
+                    <div class="row-title">SMS Gate</div>
+                    <div class="row-note">Signup forms post to the Vercel SMS access endpoint.</div>
+                  </div>
+                  <span class="badge badge--amber">Check Env</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__head">
+              <h2>Owner Links</h2>
+            </div>
+            <div class="panel__body">
+              <div class="quick-actions">
+                <a class="btn btn--primary" href="https://admin.shopify.com/store/p0kd5k-mn/products" target="_blank" rel="noopener">Products</a>
+                <a class="btn" href="https://admin.shopify.com/store/p0kd5k-mn/orders" target="_blank" rel="noopener">Orders</a>
+                <a class="btn" href="https://admin.shopify.com/store/p0kd5k-mn/analytics" target="_blank" rel="noopener">Analytics</a>
+                <a class="btn" href="https://app.omnisend.com/" target="_blank" rel="noopener">Omnisend</a>
+                <a class="btn" href="https://www.instagram.com/onhizm/" target="_blank" rel="noopener">Instagram</a>
+                <a class="btn" href="/shop.html" target="_blank">Shop Page</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-inventory" class="view">
+        <div class="toolbar">
+          <input id="inventorySearch" type="search" placeholder="Search products or sizes">
+          <select id="inventoryFilter" aria-label="Inventory filter">
+            <option value="all">All products</option>
+            <option value="available">Available</option>
+            <option value="soldout">Sold out</option>
+            <option value="not-on-site">Not on site</option>
+          </select>
+        </div>
+        <div id="productList" class="loading">Loading inventory...</div>
+      </section>
+
+      <section id="view-drops" class="view">
+        <div class="drop-grid">
+          <div class="drop-item">
+            <span class="badge badge--blue">Before Drop</span>
+            <h3>Product Source</h3>
+            <p>Confirm product title, price, sizes, images, and availability in Shopify before pushing traffic.</p>
+          </div>
+          <div class="drop-item">
+            <span class="badge badge--amber">Launch Day</span>
+            <h3>SMS First</h3>
+            <p>Send Omnisend/SMS traffic to the shop page and watch available variants after the first wave.</p>
+          </div>
+          <div class="drop-item">
+            <span class="badge badge--green">After Sellout</span>
+            <h3>Close The Loop</h3>
+            <p>Keep sold-out cards visible as proof, then push customers to the next live piece.</p>
+          </div>
+        </div>
+
+        <section class="panel" style="margin-top:16px">
+          <div class="panel__head">
+            <h2>Launch Checklist</h2>
+          </div>
+          <div class="panel__body">
+            <div class="check-list">
+              <div class="check-row"><div><div class="row-title">Inventory Sync</div><div class="row-note">Shop and homepage cards read Shopify availability on page load.</div></div><span class="badge badge--green">In Place</span></div>
+              <div class="check-row"><div><div class="row-title">Product Images</div><div class="row-note">Use real product photos first; avoid repeated filler shots on active drop cards.</div></div><span class="badge badge--blue">Manual</span></div>
+              <div class="check-row"><div><div class="row-title">Checkout Smoke Test</div><div class="row-note">Add the live item to cart and confirm Shopify checkout opens before posting.</div></div><span class="badge badge--amber">Run Each Drop</span></div>
+              <div class="check-row"><div><div class="row-title">SMS Capture</div><div class="row-note">Confirm Omnisend API env is configured before relying on the signup gate.</div></div><span class="badge badge--amber">Run Each Drop</span></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-seo" class="view">
+        <div class="grid-2">
+          <section class="panel">
+            <div class="panel__head">
+              <h2>Indexing Checks</h2>
+            </div>
+            <div class="panel__body">
+              <div class="link-list">
+                <a class="link-row" href="/robots.txt" target="_blank"><span><span class="row-title">robots.txt</span><span class="row-note">Crawl rule file</span></span><span class="badge badge--blue">Open</span></a>
+                <a class="link-row" href="/sitemap.xml" target="_blank"><span><span class="row-title">sitemap.xml</span><span class="row-note">Submitted URLs</span></span><span class="badge badge--blue">Open</span></a>
+                <a class="link-row" href="/shop.html" target="_blank"><span><span class="row-title">Shop</span><span class="row-note">Primary commercial page</span></span><span class="badge badge--blue">Open</span></a>
+                <a class="link-row" href="/culture.html" target="_blank"><span><span class="row-title">The Culture</span><span class="row-note">Trust and social proof page</span></span><span class="badge badge--blue">Open</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__head">
+              <h2>Admin Guardrails</h2>
+            </div>
+            <div class="panel__body">
+              <div class="status-list">
+                <div class="status-row"><div><div class="row-title">Admin Noindex</div><div class="row-note">This page tells search engines not to index it.</div></div><span class="badge badge--green">Set</span></div>
+                <div class="status-row"><div><div class="row-title">Clean Admin URL</div><div class="row-note">/admin routes to this dashboard through a static alias.</div></div><span class="badge badge--green">Added</span></div>
+                <div class="status-row"><div><div class="row-title">Real Security</div><div class="row-note">Use Shopify/Vercel auth before adding private orders, customer data, or write actions.</div></div><span class="badge badge--amber">Needed</span></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="admin-footer">Client-side owner surface. Keep private customer/order data inside Shopify until server-side auth is added.</div>
   </div>
 
-  <script src="shopify.js"></script>
+  <script src="shopify.js?v=availability-1"></script>
   <script>
     const ADMIN_PASSWORD = 'onhizm2026';
 
-    // Site = Shopify (auto-synced). Just need to know which Shopify products
-    // map to which page on the site.
     const SITE_PRODUCTS = [
-      { handle: 'baby-blue-sweatsuit',                                  site: '/products/blue-sweatsuit.html',         cardOnSite: true },
-      { handle: 'onhizm-full-outfit-jacket-sweatpants',                 site: '/products/black-sweatsuit.html',        cardOnSite: true },
-      { handle: 'onhizm-sweatpants',                                    site: '/products/sweats.html',                 cardOnSite: true },
-      { handle: 'valentines-day-collection-limited-drop-full-sweatsuit', site: '/products/valentines-sweatsuit.html',  cardOnSite: true },
-      { handle: 'onhizm-collection-2',                                  site: null,                                    cardOnSite: false },
-      { handle: 'camo-classic-jacket-zip-up-jacket',                    site: '/products/camo-classic.html',           cardOnSite: true },
-      { handle: 'club-shirt',                                           site: '/products/club-shirt.html',             cardOnSite: true },
-      { handle: 'shorts',                                               site: '/products/shorts.html',                 cardOnSite: true },
-      { handle: 'jersey',                                               site: '/products/jersey.html',                 cardOnSite: true },
-      { handle: 'onhizm-bay-bridge-classic-tee',                        site: '/products/bay-bridge-tee.html',         cardOnSite: true },
-      { handle: 'onhizm-grey-full-outfit-jacket-sweatpants',            site: '/products/grey-sweatsuit.html',         cardOnSite: true }
+      { handle: 'baby-blue-sweatsuit', site: '/products/blue-sweatsuit.html', cardOnSite: true },
+      { handle: 'onhizm-full-outfit-jacket-sweatpants', site: '/products/black-sweatsuit.html', cardOnSite: true },
+      { handle: 'onhizm-sweatpants', site: '/products/sweats.html', cardOnSite: true },
+      { handle: 'valentines-day-collection-limited-drop-full-sweatsuit', site: '/products/valentines-sweatsuit.html', cardOnSite: true },
+      { handle: 'onhizm-collection-2', site: null, cardOnSite: false },
+      { handle: 'camo-classic-jacket-zip-up-jacket', site: '/products/camo-classic.html', cardOnSite: true },
+      { handle: 'club-shirt', site: '/products/club-shirt.html', cardOnSite: true },
+      { handle: 'shorts', site: '/products/shorts.html', cardOnSite: true },
+      { handle: 'jersey', site: '/products/jersey.html', cardOnSite: true },
+      { handle: 'onhizm-bay-bridge-classic-tee', site: '/products/bay-bridge-tee.html', cardOnSite: true },
+      { handle: 'onhizm-grey-full-outfit-jacket-sweatpants', site: '/products/grey-sweatsuit.html', cardOnSite: true }
     ];
 
-    // Login
-    const loginGate = document.getElementById('loginGate');
-    const adminApp  = document.getElementById('adminApp');
+    const state = {
+      products: [],
+      loaded: false
+    };
 
-    if (sessionStorage.getItem('onhizm-admin') === 'ok') {
-      loginGate.style.display = 'none';
-      adminApp.style.display = 'block';
-      loadInventory();
-    } else {
-      loginGate.style.display = 'block';
-    }
+    const loginGate = document.getElementById('loginGate');
+    const adminApp = document.getElementById('adminApp');
+    const passInput = document.getElementById('passInput');
+    const loginErr = document.getElementById('loginErr');
+    const productList = document.getElementById('productList');
+    const inventorySearch = document.getElementById('inventorySearch');
+    const inventoryFilter = document.getElementById('inventoryFilter');
 
     document.getElementById('loginBtn').addEventListener('click', tryLogin);
-    document.getElementById('passInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') tryLogin(); });
+    document.getElementById('logoutBtn').addEventListener('click', lockDashboard);
+    passInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') tryLogin();
+    });
+    inventorySearch.addEventListener('input', renderInventory);
+    inventoryFilter.addEventListener('change', renderInventory);
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => showView(tab.dataset.view));
+    });
+
+    if (sessionStorage.getItem('onhizm-admin') === 'ok') {
+      unlockDashboard();
+    } else {
+      loginGate.style.display = 'block';
+      adminApp.style.display = 'none';
+    }
 
     function tryLogin() {
-      const v = document.getElementById('passInput').value;
-      if (v === ADMIN_PASSWORD) {
+      if (passInput.value === ADMIN_PASSWORD) {
         sessionStorage.setItem('onhizm-admin', 'ok');
-        loginGate.style.display = 'none';
-        adminApp.style.display = 'block';
-        loadInventory();
+        loginErr.style.display = 'none';
+        unlockDashboard();
       } else {
-        document.getElementById('loginErr').style.display = 'block';
+        loginErr.style.display = 'block';
       }
+    }
+
+    function unlockDashboard() {
+      loginGate.style.display = 'none';
+      adminApp.style.display = 'block';
+      if (!state.loaded) loadInventory();
+    }
+
+    function lockDashboard() {
+      sessionStorage.removeItem('onhizm-admin');
+      adminApp.style.display = 'none';
+      loginGate.style.display = 'block';
+      passInput.value = '';
+      passInput.focus();
+    }
+
+    function showView(viewName) {
+      document.querySelectorAll('.tab').forEach((tab) => {
+        tab.classList.toggle('is-active', tab.dataset.view === viewName);
+      });
+      document.querySelectorAll('.view').forEach((view) => {
+        view.classList.toggle('is-active', view.id === `view-${viewName}`);
+      });
     }
 
     async function loadInventory() {
       const query = `{
-        products(first: 30) {
+        products(first: 40) {
           edges {
             node {
               handle
               title
+              availableForSale
               images(first: 1) { edges { node { url } } }
-              variants(first: 20) {
-                edges { node { title availableForSale price { amount } } }
+              variants(first: 40) {
+                edges { node { title availableForSale price { amount currencyCode } } }
               }
             }
           }
@@ -294,77 +682,159 @@
       let result;
       try {
         result = await shopifyFetch(query);
-      } catch (e) {
-        document.getElementById('productList').textContent = 'Failed to load inventory.';
+      } catch (error) {
+        document.getElementById('lastSync').textContent = 'Shopify inventory failed to load.';
+        productList.className = 'empty-state';
+        productList.textContent = 'Failed to load inventory from Shopify.';
         return;
       }
 
-      const shopifyProducts = (result?.products?.edges || []).map(e => e.node);
-      const shopifyMap = Object.fromEntries(shopifyProducts.map(p => [p.handle, p]));
-
-      // Use site config order, then any extra Shopify products at the end
+      const shopifyProducts = (result?.products?.edges || []).map((edge) => edge.node);
+      const shopifyMap = Object.fromEntries(shopifyProducts.map((product) => [product.handle, product]));
       const seen = new Set();
       const ordered = [];
+
       for (const cfg of SITE_PRODUCTS) {
-        const sp = shopifyMap[cfg.handle];
-        ordered.push({ cfg, shopify: sp });
+        ordered.push(normalizeProduct(cfg, shopifyMap[cfg.handle]));
         seen.add(cfg.handle);
       }
-      for (const p of shopifyProducts) {
-        if (!seen.has(p.handle)) {
-          ordered.push({ cfg: { handle: p.handle, site: null, cardOnSite: false }, shopify: p });
+
+      for (const product of shopifyProducts) {
+        if (!seen.has(product.handle)) {
+          ordered.push(normalizeProduct({ handle: product.handle, site: null, cardOnSite: false }, product));
         }
       }
 
-      let inStock = 0, soldOut = 0, totalSizes = 0;
-      const list = document.getElementById('productList');
-      list.classList.remove('loading');
-      list.innerHTML = '';
-
-      for (const { cfg, shopify } of ordered) {
-        if (!shopify) continue;
-        const variants = (shopify.variants?.edges || []).map(e => e.node);
-        const anyAvail = variants.some(v => v.availableForSale);
-        if (anyAvail) inStock++; else soldOut++;
-        totalSizes += variants.filter(v => v.availableForSale).length;
-
-        const img = shopify.images?.edges?.[0]?.node?.url || 'images/onhizmlogo.png';
-        const variantPills = variants.map(v => `
-          <span class="variant-pill variant-pill--${v.availableForSale ? 'available' : 'soldout'}">${escape(v.title)}</span>
-        `).join('');
-
-        const statusBadge = anyAvail
-          ? `<span class="badge badge--in-stock">In Stock</span>`
-          : `<span class="badge badge--sold-out">Sold Out</span>`;
-
-        const row = document.createElement('div');
-        row.className = 'product-row';
-        row.innerHTML = `
-          <img src="${img}" alt="" class="product-row__img">
-          <div class="product-row__info">
-            <h3>${escape(shopify.title)}</h3>
-            <p>${cfg.cardOnSite ? cfg.site : 'Not on site'}</p>
-            <div class="product-row__variants">${variantPills || '<span style="font-size:0.7rem;color:rgba(255,255,255,0.4)">No variants</span>'}</div>
-          </div>
-          <div class="product-row__status">
-            ${statusBadge}
-            <div class="product-row__actions">
-              <a class="btn-link" target="_blank" href="https://admin.shopify.com/store/p0kd5k-mn/products?query=${encodeURIComponent(shopify.title)}">Edit</a>
-              ${cfg.site ? `<a class="btn-link" target="_blank" href="${cfg.site}">View</a>` : ''}
-            </div>
-          </div>
-        `;
-        list.appendChild(row);
-      }
-
-      document.getElementById('statIn').textContent  = inStock;
-      document.getElementById('statOut').textContent = soldOut;
-      document.getElementById('statMis').textContent = totalSizes;
-      document.getElementById('lastSync').textContent = 'Synced ' + new Date().toLocaleTimeString();
+      state.products = ordered;
+      state.loaded = true;
+      renderStats();
+      renderInventory();
+      document.getElementById('lastSync').textContent = 'Synced ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     }
 
-    function escape(str) {
-      return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function normalizeProduct(cfg, shopify) {
+      const variants = (shopify?.variants?.edges || []).map((edge) => edge.node);
+      const availableVariants = variants.filter((variant) => variant.availableForSale);
+      return {
+        handle: cfg.handle,
+        site: cfg.site,
+        cardOnSite: Boolean(cfg.cardOnSite),
+        title: shopify?.title || cfg.handle,
+        image: shopify?.images?.edges?.[0]?.node?.url || 'images/onhizmlogo.png',
+        existsInShopify: Boolean(shopify),
+        available: Boolean(availableVariants.length),
+        variants,
+        availableCount: availableVariants.length,
+        price: variants[0]?.price?.amount || null
+      };
+    }
+
+    function renderStats() {
+      const existing = state.products.filter((product) => product.existsInShopify);
+      const inStock = existing.filter((product) => product.available).length;
+      const soldOut = existing.filter((product) => !product.available).length;
+      const sizes = existing.reduce((sum, product) => sum + product.availableCount, 0);
+      const hidden = existing.filter((product) => !product.cardOnSite).length;
+
+      document.getElementById('statIn').textContent = inStock;
+      document.getElementById('statOut').textContent = soldOut;
+      document.getElementById('statSizes').textContent = sizes;
+      document.getElementById('statHidden').textContent = hidden;
+    }
+
+    function renderInventory() {
+      if (!state.loaded) return;
+
+      const query = inventorySearch.value.trim().toLowerCase();
+      const filter = inventoryFilter.value;
+      let rows = state.products.slice();
+
+      if (filter === 'available') rows = rows.filter((product) => product.available);
+      if (filter === 'soldout') rows = rows.filter((product) => product.existsInShopify && !product.available);
+      if (filter === 'not-on-site') rows = rows.filter((product) => !product.cardOnSite);
+
+      if (query) {
+        rows = rows.filter((product) => {
+          const haystack = [
+            product.title,
+            product.handle,
+            product.site || '',
+            product.variants.map((variant) => variant.title).join(' ')
+          ].join(' ').toLowerCase();
+          return haystack.includes(query);
+        });
+      }
+
+      if (!rows.length) {
+        productList.className = 'empty-state';
+        productList.textContent = 'No products match this view.';
+        return;
+      }
+
+      productList.className = 'product-list';
+      productList.innerHTML = rows.map(renderProductRow).join('');
+    }
+
+    function renderProductRow(product) {
+      const status = getProductStatus(product);
+      const variants = product.variants.length
+        ? product.variants.map((variant) => {
+            const className = variant.availableForSale ? 'variant-pill variant-pill--available' : 'variant-pill variant-pill--soldout';
+            return `<span class="${className}">${escapeHtml(shortVariantTitle(variant.title))}</span>`;
+          }).join('')
+        : '<span class="variant-pill">No variants</span>';
+
+      const editUrl = `https://admin.shopify.com/store/p0kd5k-mn/products?query=${encodeURIComponent(product.title)}`;
+      const price = product.price ? ` - $${Number(product.price).toFixed(0)}` : '';
+      const siteLine = product.cardOnSite && product.site ? product.site : 'Not on public site';
+
+      return `
+        <article class="product-row" data-handle="${escapeHtml(product.handle)}">
+          <img class="product-row__img" src="${escapeHtml(product.image)}" alt="">
+          <div>
+            <h3>${escapeHtml(product.title)}${price}</h3>
+            <p>${escapeHtml(siteLine)}</p>
+            <div class="variant-pills">${variants}</div>
+          </div>
+          <div class="product-row__status">
+            <span class="badge ${status.className}">${status.label}</span>
+            <div class="product-row__actions">
+              <a class="btn" href="${editUrl}" target="_blank" rel="noopener">Edit</a>
+              ${product.site ? `<a class="btn" href="${escapeHtml(product.site)}" target="_blank">View</a>` : ''}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function getProductStatus(product) {
+      if (!product.existsInShopify) return { label: 'Missing', className: 'badge--red' };
+      if (!product.cardOnSite) return { label: 'Not On Site', className: 'badge--amber' };
+      if (product.available) return { label: 'In Stock', className: 'badge--green' };
+      return { label: 'Sold Out', className: 'badge--red' };
+    }
+
+    function shortVariantTitle(title) {
+      const normalized = String(title || '').trim().toUpperCase();
+      const map = {
+        SMALL: 'S',
+        MEDIUM: 'M',
+        LARGE: 'L',
+        'X-LARGE': 'XL',
+        XLARGE: 'XL',
+        'EXTRA LARGE': 'XL'
+      };
+      return map[normalized] || String(title || '').trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[char]));
     }
   </script>
 </body>

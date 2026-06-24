@@ -68,6 +68,53 @@
   font-weight: 300;
 }
 
+.culture-intro {
+  padding: 4.5rem 0 1.5rem;
+}
+
+.culture-intro__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+.culture-intro h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.culture-intro p {
+  max-width: 620px;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.culture-intro__stats {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.culture-intro__stats span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--border);
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 /* ==========================================================================
    LOOKBOOK PAGE
    ========================================================================== */
@@ -510,6 +557,7 @@
   top: 0.8rem;
   left: 0.8rem;
   z-index: 3;
+  max-width: calc(100% - 1.6rem);
   font-family: var(--font-heading);
   font-size: 0.6rem;
   letter-spacing: 0.15em;
@@ -519,11 +567,19 @@
   background: var(--accent);
   color: var(--bg);
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .product-card__badge--sold {
   background: var(--border);
   color: var(--text-muted);
+}
+
+.product-card__badge--limited {
+  background: #0a0a0a;
+  color: #fff;
 }
 
 .product-card--sold .product-card__media img {
@@ -1105,6 +1161,13 @@
   line-height: 1.8;
 }
 
+.product-page__description {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
 .product-page__tag {
   font-family: var(--font-heading);
   font-size: 0.72rem;
@@ -1210,6 +1273,13 @@
   pointer-events: none;
 }
 
+.product-soldout-note {
+  max-width: 420px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
 .product-page__back {
   display: inline-flex;
   align-items: center;
@@ -1246,6 +1316,20 @@
 
   .page-hero__content p {
     font-size: 0.88rem;
+  }
+
+  .culture-intro {
+    padding: 3rem 0 0.75rem;
+  }
+
+  .culture-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .culture-intro__stats span {
+    min-height: 32px;
+    font-size: 0.56rem;
   }
 
   /* Culture lookbook */

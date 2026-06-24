@@ -53,6 +53,21 @@ async function fetchProductByHandle(handle) {
   return data.product;
 }
 
+async function fetchVariantsByIds(ids) {
+  const data = await shopifyFetch(`
+    query VariantsByIds($ids: [ID!]!) {
+      nodes(ids: $ids) {
+        ... on ProductVariant {
+          id
+          title
+          availableForSale
+        }
+      }
+    }
+  `, { ids });
+  return data.nodes.filter(Boolean);
+}
+
 // =============================================================================
 // Cart management (persisted in localStorage)
 // =============================================================================
@@ -244,7 +259,7 @@ function updateCartCount() {
 // Use this when size buttons already have data-variant-id set:
 //   initProductPageByVariants()
 
-function initProductPageByVariants() {
+async function initProductPageByVariants() {
   injectCartDrawer();
 
   document.querySelectorAll('.nav-link--cart').forEach(el => {
@@ -256,8 +271,30 @@ function initProductPageByVariants() {
   const addBtn = document.getElementById('addToCartBtn');
   if (!addBtn) return;
 
-  const sizeBtns = document.querySelectorAll('.size-btn[data-variant-id]');
+  const sizeBtns = Array.from(document.querySelectorAll('.size-btn[data-variant-id]'));
   let selectedVariantId = null;
+
+  const toVariantGid = id => id.startsWith('gid://') ? id : `gid://shopify/ProductVariant/${id}`;
+  const fromVariantGid = id => id.split('/').pop();
+
+  function setSizeAvailability(btn, available) {
+    btn.disabled = !available;
+    btn.classList.toggle('size-btn--soldout', !available);
+    btn.classList.toggle('size-btn--sold-out', !available);
+    btn.setAttribute('aria-disabled', String(!available));
+    btn.title = available ? '' : 'Sold out';
+  }
+
+  try {
+    const variants = await fetchVariantsByIds(sizeBtns.map(btn => toVariantGid(btn.dataset.variantId)));
+    const variantById = new Map(variants.map(variant => [fromVariantGid(variant.id), variant]));
+    sizeBtns.forEach(btn => {
+      const variant = variantById.get(btn.dataset.variantId);
+      if (variant) setSizeAvailability(btn, variant.availableForSale);
+    });
+  } catch (err) {
+    console.warn('Could not refresh variant availability:', err);
+  }
 
   // Set initial selection from first available size
   sizeBtns.forEach(btn => {

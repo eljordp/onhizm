@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Shop All — ONHIZM</title>
-  <meta name="description" content="Shop the full ONHIZM collection. Premium streetwear, limited drops.">
+  <meta name="description" content="Shop ONHIZM limited Bay Area streetwear. Live sizes sync from Shopify, and sold-out pieces are gone for good.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Shop — ONHIZM">
-  <meta property="og:description" content="Browse ONHIZM's full collection. Limited drops, premium sweatsuits, hoodies and more.">
+  <meta property="og:description" content="Browse ONHIZM's current drop. Limited sizes, secure Shopify checkout, no restocks on sold-out pieces.">
   <meta property="og:url" content="https://onhizm.com/shop.html">
-  <meta property="og:image" content="images/blue1.jpeg">
+  <meta property="og:image" content="images/blackhoodie1.jpeg">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ONHIZM">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shop — ONHIZM">
-  <meta name="twitter:description" content="Browse ONHIZM's full collection. Limited drops, premium sweatsuits, hoodies and more.">
-  <meta name="twitter:image" content="images/blue1.jpeg">
+  <meta name="twitter:description" content="Browse ONHIZM's current drop. Limited sizes, secure Shopify checkout, no restocks on sold-out pieces.">
+  <meta name="twitter:image" content="images/blackhoodie1.jpeg">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://onhizm.com/shop.html">
@@ -50,6 +50,8 @@
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="sms-gate.css?v=omni-fix-1">
+
 </head>
 <body>
 
@@ -116,25 +118,26 @@
 
       <div class="shop-grid" id="shopGrid">
 
+        <!-- Black Sweatsuit -->
+        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants" data-category="sets" data-rank="1" data-price="200" data-available="1">
+          <div class="product-card__badge">Featured Drop</div>
+          <div class="product-card__media">
+            <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+          </div>
+          <div class="product-card__info">
+            <h3>Black Sweatsuit</h3>
+            <span class="product-card__price">$200</span>
+          </div>
+        </a>
+
         <!-- Baby Blue Sweatsuit -->
-        <a href="products/blue-sweatsuit.html" class="product-card" data-shopify-handle="baby-blue-sweatsuit" data-category="sets" data-rank="1" data-price="200" data-available="1">
-          <div class="product-card__badge">New Drop</div>
+        <a href="products/blue-sweatsuit.html" class="product-card" data-shopify-handle="baby-blue-sweatsuit" data-category="sets" data-rank="2" data-price="200" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Baby Blue Sweatsuit</h3>
-            <span class="product-card__price">$200</span>
-          </div>
-        </a>
-
-        <!-- Black Sweatsuit -->
-        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants" data-category="sets" data-rank="2" data-price="200" data-available="1">
-          <div class="product-card__media">
-            <img src="images/blakcsweats1.jpeg" alt="ONHIZM Black Sweatsuit" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg|images/blackhoodie.jpeg">
-          </div>
-          <div class="product-card__info">
-            <h3>Black Sweatsuit</h3>
             <span class="product-card__price">$200</span>
           </div>
         </a>
@@ -315,6 +318,7 @@
       });
     });
     document.getElementById('sortSelect').addEventListener('change', applyFilters);
+    window.addEventListener('onhizm:inventory-sync', applyFilters);
 
     // Color swatch image swap
     document.querySelectorAll('[data-color-card]').forEach(card => {
@@ -394,7 +398,16 @@
     });
   </script>
 
-  <script src="shopify.js"></script>
+  <script src="shopify.js?v=availability-1"></script>
   <script src="inventory-sync.js"></script>
+  <script src="sms-gate.js?v=omni-fix-1"></script>
+
+  <!-- Omnisend tracking -->
+  <script type="text/javascript">
+    window.omnisend = window.omnisend || [];
+    omnisend.push(["brandID", "6a1e3cd1078df331c0ccff07"]);
+    omnisend.push(["track", "$pageViewed"]);
+    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+  </script>
 </body>
 </html>

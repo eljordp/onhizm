@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>The Culture — ONHIZM</title>
-  <meta name="description" content="ONHIZM in the wild. See who's rocking it.">
+  <meta name="description" content="The ONHIZM culture wall: 30+ rappers and artists wearing limited Bay Area streetwear in the wild.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="The Culture — ONHIZM">
-  <meta property="og:description" content="See who's wearing ONHIZM.">
+  <meta property="og:description" content="30+ rappers and artists wearing ONHIZM in the wild.">
   <meta property="og:url" content="https://onhizm.com/culture.html">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
   <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Culture — ONHIZM">
-  <meta name="twitter:description" content="See who's wearing ONHIZM.">
+  <meta name="twitter:description" content="30+ rappers and artists wearing ONHIZM in the wild.">
   <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
 
   <!-- Canonical -->
@@ -29,7 +29,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "The Culture — ONHIZM",
-    "description": "See who's wearing ONHIZM.",
+    "description": "30+ rappers and artists wearing ONHIZM in the wild.",
     "url": "https://onhizm.com/culture.html"
   }
   </script>
@@ -39,6 +39,8 @@
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="sms-gate.css?v=omni-fix-1">
+
 </head>
 <body>
 
@@ -83,9 +85,27 @@
       <div class="page-hero__overlay"></div>
     </div>
     <div class="page-hero__content">
-      <span class="label">Who's Rocking It</span>
+      <span class="label">The Receipts</span>
       <h1>The Culture</h1>
-      <p>Real ones wearing ONHIZM. No paid placements — just love.</p>
+      <p>30+ rappers and artists wearing ONHIZM in the wild. No paid placements — just love.</p>
+    </div>
+  </section>
+
+  <!-- Proof Intro -->
+  <section class="culture-intro">
+    <div class="container">
+      <div class="culture-intro__grid">
+        <div>
+          <span class="label">Bay Area Stamped</span>
+          <h2>This is the proof wall.</h2>
+        </div>
+        <p>ONHIZM is already on the people moving through the culture. The gallery below is not a moodboard. It is the receipt.</p>
+        <div class="culture-intro__stats">
+          <span>30+ artists</span>
+          <span>rappers + artists</span>
+          <span>limited pieces</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -215,7 +235,7 @@
     <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">&#8250;</button>
     <div class="lightbox__content">
-      <img src="" alt="" id="lightboxImg">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" id="lightboxImg">
       <div class="lightbox__info">
         <p class="lightbox__name" id="lightboxName"></p>
       </div>
@@ -305,6 +325,15 @@
       if (e.key === 'ArrowRight') navigate(1);
     });
   </script>
+  <script src="sms-gate.js?v=omni-fix-1"></script>
 
+
+  <!-- Omnisend tracking -->
+  <script type="text/javascript">
+    window.omnisend = window.omnisend || [];
+    omnisend.push(["brandID", "6a1e3cd1078df331c0ccff07"]);
+    omnisend.push(["track", "$pageViewed"]);
+    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+  </script>
 </body>
 </html>

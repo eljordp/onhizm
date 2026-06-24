@@ -6,6 +6,19 @@
 // available here too. No more hardcoded "Sold Out" badges going stale.
 // =============================================================================
 
+function shortVariantTitle(title) {
+  const normalized = String(title || '').trim().toUpperCase();
+  const map = {
+    SMALL: 'S',
+    MEDIUM: 'M',
+    LARGE: 'L',
+    'X-LARGE': 'XL',
+    XLARGE: 'XL',
+    'EXTRA LARGE': 'XL'
+  };
+  return map[normalized] || String(title || '').trim();
+}
+
 (async function syncInventory() {
   if (typeof shopifyFetch !== 'function') return;
 
@@ -14,22 +27,29 @@
       edges {
         node {
           handle
+          availableForSale
           variants(first: 20) {
-            edges { node { availableForSale } }
+            edges { node { title availableForSale } }
           }
         }
       }
     }
   }`;
 
-  let availabilityMap = {};
+  let productMap = {};
   try {
     const data = await shopifyFetch(query);
     const products = data?.products?.edges || [];
     for (const { node } of products) {
       const variants = node.variants?.edges || [];
-      const anyAvailable = variants.some(v => v.node.availableForSale);
-      availabilityMap[node.handle] = anyAvailable;
+      const availableVariants = variants
+        .map(v => v.node)
+        .filter(v => v.availableForSale);
+      productMap[node.handle] = {
+        available: Boolean(node.availableForSale && availableVariants.length),
+        totalVariants: variants.length,
+        availableTitles: [...new Set(availableVariants.map(v => shortVariantTitle(v.title)).filter(Boolean))],
+      };
     }
   } catch (e) {
     console.warn('Inventory sync failed:', e);
@@ -38,26 +58,47 @@
 
   document.querySelectorAll('[data-shopify-handle]').forEach(card => {
     const handle = card.dataset.shopifyHandle;
-    if (!(handle in availabilityMap)) return;
+    if (!(handle in productMap)) return;
 
-    const available = availabilityMap[handle];
-    const wasSold = card.classList.contains('product-card--sold');
+    const product = productMap[handle];
+    const available = product.available;
+    const availableCount = product.availableTitles.length;
+    const totalCount = product.totalVariants;
+    const isLimited = available && totalCount > 1 && availableCount < totalCount;
+    const media = card.querySelector('.product-card__media');
+    let badge = card.querySelector('.product-card__badge');
 
     if (available) {
       card.classList.remove('product-card--sold');
       card.dataset.available = '1';
-      const soldBadge = card.querySelector('.product-card__badge--sold');
-      if (soldBadge) soldBadge.remove();
+      if (!badge && media) {
+        badge = document.createElement('div');
+        badge.className = 'product-card__badge';
+        card.insertBefore(badge, media);
+      }
+      if (badge) {
+        badge.className = 'product-card__badge';
+        if (isLimited) {
+          badge.classList.add('product-card__badge--limited');
+          badge.textContent = `Limited: ${product.availableTitles.join(' / ')}`;
+        } else {
+          badge.textContent = badge.textContent.trim() || 'Available';
+        }
+      }
     } else {
       card.classList.add('product-card--sold');
       card.dataset.available = '0';
-      const media = card.querySelector('.product-card__media');
-      if (media && !card.querySelector('.product-card__badge--sold')) {
-        const badge = document.createElement('div');
+      if (!badge && media) {
+        badge = document.createElement('div');
+        badge.className = 'product-card__badge product-card__badge--sold';
+        card.insertBefore(badge, media);
+      }
+      if (badge) {
         badge.className = 'product-card__badge product-card__badge--sold';
         badge.textContent = 'Sold Out';
-        card.insertBefore(badge, media);
       }
     }
   });
+
+  window.dispatchEvent(new CustomEvent('onhizm:inventory-sync'));
 })();

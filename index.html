@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>ONHIZM — Official Store</title>
-  <meta name="description" content="ONHIZM — Premium streetwear built different. Limited drops, handpicked materials.">
+  <meta name="description" content="ONHIZM — limited Bay Area streetwear worn by 30+ rappers and artists. Once a piece is gone, it is gone.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="ONHIZM — Official Store">
-  <meta property="og:description" content="Premium streetwear. Worn by the names. Made for very few.">
+  <meta property="og:description" content="Limited Bay Area streetwear. Worn by 30+ artists. Made for very few.">
   <meta property="og:url" content="https://onhizm.com/">
-  <meta property="og:image" content="images/blue1.jpeg">
+  <meta property="og:image" content="images/blackhoodie1.jpeg">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ONHIZM">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ONHIZM — Official Store">
-  <meta name="twitter:description" content="Premium streetwear. Worn by the names. Made for very few.">
-  <meta name="twitter:image" content="images/blue1.jpeg">
+  <meta name="twitter:description" content="Limited Bay Area streetwear. Worn by 30+ artists. Made for very few.">
+  <meta name="twitter:image" content="images/blackhoodie1.jpeg">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://onhizm.com/">
@@ -52,9 +52,9 @@
   <link rel="stylesheet" href="pages.css">
   <style>
     .culture-marquee-wrap { position: absolute; inset: 0; overflow: hidden; }
-    .culture-marquee-track { display: flex; height: 100%; width: max-content; animation: cultureScroll 40s linear infinite; will-change: transform; }
-    .culture-marquee-item { position: relative; height: 100%; flex-shrink: 0; }
-    .culture-marquee-item img { height: 100%; width: auto; object-fit: cover; display: block; filter: brightness(0.75); }
+    .culture-marquee-track { display: flex; height: 100%; width: max-content; animation: cultureScroll 64s linear infinite; will-change: transform; transform: translate3d(0,0,0); backface-visibility: hidden; }
+    .culture-marquee-item { position: relative; height: 100%; flex-shrink: 0; transform: translate3d(0,0,0); }
+    .culture-marquee-item img { height: 100%; width: auto; object-fit: cover; display: block; filter: brightness(0.75); transform: translate3d(0,0,0); }
     .culture-marquee-name {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 2rem 1rem 1rem;
@@ -67,10 +67,18 @@
       text-transform: uppercase;
       text-align: center;
     }
-    @keyframes cultureScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes cultureScroll { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
     .collection .shop-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 2rem 1.5rem; }
     @media (max-width: 768px) { .collection .shop-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem; } }
+    @media (max-width: 700px), (prefers-reduced-motion: reduce) {
+      .culture-marquee-track { width: 100%; animation: none; }
+      .culture-marquee-item { display: none; width: 100%; }
+      .culture-marquee-item:first-child { display: block; }
+      .culture-marquee-item img { width: 100%; height: 100%; object-fit: cover; }
+    }
   </style>
+  <link rel="stylesheet" href="sms-gate.css?v=omni-fix-1">
+
 </head>
 <body>
 
@@ -78,17 +86,17 @@
   <div class="announcement-bar">
     <div class="marquee-track">
       <div class="marquee-content">
-        <span>NEXT DROP — MARCH 28</span><span class="sep">&#x2726;</span>
-        <span>LIMITED SIZES</span><span class="sep">&#x2726;</span>
+        <span>ONCE IT'S GONE, IT'S GONE</span><span class="sep">&#x2726;</span>
+        <span>WORN BY 30+ ARTISTS</span><span class="sep">&#x2726;</span>
         <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>NEXT DROP — MARCH 28</span><span class="sep">&#x2726;</span>
-        <span>LIMITED SIZES</span><span class="sep">&#x2726;</span>
+        <span>NO RESTOCKS ON SOLD OUT PIECES</span><span class="sep">&#x2726;</span>
+        <span>BAY AREA STAMPED</span><span class="sep">&#x2726;</span>
         <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>NEXT DROP — MARCH 28</span><span class="sep">&#x2726;</span>
-        <span>LIMITED SIZES</span><span class="sep">&#x2726;</span>
+        <span>ONCE IT'S GONE, IT'S GONE</span><span class="sep">&#x2726;</span>
+        <span>WORN BY 30+ ARTISTS</span><span class="sep">&#x2726;</span>
         <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>NEXT DROP — MARCH 28</span><span class="sep">&#x2726;</span>
-        <span>LIMITED SIZES</span><span class="sep">&#x2726;</span>
+        <span>NO RESTOCKS ON SOLD OUT PIECES</span><span class="sep">&#x2726;</span>
+        <span>BAY AREA STAMPED</span><span class="sep">&#x2726;</span>
         <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
       </div>
     </div>
@@ -179,10 +187,57 @@
       <div class="hero__overlay"></div>
     </div>
     <div class="hero__content">
-      <span class="hero__label">Limited Edition</span>
-      <h1 class="hero__heading">Gone When<br>It's Gone.</h1>
-      <p class="hero__text">ONHIZM. Worn by the names. Made for very few.</p>
-      <a href="shop.html" class="btn btn--primary">Shop the Drop</a>
+      <span class="hero__label">Bay Area Stamped</span>
+      <h1 class="hero__heading">Every Drop<br>Sells Out</h1>
+      <p class="hero__text">Limited streetwear worn by 30+ rappers and artists. Once a piece sells out, it is gone for good.</p>
+      <div class="hero__proof" aria-label="ONHIZM social proof">
+        <span>Rio</span>
+        <span>BabyTron</span>
+        <span>Daboii</span>
+        <span>Tee Grizzley</span>
+        <span>Sada Baby</span>
+      </div>
+      <div class="hero__actions">
+        <a href="shop.html" class="btn btn--primary">Shop the Drop</a>
+        <a href="culture.html" class="btn btn--light">See the Receipts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Culture Proof -->
+  <section class="culture-proof">
+    <div class="container">
+      <div class="culture-proof__grid">
+        <div class="culture-proof__copy">
+          <span class="label">The Stamp</span>
+          <h2>Not trying to be valid. Already worn by the culture.</h2>
+          <p>A fast receipt before the full gallery: the names people recognize, the scene it came through, and the rule that sold out pieces stay gone.</p>
+        </div>
+        <div class="culture-proof__stats" aria-label="ONHIZM proof points">
+          <div>
+            <strong>30+</strong>
+            <span>rappers and artists in ONHIZM</span>
+          </div>
+          <div>
+            <strong>Bay Area</strong>
+            <span>rooted, seen, and passed through the scene</span>
+          </div>
+          <div>
+            <strong>Gone</strong>
+            <span>sold out pieces do not come back</span>
+          </div>
+        </div>
+        <div class="receipt-wall" aria-label="ONHIZM receipt wall">
+          <span>Seen on</span>
+          <strong>Rio Da Yung OG</strong>
+          <strong>BabyTron</strong>
+          <strong>Daboii</strong>
+          <strong>Tee Grizzley</strong>
+          <strong>Sada Baby</strong>
+          <strong>ALLBLACK</strong>
+          <a href="culture.html">Full Culture Wall</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -200,22 +255,22 @@
         <div class="trust-bar__item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           <div>
-            <h4>Shipping Protection</h4>
-            <p>Coverage at checkout</p>
+            <h4>Gone For Good</h4>
+            <p>No restocks on sold out pieces</p>
           </div>
         </div>
         <div class="trust-bar__item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           <div>
             <h4>Secure Checkout</h4>
-            <p>Encrypted payment</p>
+            <p>Shopify encrypted payment</p>
           </div>
         </div>
         <div class="trust-bar__item">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           <div>
-            <h4>Premium Quality</h4>
-            <p>Handpicked materials</p>
+            <h4>Worn By The Names</h4>
+            <p>30+ rappers and artists stamped it</p>
           </div>
         </div>
       </div>
@@ -227,15 +282,20 @@
     <div class="container">
       <div class="featured-product__grid">
         <div class="featured-product__media">
-          <img src="images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" class="featured-product__img" loading="lazy">
+          <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" class="featured-product__img" loading="lazy">
         </div>
         <div class="featured-product__content">
           <span class="label">Limited Drop</span>
-          <h2>Baby Blue Sweatsuit</h2>
-          <p class="featured-product__subtitle">Full Sweatsuit — All Sizes Available</p>
-          <p class="featured-product__desc">New drop. Once it's gone, it's gone.</p>
+          <h2>Black Sweatsuit</h2>
+          <p class="featured-product__subtitle">Full Sweatsuit — Limited Sizes Live</p>
+          <p class="featured-product__desc">Jacket-first full set. The baby blue already sold out, so this is the piece to move on now.</p>
+          <ul class="drop-notes" aria-label="Drop details">
+            <li>Ships through secure Shopify checkout</li>
+            <li>Free domestic shipping</li>
+            <li>Limited run, no restock once sold out</li>
+          </ul>
           <div class="featured-product__price" id="featuredPrice">$200</div>
-          <a href="products/blue-sweatsuit.html" class="btn btn--primary">Shop Now</a>
+          <a href="products/black-sweatsuit.html" class="btn btn--primary">Shop Now</a>
         </div>
       </div>
     </div>
@@ -244,25 +304,33 @@
   <!-- Collection Grid -->
   <section class="collection">
     <div class="container">
+      <div class="section-header section-header--split">
+        <div>
+          <span class="label">Current Drop</span>
+          <h2>Pieces Still Moving</h2>
+        </div>
+        <p>Buy the size you want while it is live. ONHIZM does not bring sold out pieces back just to chase demand.</p>
+      </div>
       <div class="shop-grid">
 
+        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants">
+          <div class="product-card__badge">Featured Drop</div>
+          <div class="product-card__media">
+            <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+          </div>
+          <div class="product-card__info">
+            <h3>Black Sweatsuit</h3>
+            <span class="product-card__price">$200</span>
+          </div>
+        </a>
+
         <a href="products/blue-sweatsuit.html" class="product-card" data-shopify-handle="baby-blue-sweatsuit">
-          <div class="product-card__badge">New Drop</div>
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Baby Blue Sweatsuit</h3>
-            <span class="product-card__price">$200</span>
-          </div>
-        </a>
-
-        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants">
-          <div class="product-card__media">
-            <img src="images/blakcsweats1.jpeg" alt="ONHIZM Black Sweatsuit" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg|images/blackhoodie.jpeg">
-          </div>
-          <div class="product-card__info">
-            <h3>Black Sweatsuit</h3>
             <span class="product-card__price">$200</span>
           </div>
         </a>
@@ -402,8 +470,9 @@
   <section class="lookbook">
     <div class="container">
       <div class="section-header">
-        <span class="label">The Culture</span>
-        <h2>Who's Rocking It</h2>
+        <span class="label">The Receipts</span>
+        <h2>30+ Rappers and Artists Stamped It</h2>
+        <p>Rappers, artists, and Bay Area-connected names wearing ONHIZM in the wild.</p>
       </div>
       <div class="lookbook__grid">
         <div class="lookbook__item lookbook__item--tall">
@@ -425,71 +494,14 @@
       <div class="newsletter__inner">
         <span class="label">Drop Alerts</span>
         <h2>Be First To Know</h2>
-        <p>Get text + email when the next drop hits. No spam. Just drops.</p>
-        <form class="newsletter__form" id="klaviyoForm">
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="tel" name="phone" placeholder="Phone (for SMS)" pattern="[\+]?[0-9\-\(\)\s]{10,}">
+        <p>Get text + email before sizes disappear. No spam. Just the drop before it is gone.</p>
+        <form class="newsletter__form" data-sms-gate-form>
+          <input type="tel" name="phone" placeholder="Phone for SMS access" pattern="[\+]?[0-9\-\(\)\s]{10,}" required>
           <button type="submit" class="btn btn--primary">Sign Up</button>
         </form>
-        <p id="klaviyoMsg" style="margin-top:1rem;font-size:0.85rem;display:none"></p>
       </div>
     </div>
   </section>
-
-  <script>
-    // Klaviyo signup — replace KLAVIYO_COMPANY_ID and KLAVIYO_LIST_ID with values from Klaviyo dashboard
-    const KLAVIYO_COMPANY_ID = 'KLAVIYO_COMPANY_ID';
-    const KLAVIYO_LIST_ID    = 'KLAVIYO_LIST_ID';
-
-    document.getElementById('klaviyoForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const msg = document.getElementById('klaviyoMsg');
-      const email = form.email.value.trim();
-      const phone = form.phone.value.trim();
-
-      if (KLAVIYO_COMPANY_ID === 'KLAVIYO_COMPANY_ID') {
-        msg.textContent = 'Signup not configured yet. Get your Klaviyo Company ID and List ID and tell JP.';
-        msg.style.color = '#ff7575';
-        msg.style.display = 'block';
-        return;
-      }
-
-      const profile = { type: 'profile', attributes: { email } };
-      if (phone) {
-        const cleaned = phone.replace(/[^\d+]/g, '');
-        profile.attributes.phone_number = cleaned.startsWith('+') ? cleaned : '+1' + cleaned;
-      }
-
-      try {
-        const res = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_COMPANY_ID}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
-          body: JSON.stringify({
-            data: {
-              type: 'subscription',
-              attributes: {
-                profile: { data: profile },
-                custom_source: 'Website Footer'
-              },
-              relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
-            }
-          })
-        });
-        if (res.ok || res.status === 202) {
-          msg.textContent = "You're in. Watch your phone.";
-          msg.style.color = '#5fd99a';
-          form.reset();
-        } else {
-          throw new Error('Failed');
-        }
-      } catch (err) {
-        msg.textContent = 'Something went wrong. Try again.';
-        msg.style.color = '#ff7575';
-      }
-      msg.style.display = 'block';
-    });
-  </script>
 
   <!-- Footer -->
   <footer class="footer">
@@ -522,10 +534,14 @@
   </footer>
 
   <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobileViewport = window.matchMedia('(max-width: 700px)').matches;
+    const shouldReduceHomepageMotion = prefersReducedMotion || isMobileViewport;
+
     // Hero slideshow (replaced by marquee)
     const heroSlides = document.querySelectorAll('.hero__slide');
     let heroIdx = 0;
-    if (heroSlides.length) setInterval(() => {
+    if (!shouldReduceHomepageMotion && heroSlides.length) setInterval(() => {
       heroSlides[heroIdx].classList.remove('hero__slide--active');
       heroIdx = (heroIdx + 1) % heroSlides.length;
       heroSlides[heroIdx].classList.add('hero__slide--active');
@@ -593,9 +609,9 @@
     });
 
     // Auto-rotate featured product images
-    const featuredImages = ['images/blue1.jpeg', 'images/blue2.jpeg', 'images/blue3.jpeg', 'images/blue4.jpeg', 'images/blue5.jpeg'];
+    const featuredImages = ['images/blackhoodie1.jpeg', 'images/blackhoodie.jpeg', 'images/blackhoodie2.jpeg', 'images/blakcsweats1.jpeg', 'images/blacksweats2.jpeg', 'images/blacksweats3.jpeg'];
     let featuredIdx = 0;
-    setInterval(() => {
+    if (!shouldReduceHomepageMotion) setInterval(() => {
       featuredIdx = (featuredIdx + 1) % featuredImages.length;
       if (featuredImg) {
         featuredImg.style.opacity = 0;
@@ -608,6 +624,7 @@
 
     // Auto-rotate color swatches on cards
     document.querySelectorAll('[data-color-card]').forEach(card => {
+      if (shouldReduceHomepageMotion) return;
       const swatches = card.querySelectorAll('.color-swatch');
       if (swatches.length < 2) return;
       let idx = 0;
@@ -624,6 +641,7 @@
 
     // Auto-cycle gallery images on product cards
     document.querySelectorAll('[data-gallery]').forEach(img => {
+      if (shouldReduceHomepageMotion) return;
       const images = img.dataset.gallery.split('|');
       if (images.length < 2) return;
       let idx = 0;
@@ -660,7 +678,7 @@
       return r;
     }
     let turn = 0;
-    setInterval(() => {
+    if (!shouldReduceHomepageMotion && img1 && img2) setInterval(() => {
       const el = turn % 2 === 0 ? img1 : img2;
       const slot = turn % 2;
       const next = randExcluding(showing);
@@ -689,7 +707,16 @@
     });
   </script>
 
-  <script src="shopify.js"></script>
+  <script src="shopify.js?v=availability-1"></script>
   <script src="inventory-sync.js"></script>
+  <script src="sms-gate.js?v=omni-fix-1"></script>
+
+  <!-- Omnisend tracking -->
+  <script type="text/javascript">
+    window.omnisend = window.omnisend || [];
+    omnisend.push(["brandID", "6a1e3cd1078df331c0ccff07"]);
+    omnisend.push(["track", "$pageViewed"]);
+    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+  </script>
 </body>
 </html>

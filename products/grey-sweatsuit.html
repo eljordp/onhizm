@@ -45,9 +45,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="images/onhizmlogo.png" type="image/png">
+  <link rel="icon" href="../images/onhizmlogo.png" type="image/png">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../pages.css">
+  <link rel="stylesheet" href="../sms-gate.css?v=omni-fix-1">
+
 </head>
 <body>
 
@@ -61,7 +63,7 @@
         <a href="../about.html" class="nav-link">About</a>
       </nav>
       <a href="../index.html" class="header__logo">
-        <img src="images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
+        <img src="../images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
       </a>
       <nav class="header__nav header__nav--right">
         <a href="../sizing.html" class="nav-link">Sizing</a>
@@ -118,6 +120,11 @@
             </div>
           </div>
           <button class="btn btn--primary" id="addToCartBtn">Add to Cart</button>
+          <ul class="product-trust-list" aria-label="Purchase details">
+            <li>Secure Shopify checkout</li>
+            <li>Free domestic shipping</li>
+            <li>Limited run: no restock once sold out</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -128,7 +135,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <img src="images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
+          <img src="../images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
           <p class="footer__tagline">Premium streetwear. Built different.</p>
         </div>
         <div class="footer__col">
@@ -202,7 +209,16 @@
     }, 3000);
   </script>
 
-  <script src="../shopify.js"></script>
+  <script src="../shopify.js?v=availability-1"></script>
   <script>initProductPageByVariants();</script>
+  <script src="../sms-gate.js?v=omni-fix-1"></script>
+
+  <!-- Omnisend tracking -->
+  <script type="text/javascript">
+    window.omnisend = window.omnisend || [];
+    omnisend.push(["brandID", "6a1e3cd1078df331c0ccff07"]);
+    omnisend.push(["track", "$pageViewed"]);
+    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+  </script>
 </body>
 </html>

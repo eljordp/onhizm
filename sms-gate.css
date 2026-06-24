@@ -1,0 +1,180 @@
+.sms-gate-open {
+  overflow: hidden;
+}
+
+.sms-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(8, 8, 8, 0.86);
+  color: #f7f4ed;
+  backdrop-filter: blur(12px);
+}
+
+#omnisend-forms-wrapper,
+#omnisend-forms-container,
+#omnisend-dynamic-container {
+  display: none !important;
+}
+
+.sms-gate__panel {
+  position: relative;
+  width: min(100%, 460px);
+  border: 1px solid rgba(247, 244, 237, 0.18);
+  border-radius: 8px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: #0f0f0e;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+}
+
+.sms-gate__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(247, 244, 237, 0.2);
+  border-radius: 999px;
+  background: rgba(247, 244, 237, 0.06);
+  color: #f7f4ed;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sms-gate__close:hover,
+.sms-gate__close:focus-visible {
+  border-color: #b9ff66;
+  color: #b9ff66;
+  outline: none;
+}
+
+.sms-gate__label {
+  display: block;
+  padding-right: 3rem;
+  margin-bottom: 0.75rem;
+  color: #b9ff66;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sms-gate__panel h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.sms-gate__copy {
+  margin: 1rem 0 1.25rem;
+  color: #d6d0c6;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.sms-gate__form {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.sms-gate__field {
+  display: grid;
+  gap: 0.45rem;
+  color: #f7f4ed;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sms-gate__field input {
+  min-height: 52px;
+  border: 1px solid rgba(247, 244, 237, 0.22);
+  border-radius: 6px;
+  padding: 0 0.95rem;
+  background: #191918;
+  color: #f7f4ed;
+  font: 600 1rem var(--font-body);
+  letter-spacing: 0;
+}
+
+.sms-gate__field input:focus {
+  outline: 2px solid #b9ff66;
+  outline-offset: 2px;
+}
+
+.sms-gate__consent {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  color: #aaa39a;
+  font-size: 0.72rem;
+  line-height: 1.42;
+}
+
+.sms-gate__consent input {
+  width: 18px;
+  height: 18px;
+  margin: 0.1rem 0 0;
+  accent-color: #b9ff66;
+}
+
+.sms-gate__consent a {
+  color: #f7f4ed;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.sms-gate__submit {
+  min-height: 52px;
+  border: 0;
+  border-radius: 6px;
+  background: #f7f4ed;
+  color: #111;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sms-gate__submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.sms-gate__message {
+  min-height: 1.2em;
+  margin: 0;
+  color: #ff8a8a;
+  font-size: 0.82rem;
+}
+
+.sms-gate__message--success {
+  color: #b9ff66;
+}
+
+@media (max-width: 520px) {
+  .sms-gate {
+    align-items: end;
+    padding: 0.75rem;
+  }
+
+  .sms-gate__panel {
+    padding: 1.1rem;
+  }
+}

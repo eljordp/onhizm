@@ -11,6 +11,8 @@
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="sms-gate.css?v=omni-fix-1">
+
 </head>
 <body>
 
@@ -190,7 +192,7 @@
     <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">&#8250;</button>
     <div class="lightbox__content">
-      <img src="" alt="" id="lightboxImg">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" id="lightboxImg">
       <div class="lightbox__info">
         <p class="lightbox__name" id="lightboxName"></p>
         <a href="#" class="lightbox__link" id="lightboxLink" target="_blank" rel="noopener">Shop This Piece</a>
@@ -283,6 +285,15 @@
       if (e.key === 'ArrowRight') navigate(1);
     });
   </script>
+  <script src="sms-gate.js?v=omni-fix-1"></script>
 
+
+  <!-- Omnisend tracking -->
+  <script type="text/javascript">
+    window.omnisend = window.omnisend || [];
+    omnisend.push(["brandID", "6a1e3cd1078df331c0ccff07"]);
+    omnisend.push(["track", "$pageViewed"]);
+    !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+  </script>
 </body>
 </html>
