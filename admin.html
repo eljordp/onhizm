@@ -216,6 +216,72 @@
       display: grid;
       gap: 10px;
     }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .link-stack {
+      display: grid;
+      gap: 12px;
+    }
+    .link-group {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+    .link-group__title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      min-height: 50px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .link-group__body {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+    }
+    .action-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      min-height: 54px;
+      padding: 12px 14px;
+      background: var(--panel);
+      text-decoration: none;
+    }
+    .action-link:hover { background: var(--panel-2); }
+    .action-link strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .action-link > span:first-child {
+      min-width: 0;
+    }
+    .action-link > span:first-child > span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+    .action-link__tag {
+      color: var(--amber);
+      font: 800 0.62rem/1 "Space Grotesk", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
     .status-row,
     .check-row,
     .link-row {
@@ -372,6 +438,7 @@
     @media (max-width: 980px) {
       .admin-header,
       .grid-2,
+      .link-grid,
       .toolbar {
         grid-template-columns: 1fr;
       }
@@ -432,6 +499,7 @@
 
     <nav class="tabs" aria-label="Admin views">
       <button class="tab is-active" type="button" data-view="overview">Overview</button>
+      <button class="tab" type="button" data-view="links">Links</button>
       <button class="tab" type="button" data-view="inventory">Inventory</button>
       <button class="tab" type="button" data-view="drops">Drop Ops</button>
       <button class="tab" type="button" data-view="seo">SEO</button>
@@ -481,19 +549,94 @@
 
           <section class="panel">
             <div class="panel__head">
-              <h2>Owner Links</h2>
+              <h2>Fast Links</h2>
             </div>
             <div class="panel__body">
               <div class="quick-actions">
-                <a class="btn btn--primary" href="https://admin.shopify.com/store/p0kd5k-mn/products" target="_blank" rel="noopener">Products</a>
+                <a class="btn btn--primary" href="/shop.html" target="_blank">Shop</a>
+                <a class="btn" href="/products/black-sweatsuit.html" target="_blank">Featured Product</a>
                 <a class="btn" href="https://admin.shopify.com/store/p0kd5k-mn/orders" target="_blank" rel="noopener">Orders</a>
-                <a class="btn" href="https://admin.shopify.com/store/p0kd5k-mn/analytics" target="_blank" rel="noopener">Analytics</a>
+                <a class="btn" href="https://admin.shopify.com/store/p0kd5k-mn/products" target="_blank" rel="noopener">Products</a>
                 <a class="btn" href="https://app.omnisend.com/" target="_blank" rel="noopener">Omnisend</a>
-                <a class="btn" href="https://www.instagram.com/onhizm/" target="_blank" rel="noopener">Instagram</a>
-                <a class="btn" href="/shop.html" target="_blank">Shop Page</a>
+                <a class="btn" href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console</a>
+                <a class="btn" href="https://vercel.com/jordis-projects-94d2df39/onhizm" target="_blank" rel="noopener">Vercel</a>
+                <a class="btn" href="https://github.com/eljordp/onhizm" target="_blank" rel="noopener">GitHub</a>
               </div>
             </div>
           </section>
+        </div>
+      </section>
+
+      <section id="view-links" class="view">
+        <div class="link-grid">
+          <div class="link-stack">
+            <section class="link-group">
+              <div class="link-group__title">Storefront <span class="badge badge--blue">Public</span></div>
+              <div class="link-group__body">
+                <a class="action-link" href="/" target="_blank"><span><strong>Home</strong><span>Homepage, hero, proof, featured drop</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/shop.html" target="_blank"><span><strong>Shop</strong><span>Full product grid and live inventory badges</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/culture.html" target="_blank"><span><strong>Culture</strong><span>Artist proof and lookbook wall</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/about.html" target="_blank"><span><strong>About</strong><span>Brand story page</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/sizing.html" target="_blank"><span><strong>Sizing</strong><span>Fit guide before checkout</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/policy.html" target="_blank"><span><strong>Policy</strong><span>All-sales-final and purchase policy</span></span><span class="action-link__tag">Open</span></a>
+              </div>
+            </section>
+
+            <section class="link-group">
+              <div class="link-group__title">Marketing <span class="badge badge--amber">Growth</span></div>
+              <div class="link-group__body">
+                <a class="action-link" href="https://app.omnisend.com/" target="_blank" rel="noopener"><span><strong>Omnisend</strong><span>SMS contacts, campaigns, forms</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://www.instagram.com/onhizm/" target="_blank" rel="noopener"><span><strong>Instagram</strong><span>Public profile and social proof</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/api/sms-access" target="_blank"><span><strong>SMS API Endpoint</strong><span>GET returns 405; POST is used by the signup gate</span></span><span class="action-link__tag">Check</span></a>
+              </div>
+            </section>
+          </div>
+
+          <div class="link-stack">
+            <section class="link-group">
+              <div class="link-group__title">Product Pages <span class="badge badge--green">Drops</span></div>
+              <div class="link-group__body">
+                <a class="action-link" href="/products/black-sweatsuit.html" target="_blank"><span><strong>Black Sweatsuit</strong><span>Featured current drop</span></span><span class="action-link__tag">Live</span></a>
+                <a class="action-link" href="/products/blue-sweatsuit.html" target="_blank"><span><strong>Baby Blue Sweatsuit</strong><span>Limited sizes / sold-out proof</span></span><span class="action-link__tag">Live</span></a>
+                <a class="action-link" href="/products/grey-sweatsuit.html" target="_blank"><span><strong>Grey Sweatsuit</strong><span>Full set product page</span></span><span class="action-link__tag">Live</span></a>
+                <a class="action-link" href="/products/sweats.html" target="_blank"><span><strong>Sweatpants</strong><span>Bottoms product page</span></span><span class="action-link__tag">Live</span></a>
+                <a class="action-link" href="/products/valentines-sweatsuit.html" target="_blank"><span><strong>Valentines Set</strong><span>Limited collection page</span></span><span class="action-link__tag">Live</span></a>
+                <a class="action-link" href="/products/camo-classic.html" target="_blank"><span><strong>Camo Classic</strong><span>Archived product page</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/products/club-shirt.html" target="_blank"><span><strong>Club Shirt</strong><span>Archived product page</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/products/shorts.html" target="_blank"><span><strong>Shorts</strong><span>Archived product page</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/products/jersey.html" target="_blank"><span><strong>Jersey</strong><span>Archived product page</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/products/bay-bridge-tee.html" target="_blank"><span><strong>Bay Bridge Tee</strong><span>Archived product page</span></span><span class="action-link__tag">Open</span></a>
+              </div>
+            </section>
+          </div>
+
+          <div class="link-stack">
+            <section class="link-group">
+              <div class="link-group__title">Shopify Ops <span class="badge badge--green">Source</span></div>
+              <div class="link-group__body">
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn" target="_blank" rel="noopener"><span><strong>Shopify Home</strong><span>Main store admin</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn/products" target="_blank" rel="noopener"><span><strong>Products</strong><span>Inventory, images, prices, variants</span></span><span class="action-link__tag">Edit</span></a>
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn/orders" target="_blank" rel="noopener"><span><strong>Orders</strong><span>Fulfillment and order status</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn/customers" target="_blank" rel="noopener"><span><strong>Customers</strong><span>Buyer profiles and customer history</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn/discounts" target="_blank" rel="noopener"><span><strong>Discounts</strong><span>Codes and promo setup</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://admin.shopify.com/store/p0kd5k-mn/analytics" target="_blank" rel="noopener"><span><strong>Analytics</strong><span>Store traffic and sales reports</span></span><span class="action-link__tag">Open</span></a>
+              </div>
+            </section>
+
+            <section class="link-group">
+              <div class="link-group__title">SEO + Admin <span class="badge badge--blue">Tools</span></div>
+              <div class="link-group__body">
+                <a class="action-link" href="/robots.txt" target="_blank"><span><strong>robots.txt</strong><span>Crawl rules</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="/sitemap.xml" target="_blank"><span><strong>sitemap.xml</strong><span>Submitted URL map</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://search.google.com/search-console" target="_blank" rel="noopener"><span><strong>Search Console</strong><span>Indexing, queries, page issues</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener"><span><strong>Google Analytics</strong><span>Traffic and conversion reporting</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fonhizm.com%2F" target="_blank" rel="noopener"><span><strong>PageSpeed</strong><span>Performance check for homepage</span></span><span class="action-link__tag">Test</span></a>
+                <a class="action-link" href="https://search.google.com/test/rich-results?url=https%3A%2F%2Fonhizm.com%2F" target="_blank" rel="noopener"><span><strong>Rich Results</strong><span>Schema validation</span></span><span class="action-link__tag">Test</span></a>
+                <a class="action-link" href="https://github.com/eljordp/onhizm" target="_blank" rel="noopener"><span><strong>GitHub Repo</strong><span>Source code and deploy history</span></span><span class="action-link__tag">Open</span></a>
+                <a class="action-link" href="https://vercel.com/jordis-projects-94d2df39/onhizm" target="_blank" rel="noopener"><span><strong>Vercel Project</strong><span>Deployments, env vars, domains</span></span><span class="action-link__tag">Open</span></a>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
 
