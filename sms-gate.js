@@ -1,6 +1,7 @@
 (function () {
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
+  const DISCOUNT_CODE = 'ONHIZM10';
   const CONSENT_TEXT =
     'I agree to receive recurring automated marketing text messages from ONHIZM at the phone number provided. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Reply STOP to unsubscribe or HELP for help.';
 
@@ -24,9 +25,10 @@
   }
 
   function setAccess(phoneLast4) {
-    const payload = { unlockedAt: new Date().toISOString(), phoneLast4 };
+    const payload = { unlockedAt: new Date().toISOString(), phoneLast4, discountCode: DISCOUNT_CODE };
     localStorage.setItem(ACCESS_KEY, JSON.stringify(payload));
     document.cookie = 'onhizm_sms_access=1; Max-Age=31536000; Path=/; SameSite=Lax; Secure';
+    document.cookie = `onhizm_discount_code=${encodeURIComponent(DISCOUNT_CODE)}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
   }
 
   function isProtectedPath(pathname) {
@@ -53,9 +55,9 @@
     gateEl.innerHTML = `
       <div class="sms-gate__panel">
         <button type="button" class="sms-gate__close" aria-label="Close SMS signup">X</button>
-        <span class="sms-gate__label">Text-First Drops</span>
-        <h2 id="smsGateTitle">Unlock the next surprise drop.</h2>
-        <p class="sms-gate__copy">ONHIZM pieces move by text first. Put your number in and the shop opens.</p>
+        <span class="sms-gate__label">Text Club Discount</span>
+        <h2 id="smsGateTitle">Get 10% off.</h2>
+        <p class="sms-gate__copy">Drop your number and your ONHIZM discount gets saved for checkout.</p>
         <form class="sms-gate__form" id="smsGateForm">
           <label class="sms-gate__field">
             <span>Phone number</span>
@@ -65,7 +67,7 @@
             <input type="checkbox" name="consent" required>
             <span>${CONSENT_TEXT} <a href="${window.location.pathname.includes('/products/') ? '../policy.html' : 'policy.html'}" target="_blank" rel="noopener">Policy</a>.</span>
           </label>
-          <button type="submit" class="sms-gate__submit">Unlock Shop</button>
+          <button type="submit" class="sms-gate__submit">Get 10% Off</button>
           <p class="sms-gate__message" id="smsGateMessage" aria-live="polite"></p>
         </form>
       </div>
@@ -111,7 +113,7 @@
 
     message.textContent = '';
     button.disabled = true;
-    button.textContent = 'Unlocking...';
+    button.textContent = 'Saving...';
 
     try {
       const response = await fetch('/api/sms-access', {
@@ -127,11 +129,11 @@
 
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(data.error || 'Could not unlock access');
+        throw new Error(data.error || 'Could not save discount');
       }
 
       setAccess(data.phoneLast4 || phone.slice(-4));
-      message.textContent = 'Unlocked. Taking you in...';
+      message.textContent = `${data.discountCode || DISCOUNT_CODE} saved. Taking you in...`;
       message.classList.add('sms-gate__message--success');
 
       const destination = pendingUrl || window.location.href;
@@ -142,10 +144,10 @@
         closeGate();
       }
     } catch (err) {
-      message.textContent = err.message || 'Could not unlock access. Try again.';
+      message.textContent = err.message || 'Could not save discount. Try again.';
       message.classList.remove('sms-gate__message--success');
       button.disabled = false;
-      button.textContent = 'Unlock Shop';
+      button.textContent = 'Get 10% Off';
     }
   }
 

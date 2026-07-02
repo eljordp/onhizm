@@ -7,6 +7,8 @@
 
 const SHOPIFY_DOMAIN = 'p0kd5k-mn.myshopify.com';
 const STOREFRONT_TOKEN = '631d6b99c6a4a8e5729a0043328cd068';
+const SMS_ACCESS_KEY = 'onhizm:sms-access:v1';
+const SMS_DISCOUNT_CODE = 'ONHIZM10';
 
 // =============================================================================
 // Storefront API client
@@ -73,6 +75,34 @@ async function fetchVariantsByIds(ids) {
 // =============================================================================
 
 const CART_KEY = 'onhizm_cart_id';
+
+function getSmsDiscountCode() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SMS_ACCESS_KEY) || 'null');
+    if (saved && saved.unlockedAt) return saved.discountCode || SMS_DISCOUNT_CODE;
+  } catch (_) {}
+
+  const cookies = document.cookie.split('; ');
+  const discountCookie = cookies.find(row => row.startsWith('onhizm_discount_code='));
+  if (discountCookie) {
+    return decodeURIComponent(discountCookie.split('=').slice(1).join('=')) || SMS_DISCOUNT_CODE;
+  }
+
+  return cookies.some(row => row === 'onhizm_sms_access=1') ? SMS_DISCOUNT_CODE : '';
+}
+
+function withSmsDiscount(checkoutUrl) {
+  const discountCode = getSmsDiscountCode();
+  if (!discountCode) return checkoutUrl;
+
+  try {
+    const url = new URL(checkoutUrl, window.location.href);
+    url.searchParams.set('discount', discountCode);
+    return url.href;
+  } catch (_) {
+    return checkoutUrl;
+  }
+}
 
 async function getOrCreateCart() {
   const cartId = localStorage.getItem(CART_KEY);
@@ -231,7 +261,7 @@ async function refreshCartUI() {
 
   footer.style.display = 'block';
   subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-  checkoutBtn.href = cart.checkoutUrl;
+  checkoutBtn.href = withSmsDiscount(cart.checkoutUrl);
 
   body.querySelectorAll('.cart-item__remove').forEach(btn => {
     btn.addEventListener('click', async () => {

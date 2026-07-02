@@ -10,7 +10,7 @@
   place-items: center;
   padding: 1.25rem;
   background: rgba(8, 8, 8, 0.86);
-  color: #f7f4ed;
+  color: #111;
   backdrop-filter: blur(12px);
 }
 
@@ -23,11 +23,11 @@
 .sms-gate__panel {
   position: relative;
   width: min(100%, 460px);
-  border: 1px solid rgba(247, 244, 237, 0.18);
+  border: 1px solid rgba(17, 17, 17, 0.12);
   border-radius: 8px;
   padding: clamp(1.25rem, 4vw, 2rem);
-  background: #0f0f0e;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
 }
 
 .sms-gate__close {
@@ -38,10 +38,10 @@
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(247, 244, 237, 0.2);
+  border: 1px solid rgba(17, 17, 17, 0.16);
   border-radius: 999px;
-  background: rgba(247, 244, 237, 0.06);
-  color: #f7f4ed;
+  background: #f4f1ec;
+  color: #111;
   cursor: pointer;
   font-family: var(--font-heading);
   font-size: 0.82rem;
@@ -51,8 +51,8 @@
 
 .sms-gate__close:hover,
 .sms-gate__close:focus-visible {
-  border-color: #b9ff66;
-  color: #b9ff66;
+  border-color: #111;
+  color: #111;
   outline: none;
 }
 
@@ -78,7 +78,7 @@
 
 .sms-gate__copy {
   margin: 1rem 0 1.25rem;
-  color: #d6d0c6;
+  color: #333;
   font-size: 0.98rem;
   line-height: 1.5;
 }
@@ -91,7 +91,7 @@
 .sms-gate__field {
   display: grid;
   gap: 0.45rem;
-  color: #f7f4ed;
+  color: #111;
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 700;
@@ -101,11 +101,11 @@
 
 .sms-gate__field input {
   min-height: 52px;
-  border: 1px solid rgba(247, 244, 237, 0.22);
+  border: 1px solid rgba(17, 17, 17, 0.18);
   border-radius: 6px;
   padding: 0 0.95rem;
-  background: #191918;
-  color: #f7f4ed;
+  background: #fff;
+  color: #111;
   font: 600 1rem var(--font-body);
   letter-spacing: 0;
 }
@@ -120,7 +120,7 @@
   grid-template-columns: 18px 1fr;
   gap: 0.65rem;
   align-items: start;
-  color: #aaa39a;
+  color: #5e5a54;
   font-size: 0.72rem;
   line-height: 1.42;
 }
@@ -133,7 +133,7 @@
 }
 
 .sms-gate__consent a {
-  color: #f7f4ed;
+  color: #111;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -142,8 +142,8 @@
   min-height: 52px;
   border: 0;
   border-radius: 6px;
-  background: #f7f4ed;
-  color: #111;
+  background: #111;
+  color: #fff;
   cursor: pointer;
   font-family: var(--font-heading);
   font-size: 0.82rem;
@@ -165,7 +165,7 @@
 }
 
 .sms-gate__message--success {
-  color: #b9ff66;
+  color: #187400;
 }
 
 @media (max-width: 520px) {

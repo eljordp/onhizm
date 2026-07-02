@@ -1,5 +1,6 @@
 const CONSENT_TEXT =
   'I agree to receive recurring automated marketing text messages from ONHIZM at the phone number provided. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Reply STOP to unsubscribe or HELP for help.';
+const DISCOUNT_CODE = 'ONHIZM10';
 
 function normalizePhone(value) {
   const raw = String(value || '').trim();
@@ -39,7 +40,7 @@ function buildContactPayload(phone, now, sourcePage, intendedPath, ip, userAgent
       },
     ],
     countryCode: phone.startsWith('+1') ? 'US' : undefined,
-    ...(includeTags ? { tags: ['source:onhizm-sms-gate', 'sms-drop-access'] } : {}),
+    ...(includeTags ? { tags: ['source:onhizm-sms-gate', 'sms-10-percent-off'] } : {}),
     customProperties: {
       sms_gate_consent_accepted: true,
       sms_gate_consent_text: CONSENT_TEXT,
@@ -48,6 +49,8 @@ function buildContactPayload(phone, now, sourcePage, intendedPath, ip, userAgent
       sms_gate_intended_path: intendedPath,
       sms_gate_ip: ip,
       sms_gate_user_agent: userAgent,
+      sms_gate_offer: '10_percent_off',
+      sms_gate_discount_code: DISCOUNT_CODE,
     },
   };
 }
@@ -103,7 +106,7 @@ export default async function handler(req, res) {
   }
 
   if (!consentAccepted) {
-    return res.status(400).json({ error: 'SMS consent is required for drop access' });
+    return res.status(400).json({ error: 'SMS consent is required to get 10% off' });
   }
 
   const now = new Date().toISOString();
@@ -166,6 +169,7 @@ export default async function handler(req, res) {
       ok: true,
       action: existingContact ? 'updated' : 'created',
       phoneLast4: phone.slice(-4),
+      discountCode: DISCOUNT_CODE,
     });
   } catch (err) {
     console.error('SMS access handler error:', err);
