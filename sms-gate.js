@@ -104,14 +104,10 @@
     gateEl.setAttribute('aria-labelledby', 'smsGateTitle');
     gateEl.innerHTML = isLaunchLocked()
       ? `
-      <div class="sms-gate__launch-media" aria-hidden="true"></div>
       <main class="sms-gate__panel sms-gate__launch-panel">
-        <div class="sms-gate__brand">ONHIZM</div>
-        <div class="sms-gate__launch-copy">
-          <span class="sms-gate__label">The next drop</span>
-          <h1 id="smsGateTitle">Locked until<br>August 1.</h1>
-          <p>Get first access when the doors open. SMS members get the drop before everybody else.</p>
-        </div>
+        <img class="sms-gate__launch-logo" src="/images/onhizmlogo.png" alt="ONHIZM">
+        <p class="sms-gate__launch-date" id="smsGateTitle">Reopening August 1</p>
+        <p class="sms-gate__launch-copy">Join SMS for first access.</p>
         <div class="sms-gate__countdown" aria-label="Countdown to August 1">
           ${countdownMarkup()}
         </div>
@@ -127,7 +123,7 @@
           <button type="submit" class="sms-gate__submit">Join the SMS List</button>
           <p class="sms-gate__message" id="smsGateMessage" aria-live="polite"></p>
         </form>
-        <p class="sms-gate__fineprint">No entry before the drop. No exceptions.</p>
+        <p class="sms-gate__fineprint">SMS members get the drop first.</p>
       </main>
     `
       : `
