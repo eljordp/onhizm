@@ -2,11 +2,61 @@
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
   const DISCOUNT_CODE = 'ONHIZM10';
+  const RELEASE_AT = new Date('2026-08-01T00:00:00-07:00').getTime();
   const CONSENT_TEXT =
     'I agree to receive recurring automated marketing text messages from ONHIZM at the phone number provided. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Reply STOP to unsubscribe or HELP for help.';
 
   let pendingUrl = null;
   let gateEl = null;
+  let countdownTimer = null;
+
+  function isLaunchLocked() {
+    return Date.now() < RELEASE_AT && !window.location.pathname.endsWith('/policy.html');
+  }
+
+  function countdownParts() {
+    const remaining = Math.max(0, RELEASE_AT - Date.now());
+    const totalSeconds = Math.floor(remaining / 1000);
+    return {
+      days: Math.floor(totalSeconds / 86400),
+      hours: Math.floor((totalSeconds % 86400) / 3600),
+      minutes: Math.floor((totalSeconds % 3600) / 60),
+      seconds: totalSeconds % 60,
+      remaining,
+    };
+  }
+
+  function countdownMarkup() {
+    const parts = countdownParts();
+    return [
+      ['Days', parts.days],
+      ['Hours', parts.hours],
+      ['Minutes', parts.minutes],
+      ['Seconds', parts.seconds],
+    ]
+      .map(
+        ([label, value]) => `
+          <div class="sms-gate__time">
+            <strong data-countdown="${label.toLowerCase()}">${String(value).padStart(2, '0')}</strong>
+            <span>${label}</span>
+          </div>`
+      )
+      .join('');
+  }
+
+  function updateCountdown() {
+    if (!gateEl) return;
+    const parts = countdownParts();
+    ['days', 'hours', 'minutes', 'seconds'].forEach((unit) => {
+      const node = gateEl.querySelector(`[data-countdown="${unit}"]`);
+      if (node) node.textContent = String(parts[unit]).padStart(2, '0');
+    });
+
+    if (parts.remaining <= 0) {
+      window.clearInterval(countdownTimer);
+      window.location.reload();
+    }
+  }
 
   function hasAccess() {
     try {
@@ -48,11 +98,39 @@
     if (gateEl) return gateEl;
 
     gateEl = document.createElement('div');
-    gateEl.className = 'sms-gate';
+    gateEl.className = `sms-gate${isLaunchLocked() ? ' sms-gate--launch' : ''}`;
     gateEl.setAttribute('role', 'dialog');
     gateEl.setAttribute('aria-modal', 'true');
     gateEl.setAttribute('aria-labelledby', 'smsGateTitle');
-    gateEl.innerHTML = `
+    gateEl.innerHTML = isLaunchLocked()
+      ? `
+      <div class="sms-gate__launch-media" aria-hidden="true"></div>
+      <main class="sms-gate__panel sms-gate__launch-panel">
+        <div class="sms-gate__brand">ONHIZM</div>
+        <div class="sms-gate__launch-copy">
+          <span class="sms-gate__label">The next drop</span>
+          <h1 id="smsGateTitle">Locked until<br>August 1.</h1>
+          <p>Get first access when the doors open. SMS members get the drop before everybody else.</p>
+        </div>
+        <div class="sms-gate__countdown" aria-label="Countdown to August 1">
+          ${countdownMarkup()}
+        </div>
+        <form class="sms-gate__form sms-gate__launch-form" id="smsGateForm">
+          <label class="sms-gate__field">
+            <span>Enter your phone number</span>
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="(707) 555-0198" required>
+          </label>
+          <label class="sms-gate__consent">
+            <input type="checkbox" name="consent" required>
+            <span>${CONSENT_TEXT} <a href="/policy.html" target="_blank" rel="noopener">Policy</a>.</span>
+          </label>
+          <button type="submit" class="sms-gate__submit">Join the SMS List</button>
+          <p class="sms-gate__message" id="smsGateMessage" aria-live="polite"></p>
+        </form>
+        <p class="sms-gate__fineprint">No entry before the drop. No exceptions.</p>
+      </main>
+    `
+      : `
       <div class="sms-gate__panel">
         <button type="button" class="sms-gate__close" aria-label="Close SMS signup">X</button>
         <span class="sms-gate__label">Text Club Discount</span>
@@ -74,8 +152,16 @@
     `;
 
     document.body.appendChild(gateEl);
-    gateEl.querySelector('.sms-gate__close').addEventListener('click', dismissGate);
+    const closeButton = gateEl.querySelector('.sms-gate__close');
+    if (closeButton) closeButton.addEventListener('click', dismissGate);
     gateEl.querySelector('form').addEventListener('submit', submitGate);
+    if (isLaunchLocked()) {
+      Array.from(document.body.children).forEach((child) => {
+        if (child !== gateEl) child.setAttribute('inert', '');
+      });
+      countdownTimer = window.setInterval(updateCountdown, 1000);
+      updateCountdown();
+    }
     return gateEl;
   }
 
@@ -89,6 +175,7 @@
   }
 
   function closeGate() {
+    if (isLaunchLocked()) return;
     document.documentElement.classList.remove('sms-gate-open');
     document.body.classList.remove('sms-gate-open');
     if (gateEl) {
@@ -98,6 +185,7 @@
   }
 
   function dismissGate() {
+    if (isLaunchLocked()) return;
     try {
       sessionStorage.setItem(DISMISSED_KEY, '1');
     } catch {}
@@ -130,6 +218,17 @@
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
         throw new Error(data.error || 'Could not save discount');
+      }
+
+      if (isLaunchLocked()) {
+        message.textContent = "You're on the list. We'll text you when the drop opens.";
+        message.classList.add('sms-gate__message--success');
+        form.classList.add('sms-gate__form--complete');
+        form.querySelectorAll('input, button').forEach((control) => {
+          control.disabled = true;
+        });
+        button.textContent = 'SMS Access Saved';
+        return;
       }
 
       setAccess(data.phoneLast4 || phone.slice(-4));
@@ -165,6 +264,10 @@
   }
 
   function bindTimedGate() {
+    if (isLaunchLocked()) {
+      openGate(window.location.href);
+      return;
+    }
     if (hasAccess() || isDismissed()) return;
 
     window.setTimeout(() => {
