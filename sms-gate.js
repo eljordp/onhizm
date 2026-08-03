@@ -2,7 +2,7 @@
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
   const DISCOUNT_CODE = 'ONHIZM10';
-  const RELEASE_AT = new Date('2026-08-01T00:00:00-07:00').getTime();
+  const RELEASE_AT = new Date('2026-08-08T00:00:00-07:00').getTime();
   const CONSENT_TEXT =
     'I agree to receive recurring automated marketing text messages from ONHIZM at the phone number provided. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Reply STOP to unsubscribe or HELP for help.';
 
@@ -106,9 +106,9 @@
       ? `
       <main class="sms-gate__panel sms-gate__launch-panel">
         <img class="sms-gate__launch-logo" src="/images/onhizmlogo.png" alt="ONHIZM">
-        <p class="sms-gate__launch-date" id="smsGateTitle">Reopening August 1</p>
+        <p class="sms-gate__launch-date" id="smsGateTitle">Reopening August 8</p>
         <p class="sms-gate__launch-copy">Join SMS for first access.</p>
-        <div class="sms-gate__countdown" aria-label="Countdown to August 1">
+        <div class="sms-gate__countdown" aria-label="Countdown to August 8">
           ${countdownMarkup()}
         </div>
         <form class="sms-gate__form sms-gate__launch-form" id="smsGateForm">
