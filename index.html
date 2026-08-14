@@ -140,6 +140,22 @@
       .culture-marquee-item--mobile-hero img { object-position: 58% 38%; }
       .hero__mobile-progress { display: none; }
     }
+    @media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+      .culture-marquee-item--mobile-slide {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+        transition: none;
+      }
+      .culture-marquee-item--mobile-slide.is-mobile-active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+      }
+      .culture-marquee-name { transition: none; }
+    }
   </style>
   <link rel="stylesheet" href="sms-gate.css?v=sms-discount-10">
 
@@ -619,8 +635,9 @@
 
     if (isMobileViewport && mobileHeroSlides.length) {
       showMobileHeroSlide(mobileHeroIdx);
-      if (!prefersReducedMotion && mobileHeroSlides.length > 1) {
-        setInterval(() => showMobileHeroSlide((mobileHeroIdx + 1) % mobileHeroSlides.length), 4200);
+      if (mobileHeroSlides.length > 1) {
+        const mobileHeroInterval = prefersReducedMotion ? 6500 : 4200;
+        setInterval(() => showMobileHeroSlide((mobileHeroIdx + 1) % mobileHeroSlides.length), mobileHeroInterval);
       }
     }
 
