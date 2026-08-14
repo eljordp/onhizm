@@ -3,6 +3,8 @@
 }
 
 .sms-gate {
+  --sms-accent: #7c3aed;
+  --sms-accent-on-dark: #a78bfa;
   position: fixed;
   inset: 0;
   z-index: 2147483647;
@@ -121,12 +123,12 @@
 }
 
 .sms-gate__launch-panel .sms-gate__submit {
-  background: #b9ff66;
-  color: #090909;
+  background: var(--sms-accent);
+  color: #fff;
 }
 
 .sms-gate__launch-panel .sms-gate__message--success {
-  color: #b9ff66;
+  color: var(--sms-accent-on-dark);
 }
 
 .sms-gate__form--complete .sms-gate__field,
@@ -191,7 +193,7 @@
   display: block;
   padding-right: 3rem;
   margin-bottom: 0.75rem;
-  color: #b9ff66;
+  color: var(--sms-accent);
   font-family: var(--font-heading);
   font-size: 0.72rem;
   font-weight: 700;
@@ -242,7 +244,7 @@
 }
 
 .sms-gate__field input:focus {
-  outline: 2px solid #b9ff66;
+  outline: 2px solid var(--sms-accent);
   outline-offset: 2px;
 }
 
@@ -260,7 +262,7 @@
   width: 18px;
   height: 18px;
   margin: 0.1rem 0 0;
-  accent-color: #b9ff66;
+  accent-color: var(--sms-accent);
 }
 
 .sms-gate__consent a {

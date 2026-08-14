@@ -72,8 +72,9 @@
     .collection .shop-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 2rem 1.5rem; }
     @media (max-width: 768px) { .collection .shop-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem; } }
     @media (max-width: 700px) {
+      .culture-marquee-wrap { padding-inline: 7vw; box-sizing: border-box; background: #050505; }
       .culture-marquee-track { width: max-content; height: 100%; animation: none; }
-      .culture-marquee-track.is-loop-ready { animation: cultureScroll 28s linear infinite; }
+      .culture-marquee-track.is-loop-ready { animation: cultureScroll 28s linear 0.85s infinite; }
       .culture-marquee-item {
         display: block;
         position: relative;
@@ -91,6 +92,7 @@
       .culture-marquee-item--mobile-babytron img { object-position: 50% 42%; }
       .culture-marquee-item--mobile-daboii img { object-position: 50% 32%; }
       .culture-marquee-item--mobile-sada img { object-position: 54% 30%; }
+      .culture-marquee-item--mobile-rio img,
       .culture-marquee-item--mobile-babytron img,
       .culture-marquee-item--mobile-daboii img,
       .culture-marquee-item--mobile-sada img {
@@ -120,7 +122,7 @@
       .culture-marquee-item--mobile-hero img { object-position: 58% 38%; }
     }
   </style>
-  <link rel="stylesheet" href="sms-gate.css?v=sms-discount-10">
+  <link rel="stylesheet" href="sms-gate.css?v=sms-purple-1">
 
 </head>
 <body>
