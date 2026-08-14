@@ -77,8 +77,9 @@
       .culture-marquee-item {
         display: block;
         position: relative;
-        width: 72vw;
-        flex: 0 0 72vw;
+        width: 86vw;
+        flex: 0 0 86vw;
+        background: #050505;
         opacity: 1;
         visibility: visible;
         transform: translate3d(0,0,0);
@@ -90,6 +91,12 @@
       .culture-marquee-item--mobile-babytron img { object-position: 50% 42%; }
       .culture-marquee-item--mobile-daboii img { object-position: 50% 32%; }
       .culture-marquee-item--mobile-sada img { object-position: 54% 30%; }
+      .culture-marquee-item--mobile-babytron img,
+      .culture-marquee-item--mobile-daboii img,
+      .culture-marquee-item--mobile-sada img {
+        object-fit: contain;
+        object-position: center center;
+      }
       .culture-marquee-name {
         top: 96px;
         right: auto;
