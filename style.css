@@ -1312,6 +1312,12 @@ a {
     margin-bottom: 0.45rem;
   }
 
+  .hero__overlay {
+    background:
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.22) 0%, transparent 34%),
+      linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.55) 35%, transparent 68%);
+  }
+
   .culture-proof {
     padding: 1.35rem 0;
   }
@@ -1327,8 +1333,7 @@ a {
   }
 
   .culture-proof__copy p,
-  .culture-proof__stats,
-  .receipt-wall {
+  .culture-proof__stats {
     display: none;
   }
 
@@ -1347,11 +1352,28 @@ a {
   }
 
   .receipt-wall {
+    display: flex;
+    flex-wrap: nowrap;
+    width: calc(100% + 1.25rem);
     gap: 0.45rem;
+    padding-top: 0.9rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .receipt-wall::-webkit-scrollbar {
+    display: none;
+  }
+
+  .receipt-wall span,
+  .receipt-wall strong,
+  .receipt-wall a {
+    flex: 0 0 auto;
   }
 
   .receipt-wall a {
-    width: 100%;
+    width: auto;
     justify-content: center;
     margin-left: 0;
   }
@@ -1680,9 +1702,9 @@ a {
   }
 
   .hero {
-    height: 64svh;
-    min-height: 400px;
-    max-height: 540px;
+    height: 70svh;
+    min-height: 480px;
+    max-height: 600px;
   }
 
   .trust-bar__grid {

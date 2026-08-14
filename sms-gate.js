@@ -2,6 +2,7 @@
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
   const DISCOUNT_CODE = 'ONHIZM10';
+  const PROMO_DELAY_MS = 12000;
   const RELEASE_AT = new Date('2026-08-08T00:00:00-07:00').getTime();
   const CONSENT_TEXT =
     'I agree to receive recurring automated marketing text messages from ONHIZM at the phone number provided. Consent is not a condition of purchase. Msg & data rates may apply. Msg frequency varies. Reply STOP to unsubscribe or HELP for help.';
@@ -167,7 +168,9 @@
     document.documentElement.classList.add('sms-gate-open');
     document.body.classList.add('sms-gate-open');
     const phone = gateEl.querySelector('input[name="phone"]');
-    window.setTimeout(() => phone && phone.focus(), 50);
+    if (window.matchMedia('(min-width: 701px) and (pointer: fine)').matches) {
+      window.setTimeout(() => phone && phone.focus(), 50);
+    }
   }
 
   function closeGate() {
@@ -272,7 +275,7 @@
         ? window.location.href
         : window.location.origin + '/shop.html';
       openGate(targetUrl);
-    }, 5000);
+    }, PROMO_DELAY_MS);
   }
 
   document.addEventListener('click', (event) => {
