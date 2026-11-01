@@ -1,4 +1,11 @@
 (function () {
+  // Consent disclosures must stay readable without joining the SMS program.
+  const publicPolicyPaths = new Set([
+    '/policy', '/policy.html', '/privacy', '/privacy.html', '/sms-terms', '/sms-terms.html',
+  ]);
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (publicPolicyPaths.has(currentPath)) return;
+
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
   const CART_ACTIVITY_KEY = 'onhizm:sms-gate-cart-activity:v1';
@@ -153,7 +160,7 @@
           </label>
           <label class="sms-gate__consent">
             <input type="checkbox" name="consent" required>
-            <span>${CONSENT_TEXT} <a href="/policy.html" target="_blank" rel="noopener">Policy</a>.</span>
+            <span>${CONSENT_TEXT} <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms</a>.</span>
           </label>
           <button type="submit" class="sms-gate__submit">Join the SMS List</button>
           <p class="sms-gate__message" id="smsGateMessage" aria-live="polite"></p>
@@ -174,7 +181,7 @@
           </label>
           <label class="sms-gate__consent">
             <input type="checkbox" name="consent" required>
-            <span>${CONSENT_TEXT} <a href="${window.location.pathname.includes('/products/') ? '../policy.html' : 'policy.html'}" target="_blank" rel="noopener">Policy</a>.</span>
+            <span>${CONSENT_TEXT} <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/sms-terms.html" target="_blank" rel="noopener">SMS Terms</a>.</span>
           </label>
           <button type="submit" class="sms-gate__submit">Get 10% Off</button>
           <p class="sms-gate__message" id="smsGateMessage" aria-live="polite"></p>
