@@ -1074,6 +1074,14 @@ a {
   letter-spacing: 0.05em;
 }
 
+.footer__bottom .footer__credit {
+  margin-top: 0.5rem;
+}
+
+.footer__credit a:hover {
+  color: var(--accent);
+}
+
 /* ---------- Scroll Reveal ---------- */
 .reveal {
   opacity: 0;

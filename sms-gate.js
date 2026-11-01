@@ -1,6 +1,7 @@
 (function () {
   const ACCESS_KEY = 'onhizm:sms-access:v1';
   const DISMISSED_KEY = 'onhizm:sms-gate-dismissed:v1';
+  const CART_ACTIVITY_KEY = 'onhizm:sms-gate-cart-activity:v1';
   const DISCOUNT_CODE = 'ONHIZM10';
   const PROMO_DELAY_MS = 12000;
   const RELEASE_AT = new Date('2026-08-08T00:00:00-07:00').getTime();
@@ -73,6 +74,39 @@
     } catch {
       return false;
     }
+  }
+
+  // The promo must never sit on top of the cart drawer (JP 10/20): it stays
+  // away while the cart is open and for the rest of the visit after any
+  // add-to-cart, or whenever the cart already holds items.
+  function isCartOpen() {
+    const drawer = document.getElementById('cart-drawer');
+    return Boolean(drawer && drawer.classList.contains('open'));
+  }
+
+  function markCartActivity() {
+    try {
+      sessionStorage.setItem(CART_ACTIVITY_KEY, '1');
+    } catch {}
+  }
+
+  function hadCartActivity() {
+    try {
+      return sessionStorage.getItem(CART_ACTIVITY_KEY) === '1';
+    } catch {
+      return false;
+    }
+  }
+
+  function cartHasItems() {
+    return Array.from(document.querySelectorAll('.nav-link--cart')).some((el) => {
+      const match = /\((\d+)\)/.exec(el.textContent || '');
+      return Boolean(match && Number(match[1]) > 0);
+    });
+  }
+
+  function shouldSuppressPromo() {
+    return isCartOpen() || hadCartActivity() || cartHasItems();
   }
 
   function setAccess(phoneLast4) {
@@ -163,6 +197,7 @@
   }
 
   function openGate(targetUrl) {
+    if (!isLaunchLocked() && isCartOpen()) return;
     pendingUrl = targetUrl || pendingUrl || window.location.href;
     renderGate();
     document.documentElement.classList.add('sms-gate-open');
@@ -270,7 +305,7 @@
     if (hasAccess() || isDismissed()) return;
 
     window.setTimeout(() => {
-      if (hasAccess() || isDismissed() || gateEl) return;
+      if (hasAccess() || isDismissed() || gateEl || shouldSuppressPromo()) return;
       const targetUrl = isProtectedPath(window.location.pathname)
         ? window.location.href
         : window.location.origin + '/shop.html';
@@ -278,9 +313,21 @@
     }, PROMO_DELAY_MS);
   }
 
+  // Capture phase, so the add-to-cart click is recorded before the cart opens.
+  document.addEventListener(
+    'click',
+    (event) => {
+      if (event.target.closest('#addToCartBtn')) markCartActivity();
+    },
+    true
+  );
+
   document.addEventListener('click', (event) => {
     const cartLink = event.target.closest('.nav-link--cart, .mobile-nav__link[href="#"]');
     const link = event.target.closest('a[href]');
+
+    // A cart click that opened the cart drawer (or follows an add-to-cart) shows the cart, never the promo.
+    if (cartLink && shouldSuppressPromo()) return;
 
     if (!hasAccess() && cartLink) {
       event.preventDefault();
