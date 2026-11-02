@@ -117,11 +117,23 @@
           <option value="best-selling">Best Selling</option>
           <option value="price-asc">Price: Low to High</option>
           <option value="price-desc">Price: High to Low</option>
-          <option value="in-stock">In Stock First</option>
+          <option value="in-stock" selected>In Stock First</option>
         </select>
       </div>
 
       <div class="shop-grid" id="shopGrid">
+
+        <!-- Camo Classic -->
+        <a href="products/camo-classic.html" class="product-card product-card--sold" data-shopify-handle="camo-classic-jacket-zip-up-jacket" data-category="outerwear" data-rank="4" data-price="120" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
+          <div class="product-card__media">
+            <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-01-DSC09177-2000.jpg?v=1793656907&amp;width=800" alt="ONHIZM Camo Classic zip-up jacket on a hanger, showing patterned sleeves, a black front, yellow lettering and orange hood lining." loading="lazy" data-gallery="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-01-DSC09177-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-02-DSC09118-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-03-DSC09174-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-04-DSC09153-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-05-DSC09144-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-06-DSC09024-2000.jpg?v=1793656907&amp;width=800">
+          </div>
+          <div class="product-card__info">
+            <h3>Camo Classic Zip Up Jacket</h3>
+            <span class="product-card__price">$120</span>
+          </div>
+        </a>
 
         <!-- Purple Jacket -->
         <a href="products/purple-jacket.html" class="product-card" data-shopify-handle="purple-jacket" data-category="outerwear" data-rank="0" data-price="120" data-available="1">
@@ -197,18 +209,6 @@
             <div class="variant-picker">
               <button class="variant-btn variant-btn--active" data-price="$200" data-img="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946">Full Sweatsuit</button>
             </div>
-          </div>
-        </a>
-
-        <!-- Camo Classic -->
-        <a href="products/camo-classic.html" class="product-card product-card--sold" data-shopify-handle="camo-classic-jacket-zip-up-jacket" data-category="outerwear" data-rank="4" data-price="120" data-available="0">
-          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
-          <div class="product-card__media">
-            <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-01-DSC09177-2000.jpg?v=1793656907&amp;width=800" alt="ONHIZM Camo Classic zip-up jacket on a hanger, showing patterned sleeves, a black front, yellow lettering and orange hood lining." loading="lazy" data-gallery="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-01-DSC09177-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-02-DSC09118-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-03-DSC09174-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-04-DSC09153-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-05-DSC09144-2000.jpg?v=1793656907&amp;width=800|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/onhizm-camo-06-DSC09024-2000.jpg?v=1793656907&amp;width=800">
-          </div>
-          <div class="product-card__info">
-            <h3>Camo Classic Zip Up Jacket</h3>
-            <span class="product-card__price">$120</span>
           </div>
         </a>
 
@@ -307,7 +307,7 @@
       visible.sort((a, b) => {
         if (sortVal === 'price-asc') return +a.dataset.price - +b.dataset.price;
         if (sortVal === 'price-desc') return +b.dataset.price - +a.dataset.price;
-        if (sortVal === 'in-stock') return +b.dataset.available - +a.dataset.available;
+        if (sortVal === 'in-stock') return (+b.dataset.available - +a.dataset.available) || (allCards.indexOf(a) - allCards.indexOf(b));
         return +a.dataset.rank - +b.dataset.rank;
       });
       allCards.forEach(c => c.style.display = 'none');
@@ -324,6 +324,7 @@
     });
     document.getElementById('sortSelect').addEventListener('change', applyFilters);
     window.addEventListener('onhizm:inventory-sync', applyFilters);
+    applyFilters();
 
     // Color swatch image swap
     document.querySelectorAll('[data-color-card]').forEach(card => {
