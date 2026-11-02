@@ -212,6 +212,11 @@
         document.querySelector('.product-page__main-img img').src = thumb.querySelector('img').src;
       });
     });
+    // Update text before product.js handles the gallery's capture-phase click.
+    document.querySelector('.product-page__thumbs').addEventListener('click', (event) => {
+      const thumb = event.target.closest('.product-page__thumb');
+      if (thumb) document.querySelector('.product-page__main-img img').alt = thumb.querySelector('img').alt;
+    }, true);
   </script>
   <script src="../shopify.js?v=availability-1"></script>
   <script>initProductPage('camo-classic-jacket-zip-up-jacket');</script>
