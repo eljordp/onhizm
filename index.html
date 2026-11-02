@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(d){var h=d.documentElement;h.classList.add('hk-js');setTimeout(function(){if(!h.classList.contains('hk-ready'))h.classList.remove('hk-js')},3000);try{var c=sessionStorage.getItem('hk-arrive');sessionStorage.removeItem('hk-arrive');if(c&&!matchMedia('(prefers-reduced-motion: reduce)').matches){h.style.setProperty('--hk-arrive',c);h.classList.add('hk-arriving');setTimeout(function(){h.classList.remove('hk-arriving','hk-lifting')},2500)}}catch(e){}})(document);</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ONHIZM — Official Store</title>
-  <meta name="description" content="ONHIZM — limited Bay Area streetwear worn by rappers and artists. Once a piece is gone, it is gone.">
+  <title>ONHIZM | Official Store</title>
+  <meta name="description" content="ONHIZM | limited Bay Area streetwear worn by rappers and artists. Once a piece is gone, it is gone.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ONHIZM — Official Store">
-  <meta property="og:description" content="Limited Bay Area streetwear. Worn by rappers and artists. Made for very few.">
+  <meta property="og:title" content="ONHIZM | Official Store">
+  <meta property="og:description" content="Limited Bay Area streetwear. Made for very few.">
   <meta property="og:url" content="https://onhizm.com/">
-  <meta property="og:image" content="images/blackhoodie1.jpeg">
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&amp;width=1200&amp;height=630&amp;crop=center">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ONHIZM">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ONHIZM — Official Store">
-  <meta name="twitter:description" content="Limited Bay Area streetwear. Worn by rappers and artists. Made for very few.">
-  <meta name="twitter:image" content="images/blackhoodie1.jpeg">
+  <meta name="twitter:title" content="ONHIZM | Official Store">
+  <meta name="twitter:description" content="Limited Bay Area streetwear. Made for very few.">
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&amp;width=1200&amp;height=630&amp;crop=center">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://onhizm.com/">
@@ -44,270 +45,362 @@
     "sameAs": ["https://www.instagram.com/onhizm"]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/six-caps-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/chivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" as="image" type="image/webp" href="images/wall/onhizm26-480.webp" imagesrcset="images/wall/onhizm26-480.webp 480w, images/wall/onhizm26-800.webp 800w" imagesizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)">
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=home-teehero-1">
-  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="house-kit/tokens.css?v=kit-1">
+  <link rel="stylesheet" href="style.css?v=kit-1">
+  <link rel="stylesheet" href="pages.css?v=kit-1">
   <style>
-    .culture-marquee-wrap { position: absolute; inset: 0; overflow: hidden; }
-    .culture-marquee-track { display: flex; height: 100%; width: max-content; animation: none; will-change: transform; transform: translate3d(0,0,0); backface-visibility: hidden; }
-    .culture-marquee-track.is-loop-ready { animation: cultureScroll 40s linear infinite; }
-    .culture-marquee-item { position: relative; height: 100%; flex-shrink: 0; transform: translate3d(0,0,0); }
-    .culture-marquee-item img { height: 100%; width: auto; object-fit: cover; display: block; filter: brightness(0.75); transform: translate3d(0,0,0); }
-    .culture-marquee-name {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 2rem 1rem 1rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-      color: #fff;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-    @keyframes cultureScroll { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
     .collection .shop-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 2rem 1.5rem; }
     @media (max-width: 768px) { .collection .shop-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem; } }
-    @media (max-width: 700px) {
-      .culture-marquee-wrap { padding-inline: 7vw; box-sizing: border-box; background: #050505; }
-      .culture-marquee-track { width: max-content; height: 100%; animation: none; }
-      .culture-marquee-track.is-loop-ready { animation: cultureScroll 28s linear 2.5s infinite; }
-      .culture-marquee-item {
-        display: block;
-        position: relative;
-        width: 86vw;
-        flex: 0 0 86vw;
-        background: #050505;
-        opacity: 1;
-        visibility: visible;
-        transform: translate3d(0,0,0);
-        transition: none;
-      }
-      .culture-marquee-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.92) saturate(0.9); }
-      .culture-marquee-item--mobile-hero img { object-position: 58% 38%; }
-      .culture-marquee-item--mobile-rio img { object-position: 52% 38%; }
-      .culture-marquee-item--mobile-babytron img { object-position: 50% 42%; }
-      .culture-marquee-item--mobile-daboii img { object-position: 50% 32%; }
-      .culture-marquee-item--mobile-sada img { object-position: 54% 30%; }
-      .culture-marquee-item--mobile-rio img,
-      .culture-marquee-item--mobile-babytron img,
-      .culture-marquee-item--mobile-daboii img,
-      .culture-marquee-item--mobile-sada img {
-        object-fit: contain;
-        object-position: center center;
-      }
-      .culture-marquee-name {
-        top: 96px;
-        right: auto;
-        bottom: auto;
-        width: auto;
-        padding: 0.55rem 0.7rem;
-        background: rgba(0, 0, 0, 0.68);
-        font-size: 0.62rem;
-        letter-spacing: 0.14em;
-        text-align: left;
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .culture-marquee-track { width: 100%; animation: none; }
-      .culture-marquee-item { display: none; width: 100%; }
-      .culture-marquee-item--mobile-hero { display: block; }
-      .culture-marquee-item img { width: 100%; height: 100%; object-fit: cover; }
-      .culture-marquee-item--mobile-hero img { object-position: 58% 38%; }
-    }
+    .collection__past { margin-top: 4.5rem; }
+    @media (max-width: 768px) { .collection__past { margin-top: 2.25rem; } }
   </style>
-  <link rel="stylesheet" href="sms-gate.css?v=sms-purple-1">
+  <link rel="stylesheet" href="sms-gate.css?v=kit-1">
+  <link rel="stylesheet" href="brand.css?v=kit-1">
+  <script src="house-kit/dist/house-motion.iife.min.js" data-auto defer></script>
+  <script src="site-kit.js?v=kit-1" defer></script>
 
 </head>
 <body>
 
-  <!-- Announcement Bar -->
-  <div class="announcement-bar">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        <span>ONCE IT'S GONE, IT'S GONE</span><span class="sep">&#x2726;</span>
-        <span>WORN BY RAPPERS AND ARTISTS</span><span class="sep">&#x2726;</span>
-        <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>NO RESTOCKS ON SOLD OUT PIECES</span><span class="sep">&#x2726;</span>
-        <span>BAY AREA STAMPED</span><span class="sep">&#x2726;</span>
-        <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>ONCE IT'S GONE, IT'S GONE</span><span class="sep">&#x2726;</span>
-        <span>WORN BY RAPPERS AND ARTISTS</span><span class="sep">&#x2726;</span>
-        <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-        <span>NO RESTOCKS ON SOLD OUT PIECES</span><span class="sep">&#x2726;</span>
-        <span>BAY AREA STAMPED</span><span class="sep">&#x2726;</span>
-        <span>FREE SHIPPING ON ALL ORDERS</span><span class="sep">&#x2726;</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Header -->
   <header class="header" id="header">
     <div class="header__inner">
-      <nav class="header__nav header__nav--left">
-        <a href="index.html" class="nav-link">Home</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      <nav class="header__nav header__nav--left" aria-label="Main">
         <a href="shop.html" class="nav-link">Shop</a>
-        <a href="culture.html" class="nav-link">The Culture</a>
+        <a href="culture.html" class="nav-link">Culture</a>
+        <a href="lookbook.html" class="nav-link">Lookbook</a>
         <a href="about.html" class="nav-link">About</a>
       </nav>
-      <a href="index.html" class="header__logo">
-        <img src="images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
-      </a>
-      <nav class="header__nav header__nav--right">
-        <a href="sizing.html" class="nav-link">Sizing</a>
-        <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
-        <a href="#" class="nav-link nav-link--cart">
-          Cart (0)
-        </a>
-      </nav>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="header__logo" aria-current="page"><img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="logo-img"></a>
+      <div class="header__right">
+        <nav class="header__nav header__nav--right" aria-label="More">
+          <a href="sizing.html" class="nav-link">Sizing</a>
+          <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        </nav>
+        <a href="shop.html" class="header__shop">Shop</a>
+        <a href="#" class="nav-link--cart" hidden>Cart (0)</a>
+        <button type="button" class="header__cart">Cart (0)</button>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-nav__link">Home</a>
-    <a href="shop.html" class="mobile-nav__link">Shop</a>
-    <a href="culture.html" class="mobile-nav__link">The Culture</a>
-    <a href="about.html" class="mobile-nav__link">About</a>
-    <a href="sizing.html" class="mobile-nav__link">Sizing</a>
-    <a href="https://www.instagram.com/onhizm" target="_blank" class="mobile-nav__link">Instagram</a>
-    <a href="#" class="mobile-nav__link">Cart (0)</a>
+  <!-- Phone menu -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav__panel" aria-label="Menu">
+      <a href="shop.html" class="mobile-nav__link">Shop</a>
+      <a href="culture.html" class="mobile-nav__link">Culture</a>
+      <a href="lookbook.html" class="mobile-nav__link">Lookbook</a>
+      <a href="about.html" class="mobile-nav__link">About</a>
+      <a href="sizing.html" class="mobile-nav__link">Sizing</a>
+      <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="mobile-nav__link">Instagram</a>
+      <button type="button" class="mobile-nav__link mobile-nav__link--cart">Cart (0)</button>
+    </nav>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__media">
-      <div class="culture-marquee-wrap">
-        <div class="culture-marquee-track">
-          <div class="culture-marquee-item culture-marquee-item--mobile-rio"><img loading="eager" fetchpriority="high" decoding="async" src="images/onhizm15.JPG" alt="Rio Da Yung OG"><span class="culture-marquee-name">Rio Da Yung OG</span></div>
-          <div class="culture-marquee-item culture-marquee-item--mobile-babytron"><img loading="lazy" decoding="async" src="images/onhizm6.jpg" alt="Babytron"><span class="culture-marquee-name">Babytron</span></div>
-          <div class="culture-marquee-item culture-marquee-item--mobile-hero"><img loading="lazy" decoding="async" src="images/onhizm27.JPEG" alt="Tee Grizzley"><span class="culture-marquee-name">Tee Grizzley</span></div>
-          <div class="culture-marquee-item culture-marquee-item--mobile-daboii"><img loading="lazy" decoding="async" src="images/onhizm4.jpg" alt="Daboii"><span class="culture-marquee-name">Daboii</span></div>
-          <div class="culture-marquee-item culture-marquee-item--mobile-sada"><img loading="lazy" decoding="async" src="images/onhizm5.jpg" alt="Sada Baby"><span class="culture-marquee-name">Sada Baby</span></div>
-          <div class="culture-marquee-item"><img loading="lazy" decoding="async" src="images/onhizm31.jpeg" alt="ALLBLACK"><span class="culture-marquee-name">ALLBLACK</span></div>
+  <!-- Opening: the flowing wall -->
+  <section class="flow" id="flow" aria-label="Artists seen with ONHIZM">
+    <div class="flow__rows">
+      <div class="row row--1">
+        <div class="row__track">
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm26"><div class="print__frame"><img src="images/wall/onhizm26-480.webp" srcset="images/wall/onhizm26-480.webp 480w, images/wall/onhizm26-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Tee Grizzley with ONHIZM" decoding="async"></div><figcaption>Tee Grizzley</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-mikesherm"><div class="print__frame"><img src="images/wall/mikesherm-480.webp" srcset="images/wall/mikesherm-480.webp 480w, images/wall/mikesherm-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Mike Sherm with ONHIZM" decoding="async"></div><figcaption>Mike Sherm</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm4"><div class="print__frame"><img src="images/wall/onhizm4-480.webp" srcset="images/wall/onhizm4-480.webp 480w, images/wall/onhizm4-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Daboii with ONHIZM" decoding="async"></div><figcaption>Daboii</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm12"><div class="print__frame"><img src="images/wall/onhizm12-480.webp" srcset="images/wall/onhizm12-480.webp 480w, images/wall/onhizm12-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Lil Kayla with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Lil Kayla</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-shordieshordie"><div class="print__frame"><img src="images/wall/shordieshordie-480.webp" srcset="images/wall/shordieshordie-480.webp 480w, images/wall/shordieshordie-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Shordie Shordie with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Shordie Shordie</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-garyp"><div class="print__frame"><img src="images/wall/garyp-480.webp" srcset="images/wall/garyp-480.webp 480w, images/wall/garyp-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Gary Payton with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Gary Payton</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm30"><div class="print__frame"><img src="images/wall/onhizm30-480.webp" srcset="images/wall/onhizm30-480.webp 480w, images/wall/onhizm30-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Kaash Paige with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Kaash Paige</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm6"><div class="print__frame"><img src="images/wall/onhizm6-480.webp" srcset="images/wall/onhizm6-480.webp 480w, images/wall/onhizm6-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="BabyTron with ONHIZM" decoding="async" loading="lazy"></div><figcaption>BabyTron</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm15"><div class="print__frame"><img src="images/wall/onhizm15-480.webp" srcset="images/wall/onhizm15-480.webp 480w, images/wall/onhizm15-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Rio Da Yung OG with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Rio Da Yung OG</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-aalexiamaga"><div class="print__frame"><img src="images/wall/aalexiamaga-480.webp" srcset="images/wall/aalexiamaga-480.webp 480w, images/wall/aalexiamaga-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Alexia Maga with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Alexia Maga</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm19"><div class="print__frame"><img src="images/wall/onhizm19-480.webp" srcset="images/wall/onhizm19-480.webp 480w, images/wall/onhizm19-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="Kiing Rod with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Kiing Rod</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm22"><div class="print__frame"><img src="images/wall/onhizm22-480.webp" srcset="images/wall/onhizm22-480.webp 480w, images/wall/onhizm22-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="ZayBang with ONHIZM" decoding="async" loading="lazy"></div><figcaption>ZayBang</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm26" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm26-480.webp" data-srcset="images/wall/onhizm26-480.webp 480w, images/wall/onhizm26-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Tee Grizzley</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-mikesherm" tabindex="-1"><div class="print__frame"><img data-src="images/wall/mikesherm-480.webp" data-srcset="images/wall/mikesherm-480.webp 480w, images/wall/mikesherm-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Mike Sherm</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm4" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm4-480.webp" data-srcset="images/wall/onhizm4-480.webp 480w, images/wall/onhizm4-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Daboii</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm12" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm12-480.webp" data-srcset="images/wall/onhizm12-480.webp 480w, images/wall/onhizm12-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Lil Kayla</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-shordieshordie" tabindex="-1"><div class="print__frame"><img data-src="images/wall/shordieshordie-480.webp" data-srcset="images/wall/shordieshordie-480.webp 480w, images/wall/shordieshordie-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Shordie Shordie</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-garyp" tabindex="-1"><div class="print__frame"><img data-src="images/wall/garyp-480.webp" data-srcset="images/wall/garyp-480.webp 480w, images/wall/garyp-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Gary Payton</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm30" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm30-480.webp" data-srcset="images/wall/onhizm30-480.webp 480w, images/wall/onhizm30-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Kaash Paige</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm6" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm6-480.webp" data-srcset="images/wall/onhizm6-480.webp 480w, images/wall/onhizm6-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>BabyTron</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm15" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm15-480.webp" data-srcset="images/wall/onhizm15-480.webp 480w, images/wall/onhizm15-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Rio Da Yung OG</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-aalexiamaga" tabindex="-1"><div class="print__frame"><img data-src="images/wall/aalexiamaga-480.webp" data-srcset="images/wall/aalexiamaga-480.webp 480w, images/wall/aalexiamaga-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Alexia Maga</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm19" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm19-480.webp" data-srcset="images/wall/onhizm19-480.webp 480w, images/wall/onhizm19-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>Kiing Rod</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm22" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm22-480.webp" data-srcset="images/wall/onhizm22-480.webp 480w, images/wall/onhizm22-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 2.267)" width="480" height="600" alt="" decoding="async"></div><figcaption>ZayBang</figcaption></a></figure>
         </div>
       </div>
-      <div class="hero__overlay"></div>
+      <div class="row row--2">
+        <div class="row__track">
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm34"><div class="print__frame"><img src="images/wall/onhizm34-480.webp" srcset="images/wall/onhizm34-480.webp 480w, images/wall/onhizm34-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Warsh &amp; Mickey Singh with ONHIZM" decoding="async"></div><figcaption>Warsh &amp; Mickey Singh</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm33"><div class="print__frame"><img src="images/wall/onhizm33-480.webp" srcset="images/wall/onhizm33-480.webp 480w, images/wall/onhizm33-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="ALLBLACK &amp; Warsh with ONHIZM" decoding="async"></div><figcaption>ALLBLACK &amp; Warsh</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm8"><div class="print__frame"><img src="images/wall/onhizm8-480.webp" srcset="images/wall/onhizm8-480.webp 480w, images/wall/onhizm8-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Daboii &amp; Big Sad 1900 with ONHIZM" decoding="async"></div><figcaption>Daboii &amp; Big Sad 1900</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm32"><div class="print__frame"><img src="images/wall/onhizm32-480.webp" srcset="images/wall/onhizm32-480.webp 480w, images/wall/onhizm32-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Warsh &amp; Slimmy B with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Warsh &amp; Slimmy B</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm21"><div class="print__frame"><img src="images/wall/onhizm21-480.webp" srcset="images/wall/onhizm21-480.webp 480w, images/wall/onhizm21-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="ZayBang with ONHIZM" decoding="async" loading="lazy"></div><figcaption>ZayBang</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm2"><div class="print__frame"><img src="images/wall/onhizm2-480.webp" srcset="images/wall/onhizm2-480.webp 480w, images/wall/onhizm2-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="EBK Leebo with ONHIZM" decoding="async" loading="lazy"></div><figcaption>EBK Leebo</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm3"><div class="print__frame"><img src="images/wall/onhizm3-480.webp" srcset="images/wall/onhizm3-480.webp 480w, images/wall/onhizm3-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="FredoBagz with ONHIZM" decoding="async" loading="lazy"></div><figcaption>FredoBagz</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm31"><div class="print__frame"><img src="images/wall/onhizm31-480.webp" srcset="images/wall/onhizm31-480.webp 480w, images/wall/onhizm31-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="ALLBLACK with ONHIZM" decoding="async" loading="lazy"></div><figcaption>ALLBLACK</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm18"><div class="print__frame"><img src="images/wall/onhizm18-480.webp" srcset="images/wall/onhizm18-480.webp 480w, images/wall/onhizm18-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Daboii &amp; Kiing Rod with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Daboii &amp; Kiing Rod</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm11"><div class="print__frame"><img src="images/wall/onhizm11-480.webp" srcset="images/wall/onhizm11-480.webp 480w, images/wall/onhizm11-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Lul Dame 23 with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Lul Dame 23</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm5"><div class="print__frame"><img src="images/wall/onhizm5-480.webp" srcset="images/wall/onhizm5-480.webp 480w, images/wall/onhizm5-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="Sada Baby with ONHIZM" decoding="async" loading="lazy"></div><figcaption>Sada Baby</figcaption></a></figure>
+          <figure class="print"><a class="print__link" data-page href="culture.html#p-onhizm14"><div class="print__frame"><img src="images/wall/onhizm14-480.webp" srcset="images/wall/onhizm14-480.webp 480w, images/wall/onhizm14-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="YN Jay with ONHIZM" decoding="async" loading="lazy"></div><figcaption>YN Jay</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm34" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm34-480.webp" data-srcset="images/wall/onhizm34-480.webp 480w, images/wall/onhizm34-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Warsh &amp; Mickey Singh</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm33" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm33-480.webp" data-srcset="images/wall/onhizm33-480.webp 480w, images/wall/onhizm33-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>ALLBLACK &amp; Warsh</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm8" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm8-480.webp" data-srcset="images/wall/onhizm8-480.webp 480w, images/wall/onhizm8-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Daboii &amp; Big Sad 1900</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm32" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm32-480.webp" data-srcset="images/wall/onhizm32-480.webp 480w, images/wall/onhizm32-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Warsh &amp; Slimmy B</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm21" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm21-480.webp" data-srcset="images/wall/onhizm21-480.webp 480w, images/wall/onhizm21-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>ZayBang</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm2" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm2-480.webp" data-srcset="images/wall/onhizm2-480.webp 480w, images/wall/onhizm2-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>EBK Leebo</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm3" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm3-480.webp" data-srcset="images/wall/onhizm3-480.webp 480w, images/wall/onhizm3-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>FredoBagz</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm31" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm31-480.webp" data-srcset="images/wall/onhizm31-480.webp 480w, images/wall/onhizm31-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>ALLBLACK</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm18" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm18-480.webp" data-srcset="images/wall/onhizm18-480.webp 480w, images/wall/onhizm18-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Daboii &amp; Kiing Rod</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm11" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm11-480.webp" data-srcset="images/wall/onhizm11-480.webp 480w, images/wall/onhizm11-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Lul Dame 23</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm5" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm5-480.webp" data-srcset="images/wall/onhizm5-480.webp 480w, images/wall/onhizm5-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>Sada Baby</figcaption></a></figure>
+          <figure class="print" data-copy aria-hidden="true"><a class="print__link" data-page href="culture.html#p-onhizm14" tabindex="-1"><div class="print__frame"><img data-src="images/wall/onhizm14-480.webp" data-srcset="images/wall/onhizm14-480.webp 480w, images/wall/onhizm14-800.webp 800w" sizes="(min-width: 900px) calc((100vh - 290px) / 2.5), calc((100vh - 290px) / 3.364)" width="480" height="600" alt="" decoding="async"></div><figcaption>YN Jay</figcaption></a></figure>
+        </div>
+      </div>
     </div>
-    <div class="hero__content">
-      <span class="hero__label">Bay Area Stamped</span>
-      <h1 class="hero__heading">Every Drop<br>Sells Out</h1>
-      <p class="hero__text">Limited streetwear worn by rappers and artists. Once a piece sells out, it is gone for good.</p>
-      <div class="hero__proof" aria-label="ONHIZM social proof">
-        <span>Rio</span>
-        <span>BabyTron</span>
-        <span>Daboii</span>
-        <span>Tee Grizzley</span>
-        <span>Sada Baby</span>
-      </div>
-      <div class="hero__actions">
-        <a href="shop.html" class="btn btn--primary">Shop the Drop</a>
-        <a href="culture.html" class="btn btn--light">See the Receipts</a>
-      </div>
+    <div class="flow__foot">
+      <h1 class="opening__line flow__line">Bay Area streetwear, and the artists who’ve been seen with it.</h1>
+      <a class="flow__link" href="culture.html">The full culture wall</a>
+      <button class="flow__pause" type="button" aria-controls="flow"><span class="flow__icon" aria-hidden="true"></span><span class="flow__label">Pause</span></button>
     </div>
   </section>
+  <script>
+    /* Opening: two rows of flash prints drift sideways on their own, biggest names first. Every print opens on the wall.
+       - Loop: each row holds its 12 prints plus one inert copy of them (in the HTML, shown only with JS). The track runs
+         from x = gap to gap - 50% (or back), linear, forever; -50% of the track is exactly one set width, so the last
+         frame equals the first and the seam never shows. Direction (--dir) and start (--phase) come from the CSS.
+       - Phones: the rows run in opposite directions. Desktop: both run left at the same speed, row 2 showing row 1's
+         order 6 prints further on (CSS order), so no photo is ever in both rows; the two clocks are kept equal.
+       - Web Animations on transform only (compositor). No rAF loop and no layout reads per frame:
+         layout is read at start, on resize and after the fonts load.
+       - The flash fires once every print on the first screen has decoded (at most 1.2 s), so it never lights empty frames.
+       - Stops: the Pause button, a hidden tab, the wall fully off screen. Reduced motion: the first frame, still. */
+    (function () {
+      var flow = document.getElementById('flow');
+      if (!flow) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var KEY = 'onhizm-flash';                                 // one flash per browser session
+      var LOOK = 4;                                             // seconds of travel fetched ahead of the entering edge
+      var CAP = 1200;                                           // the flash waits for the first screen at most this long (ms)
+      function hold(img) {                                      // keep the file off the network until the feed asks for it
+        img.setAttribute('data-srcset', img.getAttribute('srcset')); img.setAttribute('data-src', img.getAttribute('src'));
+        img.removeAttribute('srcset'); img.removeAttribute('src');
+      }
+      var rows = Array.prototype.map.call(flow.querySelectorAll('.row'), function (row) {
+        var track = row.querySelector('.row__track');
+        var figs = Array.prototype.slice.call(track.children);
+        return { row: row, track: track, dir: -1, figs: figs, vis: figs, n: figs.length / 2, anim: null, dur: 0, setW: 0, pitch: 0, gap: 0, speed: 0, p: 0, phase: 0, shown: false };
+      });
+      var vw = 0;
+      function measure() {                                      // the only layout reads: start, resize, fonts
+        vw = document.documentElement.clientWidth;
+        rows.forEach(function (r) {
+          var cs = getComputedStyle(r.row);
+          r.shown = cs.display !== 'none';
+          r.setW = r.shown ? r.track.getBoundingClientRect().width / 2 : 0;
+          r.pitch = r.setW / r.n;
+          r.p = r.shown ? r.figs[0].offsetWidth : 0;
+          r.gap = parseFloat(getComputedStyle(r.figs[0]).marginRight) || 0;
+          r.speed = parseFloat(cs.getPropertyValue('--speed')) || 30;
+          r.dir = parseFloat(cs.getPropertyValue('--dir')) > 0 ? 1 : -1;
+          r.phase = parseFloat(cs.getPropertyValue('--phase')) || 0;
+          // left to right as laid out: desktop reorders row 2 with CSS order, so the DOM order is not the screen order
+          r.vis = r.shown ? r.figs.slice().sort(function (a, b) { return a.offsetLeft - b.offsetLeft; }) : r.figs;
+        });
+      }
+      function f0(r) { return r.dir > 0 ? 1 - r.phase : r.phase; }   // where in its loop a row starts (0..1)
+      function x0(r) {                                          // where the track sits now, in px, from the animation clock (no layout read)
+        var t = r.anim ? ((r.anim.currentTime || 0) % r.dur) / r.dur : f0(r);
+        return r.dir < 0 ? r.gap - t * r.setW : r.gap - (1 - t) * r.setW;
+      }
+      /* One request at a time per photo and size: WebKit doesn't merge two requests for the same file made at the same
+         moment, so a second copy waits until the first has arrived and is then a cache revalidation (304). */
+      var inflight = {}, soon = 0;
+      function key(r, img) { return (img.getAttribute('data-src') || img.getAttribute('src')) + '|' + r.p; }
+      function watch(k, img) {
+        if (img.complete) return;
+        inflight[k] = true;
+        var done = function () { delete inflight[k]; clearTimeout(soon); soon = setTimeout(feed, 0); };   // its twins can go now (also when still)
+        img.addEventListener('load', done, { once: true }); img.addEventListener('error', done, { once: true });
+      }
+      function load(r, fig) {
+        var img = fig.querySelector('img');
+        if (!img.hasAttribute('data-src')) return;
+        var k = key(r, img);
+        if (inflight[k]) return;                                // next tick
+        img.loading = 'eager';
+        img.sizes = Math.ceil(r.p) + 'px';                      // the real print width, so 2x/3x screens pick the right file
+        img.srcset = img.getAttribute('data-srcset'); img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-srcset'); img.removeAttribute('data-src');
+        watch(k, img);
+      }
+      function feed() {                                         // fetch what is on screen plus LOOK seconds ahead on the side prints enter from
+        var moving = !reduce.matches;
+        rows.forEach(function (r) {
+          if (!r.shown || !r.setW) return;
+          var o = x0(r), ahead = moving ? r.speed * LOOK : 0;
+          var lo = (r.dir > 0 ? -ahead : 0) - 8, hi = (r.dir < 0 ? vw + ahead : vw) + 8;   // 8 px: a print tilted at the edge shows a corner
+          for (var i = 0; i < r.vis.length; i++) { var x = o + i * r.pitch; if (x + r.pitch - r.gap > lo && x < hi) load(r, r.vis[i]); }
+        });
+      }
+      function firstScreen() {                                  // the images of every print on screen now (no look-ahead)
+        var out = [];
+        rows.forEach(function (r) {
+          if (!r.shown || !r.setW) return;
+          var o = x0(r);
+          for (var i = 0; i < r.vis.length; i++) { var x = o + i * r.pitch; if (x + r.pitch - r.gap > -8 && x < vw + 8) out.push(r.vis[i].querySelector('img')); }
+        });
+        return out;
+      }
+      /* fitCap: a caption never cuts a name. One read pass and one write pass over every caption
+         (width scales with font size), then a check pass that steps down 1 px where rounding left an overflow. */
+      function fitAll() {
+        var caps = []; rows.forEach(function (r) { if (r.shown) caps.push.apply(caps, r.track.querySelectorAll('figcaption')); });
+        caps.forEach(function (c) { c.style.removeProperty('--fit'); });
+        var m = caps.map(function (c) { return [c.scrollWidth, c.clientWidth, parseFloat(getComputedStyle(c).fontSize)]; });
+        caps.forEach(function (c, i) { if (m[i][0] > m[i][1] + 1) c.style.setProperty('--fit', Math.max(22, Math.floor(m[i][2] * m[i][1] / m[i][0])) + 'px'); });
+        for (var pass = 0; pass < 4; pass++) {
+          var over = caps.filter(function (c) { return c.scrollWidth > c.clientWidth + 1 && parseFloat(getComputedStyle(c).fontSize) > 22; });
+          if (!over.length) break;
+          over.forEach(function (c) { c.style.setProperty('--fit', Math.max(22, parseFloat(getComputedStyle(c).fontSize) - 1) + 'px'); });
+        }
+      }
+      function frames(r) {                                      // gap -> gap minus one set width, linear
+        var a = 'translate3d(' + r.gap + 'px,0,0)', b = 'translate3d(calc(-50% + ' + r.gap + 'px),0,0)';
+        return [{ transform: r.dir < 0 ? a : b }, { transform: r.dir < 0 ? b : a }];
+      }
+      function build(r) {
+        if (r.anim || reduce.matches || !r.shown || !r.setW || !r.track.animate) return;
+        r.dur = r.setW / r.speed * 1000;
+        r.anim = r.track.animate(frames(r), { duration: r.dur, iterations: Infinity, easing: 'linear' });
+        r.anim.pause();
+        r.anim.currentTime = f0(r) * r.dur;                     // the same frame the CSS already shows: no jump when it starts
+      }
+      function retime(r, crossed) {                             // new width: same place in the loop, same px/s
+        if (!r.anim) return build(r);
+        if (!r.setW) return;
+        var t = crossed ? f0(r) : ((r.anim.currentTime || 0) % r.dur) / r.dur;
+        r.dur = r.setW / r.speed * 1000;
+        r.anim.effect.setKeyframes(frames(r)); r.anim.effect.updateTiming({ duration: r.dur }); r.anim.currentTime = t * r.dur;
+      }
 
-  <!-- Culture Proof -->
-  <section class="culture-proof">
-    <div class="container">
-      <div class="culture-proof__grid">
-        <div class="culture-proof__copy">
-          <span class="label">The Stamp</span>
-          <h2>Not trying to be valid. Already worn by the culture.</h2>
-          <p>A fast receipt before the full gallery: the names people recognize, the scene it came through, and the rule that sold out pieces stay gone.</p>
-        </div>
-        <div class="culture-proof__stats" aria-label="ONHIZM proof points">
-          <div>
-            <strong>27</strong>
-            <span>artists, athletes and creators in ONHIZM</span>
-          </div>
-          <div>
-            <strong>Bay Area</strong>
-            <span>rooted, seen, and passed through the scene</span>
-          </div>
-          <div>
-            <strong>Gone</strong>
-            <span>sold out pieces do not come back</span>
-          </div>
-        </div>
-        <div class="receipt-wall" aria-label="ONHIZM receipt wall">
-          <span>Seen on</span>
-          <strong>Rio Da Yung OG</strong>
-          <strong>BabyTron</strong>
-          <strong>Daboii</strong>
-          <strong>Tee Grizzley</strong>
-          <strong>Sada Baby</strong>
-          <strong>ALLBLACK</strong>
-          <a href="culture.html">Full Culture Wall</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      var lit = false, userPaused = false, onScreen = true, timer = 0, held = false, release = 0;
+      var btn = flow.querySelector('.flow__pause'), label = flow.querySelector('.flow__label');
+      function sync() {
+        var run = lit && !userPaused && !held && onScreen && !document.hidden && !reduce.matches;
+        rows.forEach(function (r) {
+          if (!r.anim) return;
+          if (run && r.shown) { if (r.anim.playState !== 'running') r.anim.play(); }
+          else if (r.anim.playState === 'running') r.anim.pause();
+        });
+        if (run) lockstep();
+        if (run && !timer) timer = setInterval(feed, 500);
+        else if (!run && timer) { clearInterval(timer); timer = 0; }
+      }
+      function lockstep() {                                     // desktop: both rows on one clock, so row 2 stays exactly 6 prints on
+        var a = rows[0];
+        rows.forEach(function (r) {
+          if (r === a || !r.anim || !a.anim || r.dir !== a.dir || Math.abs(r.dur - a.dur) > 0.5) return;
+          r.anim.currentTime = (a.anim.currentTime || 0) + (f0(r) - f0(a)) * r.dur;
+        });
+      }
+      function lightUp() { lit = true; flow.classList.add('is-lit'); }
 
-  <!-- Trust Bar -->
-  <section class="trust-bar">
-    <div class="container">
-      <div class="trust-bar__grid">
-        <div class="trust-bar__item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-          <div>
-            <h4>Free Shipping</h4>
-            <p>On all domestic orders</p>
-          </div>
-        </div>
-        <div class="trust-bar__item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <div>
-            <h4>Gone For Good</h4>
-            <p>No restocks on sold out pieces</p>
-          </div>
-        </div>
-        <div class="trust-bar__item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-          <div>
-            <h4>Secure Checkout</h4>
-            <p>Shopify encrypted payment</p>
-          </div>
-        </div>
-        <div class="trust-bar__item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <div>
-            <h4>Worn By The Names</h4>
-            <p>Rappers and artists stamped it</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      measure();
+      /* Hold back every lazy print that is off screen: native lazy loading can't tell when a print is about to slide into
+         a clipped row; the feed below knows from the animation clock. A lazy print already on the first screen (desktop
+         shows 12) keeps its real src and is fetched now. With JS off, the lazy attributes stay and native loading runs. */
+      var first = firstScreen();
+      rows.forEach(function (r) {
+        Array.prototype.forEach.call(r.track.querySelectorAll('img[loading="lazy"]'), function (img) {
+          if (first.indexOf(img) > -1) img.loading = 'eager'; else hold(img);
+        });
+      });
+      rows.forEach(function (r) { r.figs.forEach(function (f) { var img = f.querySelector('img'); if (img.hasAttribute('src')) watch(key(r, img), img); }); });
+      fitAll();
+      rows.forEach(build);
+      feed();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); fitAll(); });
+      var rq = 0, lastW = vw, lastPhase = rows.map(function (r) { return r.phase + '/' + r.dir; }).join();
+      window.addEventListener('resize', function () {
+        cancelAnimationFrame(rq);
+        rq = requestAnimationFrame(function () {
+          if (document.documentElement.clientWidth === lastW) return;      // phone URL bar: height only, nothing to redo
+          lastW = document.documentElement.clientWidth;
+          measure(); fitAll();
+          var ph = rows.map(function (r) { return r.phase + '/' + r.dir; }).join(), crossed = ph !== lastPhase; lastPhase = ph;
+          if (!reduce.matches) rows.forEach(function (r) { retime(r, crossed); });
+          sync(); feed();
+        });
+      });
+      btn.addEventListener('click', function () {
+        userPaused = !userPaused;
+        flow.classList.toggle('is-paused', userPaused);
+        label.textContent = userPaused ? 'Play' : 'Pause';
+        sync();
+      });
+      /* Touch a print or hover it: the wall stops so it can be tapped. It picks up again after you let go. */
+      var wallRows = flow.querySelector('.flow__rows');
+      function grip(on) {
+        clearTimeout(release);
+        if (on) { held = true; sync(); return; }
+        release = setTimeout(function () { held = false; sync(); }, 700);
+      }
+      wallRows.addEventListener('pointerdown', function () { grip(true); });
+      wallRows.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') grip(true); });
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (name) { wallRows.addEventListener(name, function () { grip(false); }); });
+      document.addEventListener('visibilitychange', sync);
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { onScreen = e[e.length - 1].isIntersecting; sync(); }).observe(flow);
+      var onReduce = function () {
+        if (reduce.matches) { rows.forEach(function (r) { if (r.anim) { r.anim.cancel(); r.anim = null; } }); flow.classList.remove('is-flashing'); lightUp(); }
+        measure(); fitAll(); if (!reduce.matches) rows.forEach(build);
+        sync(); feed();
+      };
+      if (reduce.addEventListener) reduce.addEventListener('change', onReduce); else if (reduce.addListener) reduce.addListener(onReduce);
+
+      if (reduce.matches) { lightUp(); return; }
+      var seen = true;
+      function fire() {
+        if (lit) return;
+        if (document.hidden) { document.addEventListener('visibilitychange', fire, { once: true }); return; }   // never spend the flash on a background tab
+        lightUp();
+        if (!seen) {
+          flow.classList.add('is-flashing');
+          try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+          setTimeout(function () { flow.classList.remove('is-flashing'); }, 1200);
+        }
+        sync();                                                 // the rows start at full speed under the flash: no ease-in, no fade-up
+      }
+      /* Light the wall once every print on the first screen has decoded, not just the lead: on a phone connection the
+         others used to arrive 0.3-0.6 s after the flash, mid-exposure. Never wait longer than CAP. */
+      var go = function () { requestAnimationFrame(function () { requestAnimationFrame(fire); }); };
+      Promise.all(first.map(function (img) { return img.decode ? img.decode().catch(function () {}) : Promise.resolve(); })).then(go);
+      setTimeout(fire, CAP);
+    })();
+  </script>
 
   <!-- Featured Product -->
   <section class="featured-product">
     <div class="container">
       <div class="featured-product__grid">
         <div class="featured-product__media">
-          <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" class="featured-product__img" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&width=1080" alt="ONHIZM Purple Jacket" class="featured-product__img" loading="lazy">
         </div>
         <div class="featured-product__content">
-          <span class="label">Limited Drop</span>
-          <h2>Black Sweatsuit</h2>
-          <p class="featured-product__subtitle" id="featuredSubtitle">Full Sweatsuit — Sold Out</p>
-          <p class="featured-product__desc" id="featuredDesc">Jacket-first full set. This run sold out and will not restock.</p>
+          <h2 id="featuredName">Purple Jacket</h2>
+          <p class="featured-product__subtitle" id="featuredSizes" hidden></p>
           <ul class="drop-notes" aria-label="Drop details">
             <li>Ships through secure Shopify checkout</li>
             <li>Free domestic shipping</li>
             <li>Limited run, no restock once sold out</li>
           </ul>
-          <div class="featured-product__price" id="featuredPrice">$200</div>
-          <a href="products/black-sweatsuit.html" class="btn btn--primary">Shop Now</a>
+          <div class="featured-product__price" id="featuredPrice">$120</div>
+          <a href="products/purple-jacket.html" class="btn btn--primary" id="featuredLink">Shop Now</a>
         </div>
       </div>
     </div>
@@ -316,14 +409,14 @@
   <!-- Collection Grid -->
   <section class="collection">
     <div class="container">
+      <div id="inStockGroup">
       <div class="section-header section-header--split">
         <div>
-          <span class="label">Current Drop</span>
-          <h2>Pieces Still Moving</h2>
+          <h2 data-reveal="title">In Stock</h2>
         </div>
-        <p>Buy the size you want while it is live. ONHIZM does not bring sold out pieces back just to chase demand.</p>
+        <p>Pieces and sizes Shopify has in stock right now.</p>
       </div>
-      <div class="shop-grid">
+      <div class="shop-grid" id="gridInStock">
 
         <a href="products/purple-jacket.html" class="product-card" data-shopify-handle="purple-jacket">
           <div class="product-card__badge">New Drop</div>
@@ -337,10 +430,21 @@
           </div>
         </a>
 
-        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants">
-          <div class="product-card__badge">Featured Drop</div>
+      </div>
+      </div>
+      <div id="pastDropsGroup" class="collection__past">
+      <div class="section-header section-header--split">
+        <div>
+          <h2 data-reveal="title">Past Drops</h2>
+        </div>
+        <p>Sold out pieces from earlier drops.</p>
+      </div>
+      <div class="shop-grid" id="gridPast">
+
+        <a href="products/black-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+            <img src="images/cards/blackhoodie1-640.webp" width="640" height="960" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Black Sweatsuit</h3>
@@ -348,10 +452,10 @@
           </div>
         </a>
 
-        <a href="products/blue-sweatsuit.html" class="product-card" data-shopify-handle="baby-blue-sweatsuit">
+        <a href="products/blue-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="baby-blue-sweatsuit">
           <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
+            <img src="images/cards/blue1-640.webp" width="640" height="960" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Baby Blue Sweatsuit</h3>
@@ -359,9 +463,10 @@
           </div>
         </a>
 
-        <a href="products/sweats.html" class="product-card" data-shopify-handle="onhizm-sweatpants">
+        <a href="products/sweats.html" class="product-card product-card--sold" data-shopify-handle="onhizm-sweatpants">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blakcsweats1.jpeg" alt="ONHIZM Sweatpants" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+            <img src="images/cards/blakcsweats1-640.webp" width="640" height="960" alt="ONHIZM Sweatpants" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
           </div>
           <div class="product-card__info">
             <h3>ONHIZM Sweatpants</h3>
@@ -369,7 +474,8 @@
           </div>
         </a>
 
-        <a href="products/grey-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-grey-full-outfit-jacket-sweatpants">
+        <a href="products/grey-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="onhizm-grey-full-outfit-jacket-sweatpants">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3176.jpg?v=1762126654" alt="ONHIZM Grey Sweatsuit" loading="lazy" data-gallery="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3176.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3178.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3166.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3169.jpg?v=1762126654">
           </div>
@@ -379,7 +485,8 @@
           </div>
         </a>
 
-        <a href="products/valentines-sweatsuit.html" class="product-card" data-shopify-handle="valentines-day-collection-limited-drop-full-sweatsuit">
+        <a href="products/valentines-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="valentines-day-collection-limited-drop-full-sweatsuit">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Day Collection Full Sweatsuit" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946|images/pinkhoodie.jpeg|images/pinkhoodie2.jpeg|images/pinksweats.jpeg|images/pinksweats2.jpeg">
           </div>
@@ -389,13 +496,12 @@
             <span class="product-card__tag">Pearls &amp; Rhinestones</span>
             <div class="variant-picker">
               <button class="variant-btn variant-btn--active" data-price="$200" data-img="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946">Full Sweatsuit</button>
-              <button class="variant-btn" data-price="$120" data-img="images/pinkhoodie.jpeg">Just Hoodie</button>
-              <button class="variant-btn" data-price="$120" data-img="images/pinksweats.jpeg">Just Sweats</button>
             </div>
           </div>
         </a>
 
-        <a href="products/camo-classic.html" class="product-card" data-shopify-handle="camo-classic-jacket-zip-up-jacket">
+        <a href="products/camo-classic.html" class="product-card product-card--sold" data-shopify-handle="camo-classic-jacket-zip-up-jacket">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270&width=533" alt="Camo Classic Zip Up Jacket" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2339.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2367.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2187.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A1947.jpg?v=1750061297&width=533">
           </div>
@@ -405,7 +511,8 @@
           </div>
         </a>
 
-        <a href="products/club-shirt.html" class="product-card" data-shopify-handle="club-shirt">
+        <a href="products/club-shirt.html" class="product-card product-card--sold" data-shopify-handle="club-shirt">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/00BC56EC-0B69-4AF0-81E4-34FFE0D5818F.jpg?v=1757815720&width=533" alt="Club Shirt" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/00BC56EC-0B69-4AF0-81E4-34FFE0D5818F.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/C0F1E2E3-C86B-4921-807D-3A0E785F09C4.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/E804C57C-E3BB-4B59-9916-4E4AEC4985AB2.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/5579EA9A-4DA3-45C5-A269-842426DFFFAB.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/B80E4E96-5F11-4395-AB13-750AC4B459533.jpg?v=1757815720&width=533">
           </div>
@@ -415,7 +522,8 @@
           </div>
         </a>
 
-        <a href="products/shorts.html" class="product-card" data-shopify-handle="shorts">
+        <a href="products/shorts.html" class="product-card product-card--sold" data-shopify-handle="shorts">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/D7ADBAB6-D7BE-45A7-AD41-979929105FE63.jpg?v=1757816047&width=533" alt="Shorts" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/D7ADBAB6-D7BE-45A7-AD41-979929105FE63.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/B60C5F39-0640-4853-BFB8-30CF5608699D2.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/FD1E6418-98A1-4B08-9BBC-C85BED02FE583.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/024F7576-B8DB-4AE6-9811-DDCB7A1BF26F3.jpg?v=1757816047&width=533">
           </div>
@@ -425,7 +533,8 @@
           </div>
         </a>
 
-        <a href="products/jersey.html" class="product-card" data-shopify-handle="jersey">
+        <a href="products/jersey.html" class="product-card product-card--sold" data-shopify-handle="jersey">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/5CC8DAE4-AAF4-4AA6-B175-DA553B9E850A.jpg?v=1757816302&width=533" alt="Jersey" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/5CC8DAE4-AAF4-4AA6-B175-DA553B9E850A.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/1AADB8F1-87AA-40EA-AC54-08E6A2BB125E.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/F8729DED-9AF0-42D1-BE8B-B37349F9B153.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/3E14214B-B036-4D1E-A4EF-8B4E01AC4EED2.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/7C4C2ECA-321D-42B3-BB32-E20FE9B06EA32.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/38B1D620-DE52-4C9E-B64F-2C092C62429A.jpg?v=1757816302&width=533">
           </div>
@@ -435,7 +544,8 @@
           </div>
         </a>
 
-        <a href="products/bay-bridge-tee.html" class="product-card" data-shopify-handle="onhizm-bay-bridge-classic-tee">
+        <a href="products/bay-bridge-tee.html" class="product-card product-card--sold" data-shopify-handle="onhizm-bay-bridge-classic-tee">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9539.jpg?v=1752704660&width=533" alt="ONHIZM Bay Bridge Classic Tee" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9539.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9538.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9544.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9540.jpg?v=1752704561&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9541.jpg?v=1752704561&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9542.jpg?v=1752704561&width=533">
           </div>
@@ -446,45 +556,25 @@
         </a>
 
       </div>
+      </div>
       <div class="collection__cta">
-        <a href="shop.html" class="btn btn--secondary">View All Products</a>
+        <a href="shop.html" class="text-link">View All Products</a>
       </div>
     </div>
   </section>
-
-  <!-- Marquee Divider -->
-  <div class="marquee-divider">
-    <div class="marquee-track marquee-track--slow">
-      <div class="marquee-content">
-        <span>ONHIZM</span><span class="sep">&#x2726;</span>
-        <span>BUILT DIFFERENT</span><span class="sep">&#x2726;</span>
-        <span>PREMIUM STREETWEAR</span><span class="sep">&#x2726;</span>
-        <span>LIMITED DROPS</span><span class="sep">&#x2726;</span>
-        <span>ONHIZM</span><span class="sep">&#x2726;</span>
-        <span>BUILT DIFFERENT</span><span class="sep">&#x2726;</span>
-        <span>PREMIUM STREETWEAR</span><span class="sep">&#x2726;</span>
-        <span>LIMITED DROPS</span><span class="sep">&#x2726;</span>
-        <span>ONHIZM</span><span class="sep">&#x2726;</span>
-        <span>BUILT DIFFERENT</span><span class="sep">&#x2726;</span>
-        <span>PREMIUM STREETWEAR</span><span class="sep">&#x2726;</span>
-        <span>LIMITED DROPS</span><span class="sep">&#x2726;</span>
-      </div>
-    </div>
-  </div>
 
   <!-- Brand Story -->
   <section class="brand-story" id="our-story">
     <div class="container">
       <div class="brand-story__grid">
-        <div class="brand-story__media">
+        <div class="brand-story__media" data-parallax="6">
           <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/DSC00140.jpg?v=1734319962&width=3840" alt="ONHIZM Lookbook" loading="lazy">
         </div>
         <div class="brand-story__content">
-          <span class="label">The Meaning</span>
-          <h2>More Than a Name.<br>A Feeling.</h2>
-          <p>ONHIZM is a word created by <a href="https://www.instagram.com/kingwarsh" target="_blank" rel="noopener" class="inline-link">Warsh</a> — inspired by John Koenig's <em>onism</em>, the frustration of being stuck in one body that inhabits only one place at a time. A feeling of disconnection, of solitude you didn't choose.</p>
+          <h2 data-reveal="lines">More Than a Name.<br>A Feeling.</h2>
+          <p>ONHIZM is a word created by <a href="https://www.instagram.com/kingwarsh" target="_blank" rel="noopener" class="inline-link">Warsh</a>, inspired by John Koenig's <em>onism</em>, the frustration of being stuck in one body that inhabits only one place at a time. A feeling of disconnection, of solitude you didn't choose.</p>
           <p>This is clothing for the ones who feel it.</p>
-          <a href="about.html" class="btn btn--secondary">Read the Story</a>
+          <a href="about.html" class="text-link">Read the Story</a>
         </div>
       </div>
     </div>
@@ -494,8 +584,7 @@
   <section class="lookbook">
     <div class="container">
       <div class="section-header">
-        <span class="label">The Receipts</span>
-        <h2>Rappers and Artists Stamped It</h2>
+        <h2 data-reveal="lines">Rappers and Artists Stamped It</h2>
         <p>Rappers, artists, and Bay Area-connected names wearing ONHIZM in the wild.</p>
       </div>
       <div class="lookbook__grid">
@@ -507,7 +596,7 @@
         </div>
       </div>
       <div class="collection__cta">
-        <a href="culture.html" class="btn btn--secondary">See All Artists</a>
+        <a href="culture.html" class="text-link">See All Artists</a>
       </div>
     </div>
   </section>
@@ -516,13 +605,10 @@
   <section class="newsletter">
     <div class="container">
       <div class="newsletter__inner">
-        <span class="label">Drop Alerts</span>
-        <h2>Be First To Know</h2>
+        <h2 data-reveal="lines">Be First To Know</h2>
         <p>Get text + email before sizes disappear. No spam. Just the drop before it is gone.</p>
-        <form class="newsletter__form" data-sms-gate-form>
-          <input type="tel" name="phone" placeholder="Phone for SMS access" pattern="[\+]?[0-9\-\(\)\s]{10,}" required>
-          <button type="submit" class="btn btn--primary">Sign Up</button>
-        </form>
+        <div class="newsletter__next-drop" data-next-drop="next-drop"></div>
+        <noscript><p>Follow <a href="https://www.instagram.com/onhizm">@onhizm</a> for the next drop.</p></noscript>
       </div>
     </div>
   </section>
@@ -532,8 +618,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <img src="images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
-          <p class="footer__tagline">Premium streetwear. Built different.</p>
+          <img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="footer__logo" loading="lazy">
         </div>
         <div class="footer__col">
           <h4>Shop</h4>
@@ -553,57 +638,12 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 ONHIZM. All rights reserved.</p>
-        <p class="footer__credit"><a href="https://jdlo.site" target="_blank" rel="noopener">Website created by JDLO</a></p>
+        <p class="hk-site-credit"><a class="jdlo-credit" data-jdlo-theme="red" href="https://jdlo.site/"><span class="jdlo-credit__label">Website created by</span> <span class="jdlo-credit__name">JDLO<i class="jdlo-credit__spark jdlo-credit__spark--one" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--two" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--three" aria-hidden="true"></i><i class="jdlo-credit__drip" aria-hidden="true"></i></span></a></p>
       </div>
     </div>
   </footer>
 
   <script>
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobileViewport = window.matchMedia('(max-width: 700px)').matches;
-    const shouldReduceHomepageMotion = prefersReducedMotion || isMobileViewport;
-
-    // Six unique receipts, duplicated once at runtime for one seamless loop.
-    // This keeps both desktop and mobile at 12 panels instead of the old 38.
-    const cultureTrack = document.querySelector('.culture-marquee-track');
-    if (cultureTrack && !prefersReducedMotion) {
-      [...cultureTrack.children].forEach(item => {
-        const duplicate = item.cloneNode(true);
-        duplicate.setAttribute('aria-hidden', 'true');
-        cultureTrack.appendChild(duplicate);
-      });
-      requestAnimationFrame(() => cultureTrack.classList.add('is-loop-ready'));
-    }
-
-    // Sticky header
-    const header = document.getElementById('header');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const curr = window.scrollY;
-      if (curr > 60) {
-        header.classList.add('header--scrolled');
-      } else {
-        header.classList.remove('header--scrolled');
-      }
-      lastScroll = curr;
-    });
-
-    // Mobile menu
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileNav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-      });
-    });
-
     // Color swatch image swap
     document.querySelectorAll('[data-color-card]').forEach(card => {
       card.querySelectorAll('.color-swatch').forEach(swatch => {
@@ -617,22 +657,6 @@
           img.alt = img.alt.replace(/—\s*.+$/, '— ' + swatch.getAttribute('aria-label'));
         });
       });
-    });
-
-    // Featured copy follows Shopify stock: "Limited Sizes Live" only while the
-    // featured piece can actually be bought, otherwise "Sold Out" (JP 10/20).
-    window.addEventListener('onhizm:inventory-sync', () => {
-      const card = document.querySelector('.product-card[data-shopify-handle="onhizm-full-outfit-jacket-sweatpants"]');
-      const subtitle = document.getElementById('featuredSubtitle');
-      const desc = document.getElementById('featuredDesc');
-      if (!card || !subtitle || !card.dataset.available) return;
-      const available = card.dataset.available === '1';
-      subtitle.textContent = available ? 'Full Sweatsuit — Limited Sizes Live' : 'Full Sweatsuit — Sold Out';
-      if (desc) {
-        desc.textContent = available
-          ? 'Jacket-first full set. The baby blue already sold out, so this is the piece to move on now.'
-          : 'Jacket-first full set. This run sold out and will not restock.';
-      }
     });
 
     // Featured product variant picker
@@ -652,102 +676,54 @@
       });
     });
 
-    // Auto-rotate featured product images
-    const featuredImages = ['images/blackhoodie1.jpeg', 'images/blackhoodie.jpeg', 'images/blackhoodie2.jpeg', 'images/blakcsweats1.jpeg', 'images/blacksweats2.jpeg', 'images/blacksweats3.jpeg'];
+    // Featured photos: no auto-rotate (SPEC §4). The stock handler below still swaps in the in-stock piece's gallery.
+    const featuredImages = ['https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&width=1080', 'https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6542.jpg?v=1786705365&width=1080', 'https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6540.jpg?v=1786705365&width=1080', 'https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6557.jpg?v=1786705365&width=1080'];
     let featuredIdx = 0;
-    if (!shouldReduceHomepageMotion) setInterval(() => {
-      featuredIdx = (featuredIdx + 1) % featuredImages.length;
-      if (featuredImg) {
-        featuredImg.style.opacity = 0;
-        setTimeout(() => {
-          featuredImg.src = featuredImages[featuredIdx];
-          featuredImg.onload = () => { featuredImg.style.opacity = 1; };
-        }, 200);
-      }
-    }, 3000);
 
-    // Auto-rotate color swatches on cards
-    document.querySelectorAll('[data-color-card]').forEach(card => {
-      if (shouldReduceHomepageMotion) return;
-      const swatches = card.querySelectorAll('.color-swatch');
-      if (swatches.length < 2) return;
-      let idx = 0;
-      const rotate = setInterval(() => {
-        idx = (idx + 1) % swatches.length;
-        swatches.forEach(s => s.classList.remove('color-swatch--active'));
-        swatches[idx].classList.add('color-swatch--active');
-        const img = card.querySelector('[data-color-img]');
-        img.src = swatches[idx].dataset.img;
-        img.alt = img.alt.replace(/—\s*.+$/, '— ' + swatches[idx].getAttribute('aria-label'));
-      }, 3000);
-      swatches.forEach(s => s.addEventListener('click', () => clearInterval(rotate)));
-    });
-
-    // Auto-cycle gallery images on product cards
-    document.querySelectorAll('[data-gallery]').forEach(img => {
-      if (shouldReduceHomepageMotion) return;
-      const images = img.dataset.gallery.split('|');
-      if (images.length < 2) return;
-      let idx = 0;
-      const baseOpacity = img.closest('.product-card--sold') ? 0.6 : 1;
-      setInterval(() => {
-        idx = (idx + 1) % images.length;
-        img.style.opacity = 0;
-        setTimeout(() => {
-          img.src = images[idx];
-          img.onload = () => { img.style.opacity = baseOpacity; };
-        }, 400);
-      }, 3000);
-    });
-
-    // Shuffle culture preview images
-    const cultureImages = [
-      'images/onhizm1.jpeg','images/onhizm2.jpg','images/onhizm3.JPG',
-      'images/onhizm4.jpg','images/onhizm5.jpg','images/onhizm6.jpg',
-      'images/onhizm7.jpg','images/onhizm8.jpg','images/onhizm9.jpeg',
-      'images/onhizm10.jpeg','images/onhizm11.jpg','images/onhizm12.jpeg',
-      'images/onhizm13.jpeg','images/onhizm14.JPG','images/onhizm15.JPG',
-      'images/onhizm20.png','images/onhizm21.jpeg','images/onhizm22.jpeg',
-      'images/onhizm23.jpeg','images/onhizm24.jpeg','images/onhizm25.jpeg',
-      'images/onhizm28.jpeg','images/onhizm29.jpeg','images/onhizm30.jpeg',
-      'images/onhizm31.jpeg','images/onhizm32.jpeg','images/onhizm33.jpeg',
-      'images/onhizm34.jpeg','images/onhizm26.JPEG'
-    ];
-    const img1 = document.getElementById('cultureImg1');
-    const img2 = document.getElementById('cultureImg2');
-    let showing = [cultureImages.indexOf('images/onhizm26.JPEG'), cultureImages.indexOf('images/onhizm31.jpeg')];
-    function randExcluding(excludes) {
-      let r;
-      do { r = Math.floor(Math.random() * cultureImages.length); } while (excludes.includes(r));
-      return r;
+    // Stock truth (Release 1, ONZ-03/ONZ-17): the featured block and the In stock / Past drops
+    // split come from Shopify availability (inventory-sync.js). The celebrity hero is never
+    // rewritten by stock data (JP 10/16: keep the original celebrity opening).
+    const collectionCards = Array.from(document.querySelectorAll('.collection .product-card'));
+    function sizesList(info) {
+      const t = (info.availableTitles || []).filter(s => s && s !== 'Default Title');
+      if (!t.length || t.length >= info.totalVariants) return null;
+      return t.length === 1 ? t[0] : t.slice(0, -1).join(', ') + ' and ' + t[t.length - 1];
     }
-    let turn = 0;
-    if (!shouldReduceHomepageMotion && img1 && img2) setInterval(() => {
-      const el = turn % 2 === 0 ? img1 : img2;
-      const slot = turn % 2;
-      const next = randExcluding(showing);
-      el.style.opacity = 0;
-      setTimeout(() => {
-        el.src = cultureImages[next];
-        el.onload = () => { el.style.opacity = 1; };
-        showing[slot] = next;
-      }, 500);
-      turn++;
-    }, 4000);
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
+    window.addEventListener('onhizm:stock', (e) => {
+      const map = e.detail || {};
+      collectionCards.forEach(card => { const info = map[card.dataset.shopifyHandle]; if (info) card.dataset.available = info.available ? '1' : '0'; });
+      const gridIn = document.getElementById('gridInStock');
+      const gridPast = document.getElementById('gridPast');
+      collectionCards.forEach(card => {
+        if (card.dataset.available === '1') gridIn.appendChild(card);
+        else if (card.dataset.available === '0') gridPast.appendChild(card);
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.getElementById('inStockGroup').hidden = !gridIn.querySelector('.product-card');
+      document.getElementById('pastDropsGroup').hidden = !gridPast.querySelector('.product-card');
 
-    document.querySelectorAll('.product-card, .brand-story__media, .brand-story__content, .lookbook__item, .newsletter__inner, .featured-product__media, .featured-product__content, .trust-bar__item').forEach(el => {
-      el.classList.add('reveal');
-      observer.observe(el);
+      const card = gridIn.querySelector('.product-card[data-available="1"]');
+      const info = card && map[card.dataset.shopifyHandle];
+      const featured = document.querySelector('.featured-product');
+      if (!card || !info) { if (featured && card === null) featured.hidden = true; return; }
+      const name = card.querySelector('h3').textContent.trim();
+      const sizes = sizesList(info);
+
+      const gallery = (card.querySelector('[data-gallery]')?.dataset.gallery || '').split('|').filter(Boolean)
+        .map(src => src.replace(/([?&]width=)\d+/, (m, key) => key + '1080'));
+      document.getElementById('featuredName').textContent = name;
+      const sizesEl = document.getElementById('featuredSizes');
+      sizesEl.textContent = sizes ? 'Sizes in stock: ' + (info.availableTitles || []).join(', ') : 'All sizes in stock';
+      sizesEl.hidden = false;
+      const cardPrice = card.querySelector('.product-card__price');
+      if (cardPrice && featuredPrice) featuredPrice.textContent = cardPrice.textContent.trim();
+      const link = document.getElementById('featuredLink');
+      link.href = card.getAttribute('href');
+      if (featuredImg && gallery.length) {
+        featuredImg.src = gallery[0];
+        featuredImg.alt = card.querySelector('.product-card__media img')?.alt || name;
+        featuredImages.splice(0, featuredImages.length, ...gallery);
+        featuredIdx = 0;
+      }
     });
   </script>
 
@@ -762,5 +738,8 @@
     omnisend.push(["track", "$pageViewed"]);
     !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
   </script>
+  <script src="header.js?v=kit-1" defer></script>
+  <script src="stock.js?v=kit-1" defer></script>
+  <script src="next-drop.js?v=kit-1" defer></script>
 </body>
 </html>

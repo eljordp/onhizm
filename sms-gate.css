@@ -58,11 +58,11 @@
 .sms-gate__launch-date {
   margin: 0;
   color: #fff;
-  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .sms-gate__countdown {
@@ -84,18 +84,18 @@
 }
 
 .sms-gate__time strong {
-  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 3vw, 3.15rem);
   line-height: 1;
 }
 
 .sms-gate__time span {
   color: rgba(255, 255, 255, 0.52);
-  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
-  font-size: 0.62rem;
+  font-family: var(--font-heading);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .sms-gate__launch-form {
@@ -140,11 +140,11 @@
   width: min(100%, 620px);
   margin: 1rem 0 0;
   color: rgba(255, 255, 255, 0.36);
-  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
-  font-size: 0.63rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 #omnisend-forms-wrapper,
@@ -195,10 +195,10 @@
   margin-bottom: 0.75rem;
   color: var(--sms-accent);
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: var(--t-small);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .sms-gate__panel h2 {
@@ -206,7 +206,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2rem, 8vw, 3.4rem);
   line-height: 0.92;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .sms-gate__copy {
@@ -226,10 +226,10 @@
   gap: 0.45rem;
   color: #111;
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: var(--t-small);
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .sms-gate__field input {
@@ -254,7 +254,7 @@
   gap: 0.65rem;
   align-items: start;
   color: #5e5a54;
-  font-size: 0.72rem;
+  font-size: var(--t-small);
   line-height: 1.42;
 }
 
@@ -281,8 +281,8 @@
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .sms-gate__submit:disabled {
@@ -354,7 +354,7 @@
   }
 
   .sms-gate__time span {
-    font-size: 0.52rem;
-    letter-spacing: 0.06em;
+    font-size: 12px;
+    letter-spacing: 0;
   }
 }

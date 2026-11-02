@@ -2,15 +2,6 @@
    ONHIZM — Inner Page Styles
    ========================================================================== */
 
-/* ---------- Active nav ---------- */
-.nav-link--active {
-  color: var(--accent) !important;
-}
-
-.nav-link--active::after {
-  width: 100% !important;
-}
-
 /* ---------- Page Hero (Lookbook) ---------- */
 .page-hero {
   position: relative;
@@ -19,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: var(--header-h);
   overflow: hidden;
 }
 
@@ -38,11 +29,7 @@
 .page-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.3) 0%,
-    rgba(10, 10, 10, 0.7) 100%
-  );
+  background: rgba(11, 11, 11, .45);
 }
 
 .page-hero__content {
@@ -52,20 +39,21 @@
 }
 
 .page-hero__content h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 6rem);
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  text-transform: none;
+  letter-spacing: .01em;
+  line-height: .9;
   color: #fff;
   margin-bottom: 0.8rem;
+  font-weight: 400;
 }
 
 .page-hero__content p {
   font-family: var(--font-body);
-  font-size: 1rem;
-  color: rgba(255,255,255,0.6);
-  font-weight: 300;
+  font-size: var(--t-body);
+  color: rgba(255, 255, 255, .78);
+  font-weight: 400;
 }
 
 .culture-intro {
@@ -84,14 +72,14 @@
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   line-height: 1;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .culture-intro p {
   max-width: 620px;
   color: var(--text-muted);
-  font-size: 0.96rem;
-  font-weight: 300;
+  font-size: var(--t-body);
+  font-weight: 400;
   line-height: 1.8;
 }
 
@@ -109,10 +97,10 @@
   padding: 0.45rem 0.8rem;
   border: 1px solid var(--border);
   font-family: var(--font-heading);
-  font-size: 0.62rem;
+  font-size: var(--t-small);
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* ==========================================================================
@@ -180,11 +168,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease);
-}
-
-.lb-item:hover img {
-  transform: scale(1.04);
 }
 
 .lb-item__caption {
@@ -192,26 +175,18 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+  padding: 10px 14px;
+  background: #0b0b0b;
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.4s var(--ease);
-}
-
-.lb-item:hover .lb-item__caption {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .lb-item__caption p {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: #fff;
   font-weight: 500;
 }
@@ -314,18 +289,20 @@
 }
 
 .lightbox__name {
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-display);
+  font-size: var(--t-name);
+  letter-spacing: .01em;
+  text-transform: none;
+  color: #f3f1ec;
+  font-weight: 400;
+  line-height: .9;
 }
 
 .lightbox__link {
   font-family: var(--font-heading);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -349,7 +326,7 @@
 .lookbook-cta__inner h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
 }
@@ -379,67 +356,62 @@
 
 .culture-card {
   position: relative;
-  aspect-ratio: 3 / 4;
   border-radius: var(--radius);
   overflow: hidden;
   cursor: pointer;
-}
-
-.culture-card--big {
-  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  background: #0b0b0b;
 }
 
 .culture-card img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
-  transition: transform 0.6s var(--ease);
-}
-
-.culture-card:hover img {
-  transform: scale(1.04);
+  aspect-ratio: 3 / 4;
 }
 
 .culture-card__overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+  padding: 10px 12px 4px;
+  background: #0b0b0b;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
 .culture-card--big .culture-card__name {
-  font-size: 1.3rem;
+  font-size: var(--t-name);
 }
 
 .culture-card__name {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: var(--t-name);
+  letter-spacing: .01em;
+  text-transform: none;
+  color: #f3f1ec;
+  font-weight: 400;
+  line-height: .9;
 }
 
 .culture-card__handle {
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: var(--t-ui);
   color: rgba(255, 255, 255, 0.55);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .culture-card__handle a {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(243, 241, 236, .72);
   text-decoration: none;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .culture-card__handle a:hover {
-  color: rgba(255, 255, 255, 0.85);
+  color: #f3f1ec;
 }
 
 /* ==========================================================================
@@ -461,18 +433,19 @@
 }
 
 .shop-page__header h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  text-transform: none;
+  letter-spacing: .01em;
+  line-height: .9;
+  font-weight: 400;
 }
 
 .shop-page__count {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
 }
 
@@ -495,41 +468,51 @@
 
 .filter-btn {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.5rem 1rem;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0 16px;
   border: 1px solid var(--border);
-  border-radius: 2rem;
+  border-radius: 0;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--text);
   cursor: pointer;
   transition: all 0.2s ease;
+  font-weight: 500;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-color: rgba(10, 10, 10, .24);
 }
 
-.filter-btn:hover,
+.filter-btn:hover {
+  border-color: var(--text);
+}
+
 .filter-btn--active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
 }
 
 .sort-select {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.5rem 1rem;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0 2.25rem 0 1rem;
   border: 1px solid var(--border);
-  border-radius: 2rem;
+  border-radius: 0;
   background: transparent;
-  color: var(--text-primary);
+  color: var(--text);
   cursor: pointer;
   appearance: none;
-  padding-right: 2rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%230a0a0a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
+  font-weight: 500;
+  min-height: 44px;
+  border-color: rgba(10, 10, 10, .24);
 }
 
 .sort-select option {
@@ -545,9 +528,9 @@
 
 .product-card__tag {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
 }
 
@@ -559,11 +542,11 @@
   z-index: 3;
   max-width: calc(100% - 1.6rem);
   font-family: var(--font-heading);
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0;
+  text-transform: none;
   padding: 0.35rem 0.8rem;
-  border-radius: var(--radius);
+  border-radius: 0;
   background: var(--accent);
   color: var(--bg);
   font-weight: 600;
@@ -588,7 +571,7 @@
 }
 
 .product-card--sold .product-card__price {
-  color: var(--text-muted);
+  color: rgba(11, 11, 11, .4);
 }
 
 .product-card {
@@ -606,12 +589,13 @@
 }
 
 .about-hero__content h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  text-transform: none;
+  letter-spacing: .01em;
+  line-height: .9;
   max-width: 700px;
+  font-weight: 400;
 }
 
 /* About split */
@@ -636,25 +620,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease);
-}
-
-.about-grid__media:hover img {
-  transform: scale(1.03);
 }
 
 .about-grid__content h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
 }
 
 .about-grid__content p {
-  font-size: 0.95rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
@@ -675,8 +654,8 @@
 
 .about-values__num {
   font-family: var(--font-heading);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  font-size: var(--t-small);
+  letter-spacing: 0;
   color: var(--accent);
   display: block;
   margin-bottom: 1rem;
@@ -685,15 +664,15 @@
 .about-values__item h3 {
   font-family: var(--font-heading);
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-bottom: 0.8rem;
 }
 
 .about-values__item p {
-  font-size: 0.88rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -726,7 +705,7 @@
 .about-mission__inner blockquote {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: -0.01em;
   line-height: 1.2;
   margin: 1.5rem 0;
@@ -734,9 +713,9 @@
 }
 
 .about-mission__inner p {
-  font-size: 0.95rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
 }
 
@@ -753,7 +732,7 @@
 .about-cta__inner h2 {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  text-transform: uppercase;
+  text-transform: none;
   margin-bottom: 2rem;
 }
 
@@ -779,17 +758,19 @@
 }
 
 .sizing-page__header h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  text-transform: none;
+  letter-spacing: .01em;
   margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: .9;
 }
 
 .sizing-page__header p {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -801,8 +782,8 @@
 .sizing-table-wrap h2 {
   font-family: var(--font-heading);
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-bottom: 1.2rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--border);
@@ -817,7 +798,8 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: var(--t-ui);
+  font-variant-numeric: tabular-nums;
 }
 
 .sizing-table thead {
@@ -826,9 +808,9 @@
 
 .sizing-table th {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
   font-weight: 500;
   text-align: left;
@@ -849,7 +831,7 @@
 .sizing-table td:first-child {
   font-family: var(--font-heading);
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   color: var(--accent);
 }
 
@@ -863,8 +845,8 @@
 .sizing-how h2 {
   font-family: var(--font-heading);
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-bottom: 2rem;
 }
 
@@ -876,17 +858,17 @@
 
 .sizing-how__item h4 {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: var(--t-ui);
+  text-transform: none;
+  letter-spacing: 0;
   margin-bottom: 0.5rem;
   color: var(--accent);
 }
 
 .sizing-how__item p {
-  font-size: 0.85rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
 }
 
@@ -901,9 +883,9 @@
 }
 
 .sizing-contact p {
-  font-size: 0.88rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .sizing-contact a {
@@ -931,17 +913,19 @@
 }
 
 .policy-page__header h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  text-transform: none;
+  letter-spacing: .01em;
   margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: .9;
 }
 
 .policy-page__header p {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -964,15 +948,15 @@
 .policy-block h2 {
   font-family: var(--font-heading);
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0;
   margin-bottom: 1.2rem;
 }
 
 .policy-block p {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
   margin-bottom: 0.8rem;
 }
@@ -993,9 +977,9 @@
 }
 
 .policy-block ul li {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
   padding-left: 1.2rem;
   position: relative;
@@ -1041,12 +1025,15 @@
 
 .policy-contact-links a {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 /* ==========================================================================
@@ -1118,11 +1105,12 @@
 }
 
 .product-page__title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  font-family: var(--font-display);
+  font-size: var(--t-product);
+  text-transform: none;
+  letter-spacing: .01em;
+  line-height: .9;
+  font-weight: 400;
 }
 
 .product-page__price {
@@ -1131,17 +1119,19 @@
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 .product-page__badge {
   display: inline-block;
   font-family: var(--font-heading);
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0;
+  text-transform: none;
   padding: 0.35rem 0.8rem;
-  border-radius: var(--radius);
+  border-radius: 0;
   font-weight: 600;
+  align-self: flex-start;
 }
 
 .product-page__badge--sold {
@@ -1155,24 +1145,24 @@
 }
 
 .product-page__desc {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
 }
 
 .product-page__description {
-  font-size: 0.92rem;
+  font-size: var(--t-body);
   color: var(--text-muted);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.8;
 }
 
 .product-page__tag {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: var(--t-small);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
 }
 
@@ -1185,20 +1175,33 @@
 
 .product-page__colors-label {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
+  font-weight: 500;
 }
 
 .product-page__swatches {
   display: flex;
-  gap: 0.75rem;
+  gap: 0;
 }
 
+/* 44 px tap target, 28 px of colour: an inset ring in the page colour covers the outer 8 px */
 .product-page__swatches .color-swatch {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  box-shadow: inset 0 0 0 8px var(--bg);
+}
+
+.product-page__swatches .color-swatch::after {
+  inset: 4px;
+}
+
+.product-page__swatches .color-swatch--soldout::before {
+  left: 6px;
+  right: 6px;
 }
 
 /* Size selector */
@@ -1210,10 +1213,11 @@
 
 .product-page__sizes-label {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
+  font-weight: 500;
 }
 
 .product-page__size-options {
@@ -1224,16 +1228,22 @@
 
 .size-btn {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.7rem 1.2rem;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0 12px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text);
-  border-radius: var(--radius);
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s var(--ease);
+  position: relative;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  min-height: 44px;
+  min-width: 48px;
+  border-color: rgba(10, 10, 10, .3);
 }
 
 .size-btn:hover {
@@ -1249,9 +1259,6 @@
 
 .size-btn--soldout,
 .size-btn[disabled] {
-  opacity: 0.3;
-  cursor: not-allowed;
-  text-decoration: line-through;
   pointer-events: none;
 }
 
@@ -1276,7 +1283,7 @@
 .product-soldout-note {
   max-width: 420px;
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: var(--t-ui);
   line-height: 1.6;
 }
 
@@ -1285,12 +1292,13 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: var(--t-ui);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-muted);
   margin-bottom: 2rem;
   transition: color 0.3s var(--ease);
+  min-height: 44px;
 }
 
 .product-page__back:hover {
@@ -1307,15 +1315,13 @@
   .page-hero {
     height: 55svh;
     min-height: 320px;
-    margin-top: 55px;
+    margin-top: var(--header-h);
   }
 
   .page-hero__content h1 {
-    font-size: clamp(2rem, 10vw, 3rem);
   }
 
   .page-hero__content p {
-    font-size: 0.88rem;
   }
 
   .culture-intro {
@@ -1329,7 +1335,6 @@
 
   .culture-intro__stats span {
     min-height: 32px;
-    font-size: 0.56rem;
   }
 
   /* Culture lookbook */
@@ -1357,19 +1362,16 @@
   }
 
   .culture-card__overlay {
-    padding: 1.5rem 1rem;
+    padding: 8px 10px 2px;
   }
 
   .culture-card--big .culture-card__name {
-    font-size: 1rem;
   }
 
   .culture-card__name {
-    font-size: 0.85rem;
   }
 
   .culture-card__handle {
-    font-size: 0.72rem;
   }
 
   /* Lookbook */
@@ -1409,14 +1411,7 @@
     aspect-ratio: 3 / 4;
   }
 
-  .lb-item__caption {
-    opacity: 1;
-    transform: translateY(0);
-    padding: 1.2rem;
-  }
-
   .lb-item__caption p {
-    font-size: 0.75rem;
   }
 
   .lightbox__nav {
@@ -1482,7 +1477,6 @@
   .product-page__details #addToCartBtn {
     min-height: 52px;
     width: 100%;
-    font-size: 0.75rem;
   }
 
   .product-page__back {
@@ -1492,17 +1486,7 @@
   /* Product detail variant + swatch sizing */
   .product-page .variant-btn {
     padding: 0.6rem 1rem;
-    min-height: 40px;
-    font-size: 0.62rem;
-  }
-
-  .product-page .color-swatch {
-    width: 28px;
-    height: 28px;
-  }
-
-  .product-page .color-swatch::after {
-    inset: -4px;
+    min-height: 44px;
   }
 
   /* Shop */
@@ -1524,13 +1508,9 @@
   }
 
   .filter-btn {
-    font-size: 0.6rem;
-    padding: 0.4rem 0.8rem;
   }
 
   .sort-select {
-    font-size: 0.6rem;
-    padding: 0.4rem 1.8rem 0.4rem 0.8rem;
   }
 
   .shop-grid {
@@ -1539,7 +1519,6 @@
   }
 
   .product-card__badge {
-    font-size: 0.5rem;
     padding: 0.25rem 0.6rem;
     top: 0.5rem;
     left: 0.5rem;
@@ -1552,7 +1531,6 @@
   }
 
   .about-hero__content h1 {
-    font-size: clamp(1.8rem, 8vw, 2.8rem);
   }
 
   .about-section {
@@ -1571,7 +1549,6 @@
   }
 
   .about-grid__content p {
-    font-size: 0.9rem;
   }
 
   .about-values {
@@ -1640,7 +1617,6 @@
   }
 
   .sizing-page__header p {
-    font-size: 0.88rem;
   }
 
   .sizing-table-wrap {
@@ -1648,12 +1624,10 @@
   }
 
   .sizing-table {
-    font-size: 0.82rem;
     min-width: 420px;
   }
 
   .sizing-table th {
-    font-size: 0.6rem;
     padding: 0.6rem 1rem 0.6rem 0;
   }
 
@@ -1675,7 +1649,6 @@
   }
 
   .sizing-contact p {
-    font-size: 0.82rem;
   }
 }
 
@@ -1716,10 +1689,8 @@
   }
 
   .page-hero__content h1 {
-    font-size: 1.8rem;
   }
 
   .about-hero__content h1 {
-    font-size: 1.6rem;
   }
 }

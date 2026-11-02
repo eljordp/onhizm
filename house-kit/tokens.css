@@ -1,0 +1,532 @@
+/* =====================================================================
+   HOUSE KIT · tokens.css
+   One stylesheet: tokens, fluid root, type, grid, button, link, noise,
+   motion hooks, reduced motion. No radius, no shadow, no gradients.
+
+   Per brand you change FOUR things (see RULES.md):
+     --ink, --paper            one ink on one paper
+     --font-display            one display face with character
+     --font-text / --font-label
+   Everything else stays.
+
+   Cascade layers: everything below lives in `house-base` and `house`,
+   so any unlayered app CSS wins. In Tailwind 4 projects declare the
+   order once at the top of globals.css (see RULES.md):
+     @layer theme, base, house-base, components, house, utilities;
+   ===================================================================== */
+
+/* ---------- 1. Tokens (unlayered so they are always visible) ---------- */
+:root {
+  /* Fluid root: the page is designed at one frame width and scales as a
+     poster. 1440 frame on desktop, 375 frame under 1024px. */
+  --viewport: 1440;
+
+  /* Colour: one ink, one paper. Steps are mixes of the same ink. */
+  --ink: #1c1a17;
+  --paper: #ece6d6;
+  --ink-40: color-mix(in srgb, var(--ink) 40%, transparent);
+  --ink-30: color-mix(in srgb, var(--ink) 30%, transparent);
+  --ink-20: color-mix(in srgb, var(--ink) 20%, transparent);
+  --ink-10: color-mix(in srgb, var(--ink) 10%, transparent);
+  --paper-60: color-mix(in srgb, var(--paper) 60%, transparent);
+  --accent: #f2c230; /* text selection + one tiny mark. Never a headline word. */
+
+  /* Eases (also registered in GSAP as house / house-arrow / house-mask) */
+  --ease: cubic-bezier(.31, .13, .11, 1);
+  --ease-arrow: cubic-bezier(.83, 0, .17, 1);
+  --ease-mask: cubic-bezier(.65, 0, .35, 1);
+  --dur: .4s;      /* colour, opacity, header */
+  --dur-slow: .6s; /* movement: button padding, text roll, underline */
+
+  /* Spacing, named after their px size on the 1440 frame */
+  --s-2: .125rem;
+  --s-4: .25rem;
+  --s-8: .5rem;
+  --s-16: 1rem;
+  --s-32: 2rem;
+  --s-48: 3rem;
+  --s-64: 4rem;
+  --s-112: 7rem;
+  --s-204: 12.75rem;
+  --pad: 2rem;          /* page margin */
+  --header-h: 3.75rem;
+
+  /* Z layers */
+  --z-bg: -1;
+  --z-base: 1;
+  --z-header: 100;
+  --z-modal: 200;
+  --z-curtain: 300;
+  --z-cursor: 400;
+
+  /* Faces: brands override these three. Fallbacks are system stacks,
+     never Inter. */
+  --font-display: "Display", "Arial Narrow", sans-serif;
+  --font-text: "Text", Georgia, "Times New Roman", serif;
+  --font-label: "Label", "Arial", sans-serif;
+  --display-weight: 400;
+  --display-tracking: -.064em;
+  --display-leading: .8;
+  --text-weight: 400;
+  --lead-weight: 300;
+
+  /* Grain */
+  --noise-opacity: .45;
+  --noise-size: 100px;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --viewport: 375;
+    --s-48: 2rem;
+    --s-64: 3.5rem;
+    --s-112: 5.5rem;
+    --s-204: 9.5rem;
+    --pad: 1rem;
+    --header-h: 4.25rem;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+@layer house-base {
+  html {
+    font-size: calc(16 / var(--viewport) * 100vw);
+    /* Title fan-in throws chars past the edge. clip (not hidden) keeps
+       position:sticky working; on html it also stops mobile browsers
+       zooming out to fit the off-screen chars. */
+    overflow-x: clip;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tablet guard: 576-1023px would blow the 375 frame up to 2.7x.
+     Pin the root at the 576px value (16/375*576). */
+  @media (min-width: 576px) and (max-width: 1023px) {
+    html { font-size: 24.576px; }
+  }
+
+  /* Ultrawide guard: stop growing past a 1920px frame (16/1440*1920).
+     Columns keep stretching; type and spacing stop. */
+  @media (min-width: 1921px) {
+    html { font-size: 21.3333px; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-text);
+    font-weight: var(--text-weight);
+    font-size: max(1rem, 14px);
+    line-height: 1.25;
+    overflow-x: clip;
+  }
+
+  img, video, svg, canvas, picture { display: block; max-width: 100%; }
+  h1, h2, h3, h4, p, figure, blockquote, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Form controls: no inherited UA rounding or shadow */
+  button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  ::selection { background: var(--ink); color: var(--accent); }
+
+  :focus-visible { outline: 1px solid currentColor; outline-offset: .25rem; }
+
+  /* Lenis (smooth scroll) plumbing */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-stopped { overflow: clip; }
+  .lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-smooth iframe { pointer-events: none; }
+}
+
+/* ---------- 3. Type, grid, components ---------- */
+@layer house {
+  /* Display family: uppercase, tight, huge */
+  .display, .h2, .h3 {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    line-height: var(--display-leading);
+    letter-spacing: var(--display-tracking);
+    text-transform: uppercase;
+    font-feature-settings: "liga" 1;
+  }
+  .display { font-size: 15rem; }
+  .h2 { font-size: 7.5rem; }
+  .h3 { font-size: 5rem; }
+
+  /* Text family */
+  .lead {
+    font-family: var(--font-text);
+    font-weight: var(--lead-weight);
+    font-size: 4rem;
+    line-height: 1;
+    letter-spacing: -.032em;
+  }
+  .p1 {
+    font-family: var(--font-text);
+    font-weight: var(--lead-weight);
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -.032em;
+  }
+  .body {
+    font-family: var(--font-text);
+    font-size: max(1rem, 14px);
+    line-height: 1.25;
+  }
+  .label {
+    font-family: var(--font-label);
+    font-size: max(.75rem, 10px);
+    line-height: 1.1667;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .muted { color: var(--ink-40); }
+
+  @media (max-width: 1023px) {
+    .display { font-size: 4.5rem; line-height: .8889; }
+    .h2 { font-size: 3.5rem; }
+    .h3 { font-size: 3rem; }
+    .lead { font-size: 2.5rem; } /* BOYD uses 3rem; 2.5 keeps a 4-line statement under 10 lines at 390px */
+    .p1 { font-size: 1.5rem; }
+  }
+
+  /* Grid: 8 gutterless columns inside the page margin, 2 on mobile */
+  .container { padding-inline: var(--pad); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 0;
+  }
+  .span-1 { grid-column-end: span 1; } .span-2 { grid-column-end: span 2; }
+  .span-3 { grid-column-end: span 3; } .span-4 { grid-column-end: span 4; }
+  .span-5 { grid-column-end: span 5; } .span-6 { grid-column-end: span 6; }
+  .span-7 { grid-column-end: span 7; } .span-8 { grid-column-end: span 8; }
+  .start-1 { grid-column-start: 1; } .start-2 { grid-column-start: 2; }
+  .start-3 { grid-column-start: 3; } .start-4 { grid-column-start: 4; }
+  .start-5 { grid-column-start: 5; } .start-6 { grid-column-start: 6; }
+  .start-7 { grid-column-start: 7; } .start-8 { grid-column-start: 8; }
+  @media (max-width: 1023px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid > [class*="span-"] { grid-column: auto / span 2; }
+    .grid > .m-span-1 { grid-column: auto / span 1; }
+  }
+
+  /* Solid ink button. Markup (works with JS off):
+     <a class="btn" href="#"><span class="roll"><span>Book</span><span aria-hidden="true">Book</span></span></a>
+     or <a class="btn" data-roll>Book</a> and the motion core builds the roll. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: .1875rem .5rem;
+    font-family: var(--font-label);
+    font-size: max(.75rem, 10px);
+    line-height: 1.1667;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: 0;
+    cursor: pointer;
+    transition: padding var(--dur-slow) var(--ease), background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+    white-space: nowrap;
+    will-change: padding;
+  }
+  .btn--light { background: var(--paper); color: var(--ink); }
+  .btn--quiet { background: var(--ink-10); color: var(--ink); }
+  .btn--lg { padding: 1.0625rem 1.5rem; }
+
+  .roll { position: relative; display: block; overflow: hidden; }
+  .roll > span { display: block; transition: transform var(--dur-slow) var(--ease); }
+  .roll > span + span { position: absolute; top: 100%; left: 0; }
+
+  @media (hover: hover) {
+    .btn:hover { padding: .1875rem .75rem; }
+    .btn--lg:hover { padding: 1.0625rem 1.75rem; }
+    :hover > .roll > span,
+    .roll:hover > span { transform: translateY(-100%); }
+  }
+  :focus-visible > .roll > span { transform: translateY(-100%); }
+
+  /* Underline wipe: draws in from the left, leaves to the right */
+  .link { position: relative; display: inline-block; }
+  .link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -.03125rem;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform var(--dur-slow) var(--ease);
+  }
+  .link--on::after { transform: scaleX(1); transform-origin: left center; }
+  @media (hover: hover) {
+    .link:hover::after { transform: scaleX(1); transform-origin: left center; }
+    .link--on:hover::after { transform: scaleX(0); transform-origin: right center; }
+  }
+  .link:focus-visible::after { transform: scaleX(1); transform-origin: left center; }
+
+  /* Website-author credit: stays visible, inherits the brand's face and ink. */
+  .hk-site-credit {
+    margin: 0;
+    padding-block: 1rem;
+    font-family: inherit;
+    font-size: max(.875rem, 14px);
+    line-height: 1.5;
+    color: inherit;
+  }
+  .hk-site-credit a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    max-inline-size: 100%;
+    padding-block: .25rem;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .18em;
+    overflow-wrap: anywhere;
+  }
+  .hk-site-credit a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  /* Grain overlay. .noise on any positioned block; .noise-page on <body>
+     for a fixed full-page grain. Texture is the kit's own assets/noise.png. */
+  .noise { position: relative; isolation: isolate; }
+  .noise::after,
+  .noise-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: url("./assets/noise.png") 0 0 / var(--noise-size) var(--noise-size) repeat;
+    mix-blend-mode: soft-light;
+    opacity: var(--noise-opacity);
+  }
+  .noise-page::after { position: fixed; z-index: var(--z-cursor); }
+
+  /* Hairline rule in the ink */
+  .rule { border: 0; border-top: 1px solid var(--ink-20); margin: 0; }
+
+  /* Visually hidden, still read by screen readers */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+}
+
+/* ---------- 4/5. Motion hooks + reduced motion: UNLAYERED on purpose ----------
+   These are behaviour, not style. They must beat app CSS such as
+   `.hero{position:relative}` and Tailwind utilities, so they sit outside
+   the cascade layers. Override them only with a more specific selector. */
+
+/* ---------- 4. Motion hooks (the motion core reads these) ----------
+   Everything is visible with JS off. The head script adds .hk-js
+   (and removes it after 3s if the core never reported ready). The
+   core adds .hk-motion only when motion is allowed. */
+
+.hk-js [data-reveal]:not([data-reveal-ready]) { visibility: hidden; }
+.hk-line { will-change: transform, opacity; }
+.hk-char { will-change: transform; }
+
+[data-parallax] { overflow: hidden; }
+[data-parallax] > img,
+[data-parallax] > video,
+[data-parallax] > picture,
+[data-parallax] > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Brush-mask wipe: the hero sticks and is erased by the brush.
+   --hk-wipe goes 0 -> 1 on scroll (eased with --ease-mask in GSAP).
+   Brush layer size runs from "100% 0" to "220% 220%". */
+.hk-motion [data-mask-wipe] {
+  position: sticky;
+  top: 0;
+  z-index: calc(var(--z-base) + 1);
+  --hk-brush-w: calc(100% + 120% * var(--hk-wipe, 0));
+  --hk-brush-h: calc(220% * var(--hk-wipe, 0));
+  -webkit-mask-image: url("./assets/brush-mask.png"), linear-gradient(#fff 0 0);
+  mask-image: url("./assets/brush-mask.png"), linear-gradient(#fff 0 0);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 50% calc(100% + .125rem), 0 0;
+  mask-position: 50% calc(100% + .125rem), 0 0;
+  -webkit-mask-size: var(--hk-brush-w) var(--hk-brush-h), 100% 100%;
+  mask-size: var(--hk-brush-w) var(--hk-brush-h), 100% 100%;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.hk-motion [data-mask-wipe].is-wiped { visibility: hidden; }
+
+/* Marquee: the core clones the children so the loop is seamless,
+   then flags it ready. Without JS it is a static line. */
+[data-marquee] {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+[data-marquee] > * { flex: none; }
+[data-marquee][data-marquee-ready] > * {
+  animation: hk-ticker var(--marquee-duration, 20s) linear infinite;
+}
+@keyframes hk-ticker { to { transform: translateX(-100%); } }
+
+/* Header: hides when scrolling down past 100px, returns on scroll up */
+[data-header] {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  transition: transform var(--dur) var(--ease), color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+[data-header="overlay"] { margin-bottom: calc(var(--header-h) * -1); }
+[data-header].is-scrolled { background-color: var(--paper); color: var(--ink); }
+[data-header].is-hidden { transform: translateY(-100%); }
+[data-header]:focus-within { transform: none; }
+
+/* Page-transition curtain (created by the core) */
+.hk-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-curtain);
+  background: var(--ink);
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+}
+
+/* After a page change the cover stays up from the new page's first paint.
+   HEAD_SCRIPT sets these classes and the colour; init() lifts it when the page is ready. */
+html.hk-arriving::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-curtain);
+  background: var(--hk-arrive, var(--ink));
+  pointer-events: none;
+  transform: scaleY(1);
+  transform-origin: 50% 0;
+  transition: transform .5s cubic-bezier(.31, .13, .11, 1);
+}
+html.hk-arriving.hk-lifting::after { transform: scaleY(0); }
+
+/* ---------- 5. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hk-js [data-reveal]:not([data-reveal-ready]) { visibility: visible; }
+  [data-marquee][data-marquee-ready] > * { animation: none; }
+  [data-marquee] { flex-wrap: wrap; white-space: normal; }
+  [data-marquee] > [aria-hidden="true"] { display: none; }
+  .btn, .roll > span, .link::after, [data-header] { transition-duration: 0s; }
+  .hk-curtain { display: none; }
+  html.hk-arriving::after { display: none; }
+}
+
+/* The creator signature is the small, approved brand-colored exception. */
+@layer house {
+/* JDLO creator signature. Color may be tuned to the footer with --jdlo-color. */
+.jdlo-credit {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .35em;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 6px 3px;
+  color: inherit;
+  font-family: inherit;
+  font-size: max(14px, .875rem);
+  line-height: 1.5;
+  text-decoration: none;
+  overflow: visible;
+}
+.jdlo-credit:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.jdlo-credit:hover .jdlo-credit__label { text-decoration: underline; text-underline-offset: .2em; }
+.jdlo-credit__name {
+  --jdlo-color: #ff5969;
+  position: relative;
+  display: inline-block;
+  padding: 0 .18em .08em;
+  color: var(--jdlo-color);
+  font-weight: 800;
+  letter-spacing: .06em;
+  line-height: 1.2;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--jdlo-color) 25%, transparent);
+  isolation: isolate;
+}
+.jdlo-credit[data-jdlo-theme="orange"] .jdlo-credit__name { --jdlo-color: #b94406; }
+.jdlo-credit[data-jdlo-theme="purple"] .jdlo-credit__name { --jdlo-color: #bd83f7; }
+.jdlo-credit[data-jdlo-theme="white"] .jdlo-credit__name { --jdlo-color: #fff; }
+.jdlo-credit__name::after {
+  content: "";
+  position: absolute;
+  inset: -3px -5px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--jdlo-color) 15%, transparent), transparent 70%);
+}
+.jdlo-credit__spark {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: var(--jdlo-color);
+  clip-path: polygon(50% 0,61% 36%,100% 50%,61% 63%,50% 100%,38% 63%,0 50%,38% 36%);
+  pointer-events: none;
+  transform: scale(.35) rotate(0deg);
+  opacity: .25;
+  animation: jdlo-spark 4.8s ease-in-out infinite;
+}
+.jdlo-credit__spark--one { top: -4px; right: 3px; }
+.jdlo-credit__spark--two { bottom: 0; left: -3px; width: 5px; height: 5px; animation-delay: -1.7s; }
+.jdlo-credit__spark--three { top: 1px; left: 45%; width: 4px; height: 4px; animation-delay: -3.1s; }
+.jdlo-credit__drip {
+  position: absolute;
+  left: 61%;
+  top: calc(100% - 3px);
+  width: 3px;
+  height: 7px;
+  border-radius: 0 0 70% 70%;
+  background: var(--jdlo-color);
+  transform-origin: center top;
+  pointer-events: none;
+  opacity: 0;
+  animation: jdlo-drip 6.4s ease-in infinite;
+}
+@keyframes jdlo-spark {
+  0%, 45%, 100% { opacity: .2; transform: scale(.35) rotate(0deg); }
+  62% { opacity: 1; transform: scale(1.15) rotate(45deg); }
+  78% { opacity: .35; transform: scale(.55) rotate(90deg); }
+}
+@keyframes jdlo-drip {
+  0%, 68%, 100% { opacity: 0; transform: translateY(-2px) scaleY(.2); }
+  73% { opacity: .85; transform: translateY(0) scaleY(1); }
+  86% { opacity: 0; transform: translateY(13px) scaleY(.65); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jdlo-credit__spark, .jdlo-credit__drip { animation: none; }
+  .jdlo-credit__spark { opacity: .65; transform: scale(.7); }
+  .jdlo-credit__drip { display: none; }
+}
+
+}

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(d){var h=d.documentElement;h.classList.add('hk-js');setTimeout(function(){if(!h.classList.contains('hk-ready'))h.classList.remove('hk-js')},3000);try{var c=sessionStorage.getItem('hk-arrive');sessionStorage.removeItem('hk-arrive');if(c&&!matchMedia('(prefers-reduced-motion: reduce)').matches){h.style.setProperty('--hk-arrive',c);h.classList.add('hk-arriving');setTimeout(function(){h.classList.remove('hk-arriving','hk-lifting')},2500)}}catch(e){}})(document);</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>The Culture — ONHIZM</title>
+  <title>The Culture | ONHIZM</title>
   <meta name="description" content="The ONHIZM culture wall: rappers and artists wearing limited Bay Area streetwear in the wild.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="The Culture — ONHIZM">
+  <meta property="og:title" content="The Culture | ONHIZM">
   <meta property="og:description" content="Rappers and artists wearing ONHIZM in the wild.">
   <meta property="og:url" content="https://onhizm.com/culture.html">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
@@ -16,7 +17,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Culture — ONHIZM">
+  <meta name="twitter:title" content="The Culture | ONHIZM">
   <meta name="twitter:description" content="Rappers and artists wearing ONHIZM in the wild.">
   <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
 
@@ -28,175 +29,125 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "The Culture — ONHIZM",
+    "name": "The Culture | ONHIZM",
     "description": "Rappers and artists wearing ONHIZM in the wild.",
     "url": "https://onhizm.com/culture.html"
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/six-caps-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/chivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="pages.css">
-  <link rel="stylesheet" href="sms-gate.css?v=sms-purple-1">
+  <link rel="stylesheet" href="house-kit/tokens.css?v=kit-1">
+  <link rel="stylesheet" href="style.css?v=kit-1">
+  <link rel="stylesheet" href="pages.css?v=kit-1">
+  <link rel="stylesheet" href="sms-gate.css?v=kit-1">
+  <link rel="stylesheet" href="brand.css?v=kit-1">
+  <script src="house-kit/dist/house-motion.iife.min.js" data-auto defer></script>
+  <script src="site-kit.js?v=kit-1" defer></script>
 
 </head>
 <body>
 
   <!-- Header -->
-  <header class="header header--scrolled" id="header">
+  <header class="header" id="header">
     <div class="header__inner">
-      <nav class="header__nav header__nav--left">
-        <a href="index.html" class="nav-link">Home</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      <nav class="header__nav header__nav--left" aria-label="Main">
         <a href="shop.html" class="nav-link">Shop</a>
-        <a href="culture.html" class="nav-link nav-link--active">The Culture</a>
+        <a href="culture.html" class="nav-link" aria-current="page">Culture</a>
+        <a href="lookbook.html" class="nav-link">Lookbook</a>
         <a href="about.html" class="nav-link">About</a>
       </nav>
-      <a href="index.html" class="header__logo">
-        <img src="images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
-      </a>
-      <nav class="header__nav header__nav--right">
-        <a href="sizing.html" class="nav-link">Sizing</a>
-        <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
-        <a href="#" class="nav-link nav-link--cart">Cart (0)</a>
-      </nav>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="header__logo"><img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="logo-img"></a>
+      <div class="header__right">
+        <nav class="header__nav header__nav--right" aria-label="More">
+          <a href="sizing.html" class="nav-link">Sizing</a>
+          <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        </nav>
+        <a href="shop.html" class="header__shop">Shop</a>
+        <a href="#" class="nav-link--cart" hidden>Cart (0)</a>
+        <button type="button" class="header__cart">Cart (0)</button>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-nav__link">Home</a>
-    <a href="shop.html" class="mobile-nav__link">Shop</a>
-    <a href="culture.html" class="mobile-nav__link">The Culture</a>
-    <a href="about.html" class="mobile-nav__link">About</a>
-    <a href="sizing.html" class="mobile-nav__link">Sizing</a>
-    <a href="https://www.instagram.com/onhizm" target="_blank" class="mobile-nav__link">Instagram</a>
-    <a href="#" class="mobile-nav__link">Cart (0)</a>
+  <!-- Phone menu -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav__panel" aria-label="Menu">
+      <a href="shop.html" class="mobile-nav__link">Shop</a>
+      <a href="culture.html" class="mobile-nav__link" aria-current="page">Culture</a>
+      <a href="lookbook.html" class="mobile-nav__link">Lookbook</a>
+      <a href="about.html" class="mobile-nav__link">About</a>
+      <a href="sizing.html" class="mobile-nav__link">Sizing</a>
+      <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="mobile-nav__link">Instagram</a>
+      <button type="button" class="mobile-nav__link mobile-nav__link--cart">Cart (0)</button>
+    </nav>
   </div>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="page-hero__media">
-      <img src="images/onhizm15.JPG" alt="ONHIZM The Culture">
-      <div class="page-hero__overlay"></div>
+  <!-- The wall -->
+  <section class="wall-hero">
+    <div class="wall-hero__strip" aria-hidden="true">
+      <img src="images/wall/onhizm26-480.webp" srcset="images/wall/onhizm26-480.webp 480w, images/wall/onhizm26-800.webp 800w" sizes="(min-width: 900px) 20vw, 34vw" width="480" height="600" alt="" decoding="async">
+      <img src="images/wall/onhizm12-480.webp" srcset="images/wall/onhizm12-480.webp 480w, images/wall/onhizm12-800.webp 800w" sizes="(min-width: 900px) 20vw, 34vw" width="480" height="600" alt="" decoding="async">
+      <img src="images/wall/mikesherm-480.webp" srcset="images/wall/mikesherm-480.webp 480w, images/wall/mikesherm-800.webp 800w" sizes="(min-width: 900px) 20vw, 34vw" width="480" height="600" alt="" decoding="async">
+      <img src="images/wall/onhizm4-480.webp" srcset="images/wall/onhizm4-480.webp 480w, images/wall/onhizm4-800.webp 800w" sizes="(min-width: 900px) 20vw, 34vw" width="480" height="600" alt="" decoding="async">
+      <img src="images/wall/shordieshordie-480.webp" srcset="images/wall/shordieshordie-480.webp 480w, images/wall/shordieshordie-800.webp 800w" sizes="(min-width: 900px) 20vw, 34vw" width="480" height="600" alt="" decoding="async">
     </div>
-    <div class="page-hero__content">
-      <span class="label">The Receipts</span>
-      <h1>The Culture</h1>
-      <p>Rappers and artists wearing ONHIZM in the wild. No paid placements — just love.</p>
-    </div>
-  </section>
-
-  <!-- Proof Intro -->
-  <section class="culture-intro">
-    <div class="container">
-      <div class="culture-intro__grid">
-        <div>
-          <span class="label">Bay Area Stamped</span>
-          <h2>This is the proof wall.</h2>
-        </div>
-        <p>ONHIZM is already on the people moving through the culture. The gallery below is not a moodboard. It is the receipt.</p>
-        <div class="culture-intro__stats">
-          <span>27 names</span>
-          <span>rappers + artists</span>
-          <span>limited pieces</span>
-        </div>
-      </div>
+    <div class="wall-hero__text">
+      <h1 data-reveal="title">The Culture</h1>
+      <p>Rappers and artists wearing ONHIZM in the wild. This is the proof wall. Tap anyone to see the piece.</p>
     </div>
   </section>
 
-  <!-- Lookbook -->
-  <section class="culture-section">
-    <div class="container">
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm15.JPG" alt="Rio Da Yung OG in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Rio Da Yung OG</p><p class="culture-card__handle"><a href="https://instagram.com/riodayung0g" target="_blank" rel="noopener">@riodayung0g</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm6.jpg" alt="Babytron in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Babytron</p><p class="culture-card__handle"><a href="https://instagram.com/babytron" target="_blank" rel="noopener">@babytron</a></p></div></div>
-        <div class="culture-card"><img src="images/garyp.jpg" alt="Gary Payton in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Gary Payton</p><p class="culture-card__handle"><a href="https://instagram.com/gary.payton.20" target="_blank" rel="noopener">@gary.payton.20</a></p></div></div>
+  <section class="wall-section">
+      <div class="wall-filter" role="group" aria-label="Filter by piece">
+        <button type="button" data-filter="all" aria-pressed="true">All <span>36</span></button>
+        <button type="button" data-filter="onhizm-grey-full-outfit-jacket-sweatpants" aria-pressed="false">Grey Sweatsuit <span>8</span></button>
+        <button type="button" data-filter="onhizm-full-outfit-jacket-sweatpants" aria-pressed="false">Black Sweatsuit <span>8</span></button>
+        <button type="button" data-filter="camo-classic-jacket-zip-up-jacket" aria-pressed="false">Camo Classic Zip Up Jacket <span>5</span></button>
+        <button type="button" data-filter="valentines-day-collection-limited-drop-full-sweatsuit" aria-pressed="false">Valentines Day Collection <span>2</span></button>
+        <button type="button" data-filter="baby-blue-sweatsuit" aria-pressed="false">Baby Blue Sweatsuit <span>1</span></button>
+        <button type="button" data-filter="onhizm-bay-bridge-classic-tee" aria-pressed="false">Bay Bridge Classic Tee <span>1</span></button>
+        <button type="button" data-filter="shorts" aria-pressed="false">Shorts <span>1</span></button>
       </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/asimazhar.png" alt="Asim Azhar in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Asim Azhar</p><p class="culture-card__handle"><a href="https://instagram.com/asimazhar" target="_blank" rel="noopener">@asimazhar</a></p></div></div>
-        <div class="culture-card"><img src="images/babyfaceray.png" alt="Babyface Ray in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Babyface Ray</p><p class="culture-card__handle"><a href="https://instagram.com/babyfaceray" target="_blank" rel="noopener">@babyfaceray</a></p></div></div>
-        <div class="culture-card"><img src="images/mikesherm.png" alt="Mike Sherm in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Mike Sherm</p><p class="culture-card__handle"><a href="https://instagram.com/mike_sherm" target="_blank" rel="noopener">@mike_sherm</a></p></div></div>
+      <div class="wall-grid">
+        <figure class="wall-card" id="p-onhizm26" data-id="onhizm26" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm26.JPEG" data-wall-open="onhizm26" aria-label="Open the photo of Tee Grizzley"><img src="images/wall/onhizm26-480.webp" srcset="images/wall/onhizm26-480.webp 480w, images/wall/onhizm26-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Tee Grizzley with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Tee Grizzley</span><span class="wall-card__ig"><a href="https://instagram.com/teegrizzley" target="_blank" rel="noopener">@teegrizzley</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-mikesherm" data-id="mikesherm" data-piece="baby-blue-sweatsuit"><a class="wall-card__open" href="images/mikesherm.png" data-wall-open="mikesherm" aria-label="Open the photo of Mike Sherm"><img src="images/wall/mikesherm-480.webp" srcset="images/wall/mikesherm-480.webp 480w, images/wall/mikesherm-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Mike Sherm with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Mike Sherm</span><span class="wall-card__ig"><a href="https://instagram.com/mike_sherm" target="_blank" rel="noopener">@mike_sherm</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm4" data-id="onhizm4" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm4.jpg" data-wall-open="onhizm4" aria-label="Open the photo of Daboii"><img src="images/wall/onhizm4-480.webp" srcset="images/wall/onhizm4-480.webp 480w, images/wall/onhizm4-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Daboii with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Daboii</span><span class="wall-card__ig"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm12" data-id="onhizm12" data-piece="valentines-day-collection-limited-drop-full-sweatsuit"><a class="wall-card__open" href="images/onhizm12.jpeg" data-wall-open="onhizm12" aria-label="Open the photo of Lil Kayla"><img src="images/wall/onhizm12-480.webp" srcset="images/wall/onhizm12-480.webp 480w, images/wall/onhizm12-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lil Kayla with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lil Kayla</span><span class="wall-card__ig"><a href="https://instagram.com/thereal_lilkayla" target="_blank" rel="noopener">@thereal_lilkayla</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-shordieshordie" data-id="shordieshordie" data-piece="camo-classic-jacket-zip-up-jacket"><a class="wall-card__open" href="images/shordieshordie.jpeg" data-wall-open="shordieshordie" aria-label="Open the photo of Shordie Shordie"><img src="images/wall/shordieshordie-480.webp" srcset="images/wall/shordieshordie-480.webp 480w, images/wall/shordieshordie-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Shordie Shordie with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Shordie Shordie</span><span class="wall-card__ig"><a href="https://instagram.com/shordieshordie" target="_blank" rel="noopener">@shordieshordie</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-garyp" data-id="garyp" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/garyp.jpg" data-wall-open="garyp" aria-label="Open the photo of Gary Payton"><img src="images/wall/garyp-480.webp" srcset="images/wall/garyp-480.webp 480w, images/wall/garyp-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Gary Payton with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Gary Payton</span><span class="wall-card__ig"><a href="https://instagram.com/gary.payton.20" target="_blank" rel="noopener">@gary.payton.20</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm30" data-id="onhizm30" data-piece=""><a class="wall-card__open" href="images/onhizm30.jpeg" data-wall-open="onhizm30" aria-label="Open the photo of Kaash Paige"><img src="images/wall/onhizm30-480.webp" srcset="images/wall/onhizm30-480.webp 480w, images/wall/onhizm30-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Kaash Paige with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Kaash Paige</span><span class="wall-card__ig"><a href="https://instagram.com/kaashpaige" target="_blank" rel="noopener">@kaashpaige</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-aalexiamaga" data-id="aalexiamaga" data-piece="valentines-day-collection-limited-drop-full-sweatsuit"><a class="wall-card__open" href="images/aalexiamaga.jpg" data-wall-open="aalexiamaga" aria-label="Open the photo of Alexia Maga"><img src="images/wall/aalexiamaga-480.webp" srcset="images/wall/aalexiamaga-480.webp 480w, images/wall/aalexiamaga-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Alexia Maga with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Alexia Maga</span><span class="wall-card__ig"><a href="https://instagram.com/alexiamagaa" target="_blank" rel="noopener">@alexiamagaa</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm27" data-id="onhizm27" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm27.JPEG" data-wall-open="onhizm27" aria-label="Open the photo of Tee Grizzley"><img src="images/wall/onhizm27-480.webp" srcset="images/wall/onhizm27-480.webp 480w, images/wall/onhizm27-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Tee Grizzley with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Tee Grizzley</span><span class="wall-card__ig"><a href="https://instagram.com/teegrizzley" target="_blank" rel="noopener">@teegrizzley</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm19" data-id="onhizm19" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm19.JPEG" data-wall-open="onhizm19" aria-label="Open the photo of Kiing Rod"><img src="images/wall/onhizm19-480.webp" srcset="images/wall/onhizm19-480.webp 480w, images/wall/onhizm19-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Kiing Rod with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Kiing Rod</span><span class="wall-card__ig"><a href="https://instagram.com/kiingrod" target="_blank" rel="noopener">@kiingrod</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm22" data-id="onhizm22" data-piece="camo-classic-jacket-zip-up-jacket"><a class="wall-card__open" href="images/onhizm22.jpeg" data-wall-open="onhizm22" aria-label="Open the photo of ZayBang"><img src="images/wall/onhizm22-480.webp" srcset="images/wall/onhizm22-480.webp 480w, images/wall/onhizm22-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="ZayBang with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">ZayBang</span><span class="wall-card__ig"><a href="https://instagram.com/zaybang" target="_blank" rel="noopener">@zaybang</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm34" data-id="onhizm34" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm34.jpeg" data-wall-open="onhizm34" aria-label="Open the photo of Warsh &amp; Mickey Singh"><img src="images/wall/onhizm34-480.webp" srcset="images/wall/onhizm34-480.webp 480w, images/wall/onhizm34-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Warsh &amp; Mickey Singh with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Warsh &amp; Mickey Singh</span><span class="wall-card__ig"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/iammickeysingh" target="_blank" rel="noopener">@iammickeysingh</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm33" data-id="onhizm33" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm33.jpeg" data-wall-open="onhizm33" aria-label="Open the photo of ALLBLACK &amp; Warsh"><img src="images/wall/onhizm33-480.webp" srcset="images/wall/onhizm33-480.webp 480w, images/wall/onhizm33-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="ALLBLACK &amp; Warsh with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">ALLBLACK &amp; Warsh</span><span class="wall-card__ig"><a href="https://instagram.com/whoisallblack" target="_blank" rel="noopener">@whoisallblack</a> <a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm8" data-id="onhizm8" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm8.jpg" data-wall-open="onhizm8" aria-label="Open the photo of Daboii &amp; Big Sad 1900"><img src="images/wall/onhizm8-480.webp" srcset="images/wall/onhizm8-480.webp 480w, images/wall/onhizm8-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Daboii &amp; Big Sad 1900 with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Daboii &amp; Big Sad 1900</span><span class="wall-card__ig"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a> <a href="https://instagram.com/bigsad1900" target="_blank" rel="noopener">@bigsad1900</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm32" data-id="onhizm32" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm32.jpeg" data-wall-open="onhizm32" aria-label="Open the photo of Warsh &amp; Slimmy B"><img src="images/wall/onhizm32-480.webp" srcset="images/wall/onhizm32-480.webp 480w, images/wall/onhizm32-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Warsh &amp; Slimmy B with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Warsh &amp; Slimmy B</span><span class="wall-card__ig"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/nbsslimmyb" target="_blank" rel="noopener">@nbsslimmyb</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm18" data-id="onhizm18" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm18.JPEG" data-wall-open="onhizm18" aria-label="Open the photo of Daboii &amp; Kiing Rod"><img src="images/wall/onhizm18-480.webp" srcset="images/wall/onhizm18-480.webp 480w, images/wall/onhizm18-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Daboii &amp; Kiing Rod with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Daboii &amp; Kiing Rod</span><span class="wall-card__ig"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a> <a href="https://instagram.com/kiingrod" target="_blank" rel="noopener">@kiingrod</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm21" data-id="onhizm21" data-piece="onhizm-bay-bridge-classic-tee"><a class="wall-card__open" href="images/onhizm21.jpeg" data-wall-open="onhizm21" aria-label="Open the photo of ZayBang"><img src="images/wall/onhizm21-480.webp" srcset="images/wall/onhizm21-480.webp 480w, images/wall/onhizm21-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="ZayBang with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">ZayBang</span><span class="wall-card__ig"><a href="https://instagram.com/zaybang" target="_blank" rel="noopener">@zaybang</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm2" data-id="onhizm2" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm2.jpg" data-wall-open="onhizm2" aria-label="Open the photo of EBK Leebo"><img src="images/wall/onhizm2-480.webp" srcset="images/wall/onhizm2-480.webp 480w, images/wall/onhizm2-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="EBK Leebo with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">EBK Leebo</span><span class="wall-card__ig"><a href="https://instagram.com/ebkleebo300" target="_blank" rel="noopener">@ebkleebo300</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm3" data-id="onhizm3" data-piece="camo-classic-jacket-zip-up-jacket"><a class="wall-card__open" href="images/onhizm3.JPG" data-wall-open="onhizm3" aria-label="Open the photo of FredoBagz"><img src="images/wall/onhizm3-480.webp" srcset="images/wall/onhizm3-480.webp 480w, images/wall/onhizm3-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="FredoBagz with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">FredoBagz</span><span class="wall-card__ig"><a href="https://instagram.com/fredobagz4500" target="_blank" rel="noopener">@fredobagz4500</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm11" data-id="onhizm11" data-piece="camo-classic-jacket-zip-up-jacket"><a class="wall-card__open" href="images/onhizm11.jpg" data-wall-open="onhizm11" aria-label="Open the photo of Lul Dame 23"><img src="images/wall/onhizm11-480.webp" srcset="images/wall/onhizm11-480.webp 480w, images/wall/onhizm11-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lul Dame 23 with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lul Dame 23</span><span class="wall-card__ig"><a href="https://instagram.com/__luldame23" target="_blank" rel="noopener">@__luldame23</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm16" data-id="onhizm16" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm16.JPEG" data-wall-open="onhizm16" aria-label="Open the photo of Lil Yee"><img src="images/wall/onhizm16-480.webp" srcset="images/wall/onhizm16-480.webp 480w, images/wall/onhizm16-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lil Yee with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lil Yee</span><span class="wall-card__ig"><a href="https://instagram.com/yee" target="_blank" rel="noopener">@yee</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm17" data-id="onhizm17" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm17.JPEG" data-wall-open="onhizm17" aria-label="Open the photo of Lil Yee"><img src="images/wall/onhizm17-480.webp" srcset="images/wall/onhizm17-480.webp 480w, images/wall/onhizm17-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lil Yee with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lil Yee</span><span class="wall-card__ig"><a href="https://instagram.com/yee" target="_blank" rel="noopener">@yee</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm31" data-id="onhizm31" data-piece="shorts"><a class="wall-card__open" href="images/onhizm31.jpeg" data-wall-open="onhizm31" aria-label="Open the photo of ALLBLACK"><img src="images/wall/onhizm31-480.webp" srcset="images/wall/onhizm31-480.webp 480w, images/wall/onhizm31-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="ALLBLACK with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">ALLBLACK</span><span class="wall-card__ig"><a href="https://instagram.com/whoisallblack" target="_blank" rel="noopener">@whoisallblack</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm5" data-id="onhizm5" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm5.jpg" data-wall-open="onhizm5" aria-label="Open the photo of Sada Baby"><img src="images/wall/onhizm5-480.webp" srcset="images/wall/onhizm5-480.webp 480w, images/wall/onhizm5-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Sada Baby with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Sada Baby</span><span class="wall-card__ig"><a href="https://instagram.com/sadababy" target="_blank" rel="noopener">@sadababy</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm25" data-id="onhizm25" data-piece="camo-classic-jacket-zip-up-jacket"><a class="wall-card__open" href="images/onhizm25.jpeg" data-wall-open="onhizm25" aria-label="Open the photo of Warsh &amp; Sada Baby"><img src="images/wall/onhizm25-480.webp" srcset="images/wall/onhizm25-480.webp 480w, images/wall/onhizm25-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Warsh &amp; Sada Baby with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Warsh &amp; Sada Baby</span><span class="wall-card__ig"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/sadababy" target="_blank" rel="noopener">@sadababy</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm6" data-id="onhizm6" data-piece=""><a class="wall-card__open" href="images/onhizm6.jpg" data-wall-open="onhizm6" aria-label="Open the photo of BabyTron"><img src="images/wall/onhizm6-480.webp" srcset="images/wall/onhizm6-480.webp 480w, images/wall/onhizm6-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="BabyTron with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">BabyTron</span><span class="wall-card__ig"><a href="https://instagram.com/babytron" target="_blank" rel="noopener">@babytron</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm15" data-id="onhizm15" data-piece=""><a class="wall-card__open" href="images/onhizm15.JPG" data-wall-open="onhizm15" aria-label="Open the photo of Rio Da Yung OG"><img src="images/wall/onhizm15-480.webp" srcset="images/wall/onhizm15-480.webp 480w, images/wall/onhizm15-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Rio Da Yung OG with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Rio Da Yung OG</span><span class="wall-card__ig"><a href="https://instagram.com/riodayung0g" target="_blank" rel="noopener">@riodayung0g</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-asimazhar" data-id="asimazhar" data-piece=""><a class="wall-card__open" href="images/asimazhar.png" data-wall-open="asimazhar" aria-label="Open the photo of Asim Azhar"><img src="images/wall/asimazhar-480.webp" srcset="images/wall/asimazhar-480.webp 480w, images/wall/asimazhar-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Asim Azhar with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Asim Azhar</span><span class="wall-card__ig"><a href="https://instagram.com/asimazhar" target="_blank" rel="noopener">@asimazhar</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-mickeysingh" data-id="mickeysingh" data-piece="onhizm-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/mickeysingh.png" data-wall-open="mickeysingh" aria-label="Open the photo of Mickey Singh"><img src="images/wall/mickeysingh-480.webp" srcset="images/wall/mickeysingh-480.webp 480w, images/wall/mickeysingh-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Mickey Singh with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Mickey Singh</span><span class="wall-card__ig"><a href="https://instagram.com/iammickeysingh" target="_blank" rel="noopener">@iammickeysingh</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm29" data-id="onhizm29" data-piece=""><a class="wall-card__open" href="images/onhizm29.jpeg" data-wall-open="onhizm29" aria-label="Open the photo of Lou Deezi"><img src="images/wall/onhizm29-480.webp" srcset="images/wall/onhizm29-480.webp 480w, images/wall/onhizm29-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lou Deezi with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lou Deezi</span><span class="wall-card__ig"><a href="https://instagram.com/loudeezi9" target="_blank" rel="noopener">@loudeezi9</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm13" data-id="onhizm13" data-piece=""><a class="wall-card__open" href="images/onhizm13.jpeg" data-wall-open="onhizm13" aria-label="Open the photo of Nef The Pharaoh &amp; Warsh"><img src="images/wall/onhizm13-480.webp" srcset="images/wall/onhizm13-480.webp 480w, images/wall/onhizm13-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Nef The Pharaoh &amp; Warsh with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Nef The Pharaoh &amp; Warsh</span><span class="wall-card__ig"><a href="https://instagram.com/nefthepharaoh" target="_blank" rel="noopener">@nefthepharaoh</a> <a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm23" data-id="onhizm23" data-piece=""><a class="wall-card__open" href="images/onhizm23.jpeg" data-wall-open="onhizm23" aria-label="Open the photo of Lul Dame 23"><img src="images/wall/onhizm23-480.webp" srcset="images/wall/onhizm23-480.webp 480w, images/wall/onhizm23-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Lul Dame 23 with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Lul Dame 23</span><span class="wall-card__ig"><a href="https://instagram.com/__luldame23" target="_blank" rel="noopener">@__luldame23</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm14" data-id="onhizm14" data-piece=""><a class="wall-card__open" href="images/onhizm14.JPG" data-wall-open="onhizm14" aria-label="Open the photo of YN Jay"><img src="images/wall/onhizm14-480.webp" srcset="images/wall/onhizm14-480.webp 480w, images/wall/onhizm14-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="YN Jay with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">YN Jay</span><span class="wall-card__ig"><a href="https://instagram.com/ynjay_" target="_blank" rel="noopener">@ynjay_</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm20" data-id="onhizm20" data-piece="onhizm-grey-full-outfit-jacket-sweatpants"><a class="wall-card__open" href="images/onhizm20.png" data-wall-open="onhizm20" aria-label="Open the photo of Daboii"><img src="images/wall/onhizm20-480.webp" srcset="images/wall/onhizm20-480.webp 480w, images/wall/onhizm20-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Daboii with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Daboii</span><span class="wall-card__ig"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-babyfaceray" data-id="babyfaceray" data-piece=""><a class="wall-card__open" href="images/babyfaceray.png" data-wall-open="babyfaceray" aria-label="Open the photo of Babyface Ray"><img src="images/wall/babyfaceray-480.webp" srcset="images/wall/babyfaceray-480.webp 480w, images/wall/babyfaceray-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="Babyface Ray with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">Babyface Ray</span><span class="wall-card__ig"><a href="https://instagram.com/babyfaceray" target="_blank" rel="noopener">@babyfaceray</a></span></figcaption></figure>
+        <figure class="wall-card" id="p-onhizm28" data-id="onhizm28" data-piece=""><a class="wall-card__open" href="images/onhizm28.jpeg" data-wall-open="onhizm28" aria-label="Open the photo of EBK Babymaxx"><img src="images/wall/onhizm28-480.webp" srcset="images/wall/onhizm28-480.webp 480w, images/wall/onhizm28-800.webp 800w" sizes="(min-width: 1200px) 24vw, (min-width: 900px) 32vw, 50vw" width="480" height="600" alt="EBK Babymaxx with ONHIZM" loading="lazy" decoding="async"></a><figcaption><span class="wall-card__name">EBK Babymaxx</span><span class="wall-card__ig"><a href="https://instagram.com/babymaxxsteppin" target="_blank" rel="noopener">@babymaxxsteppin</a></span></figcaption></figure>
       </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm26.JPEG" alt="Tee Grizzley in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Tee Grizzley</p><p class="culture-card__handle"><a href="https://instagram.com/teegrizzley" target="_blank" rel="noopener">@teegrizzley</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm4.jpg" alt="Daboii in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Daboii</p><p class="culture-card__handle"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a></p></div></div>
-        <div class="culture-card"><img src="images/mickeysingh.png" alt="Mickey Singh in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Mickey Singh</p><p class="culture-card__handle"><a href="https://instagram.com/iammickeysingh" target="_blank" rel="noopener">@iammickeysingh</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/shordieshordie.jpeg" alt="Shordie Shordie in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Shordie Shordie</p><p class="culture-card__handle"><a href="https://instagram.com/shordieshordie" target="_blank" rel="noopener">@shordieshordie</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm31.jpeg" alt="ALLBLACK in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">ALLBLACK</p><p class="culture-card__handle"><a href="https://instagram.com/whoisallblack" target="_blank" rel="noopener">@whoisallblack</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm30.jpeg" alt="Kaash Paige in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Kaash Paige</p><p class="culture-card__handle"><a href="https://instagram.com/kaashpaige" target="_blank" rel="noopener">@kaashpaige</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm27.JPEG" alt="Tee Grizzley in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Tee Grizzley</p><p class="culture-card__handle"><a href="https://instagram.com/teegrizzley" target="_blank" rel="noopener">@teegrizzley</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm2.jpg" alt="EBK Leebo in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">EBK Leebo</p><p class="culture-card__handle"><a href="https://instagram.com/ebkleebo300" target="_blank" rel="noopener">@ebkleebo300</a></p></div></div>
-        <div class="culture-card"><img src="images/aalexiamaga.jpg" alt="Alexia Maga in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Alexia Maga</p><p class="culture-card__handle"><a href="https://instagram.com/alexiamagaa" target="_blank" rel="noopener">@alexiamagaa</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm5.jpg" alt="Sada Baby in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Sada Baby</p><p class="culture-card__handle"><a href="https://instagram.com/sadababy" target="_blank" rel="noopener">@sadababy</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm29.jpeg" alt="Lou Deezi in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lou Deezi</p><p class="culture-card__handle"><a href="https://instagram.com/loudeezi9" target="_blank" rel="noopener">@loudeezi9</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm21.jpeg" alt="ZayBang in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">ZayBang</p><p class="culture-card__handle"><a href="https://instagram.com/zaybang" target="_blank" rel="noopener">@zaybang</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm22.jpeg" alt="ZayBang in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">ZayBang</p><p class="culture-card__handle"><a href="https://instagram.com/zaybang" target="_blank" rel="noopener">@zaybang</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm12.jpeg" alt="Lil Kayla in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lil Kayla</p><p class="culture-card__handle"><a href="https://instagram.com/thereal_lilkayla" target="_blank" rel="noopener">@thereal_lilkayla</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm20.png" alt="Daboii in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Daboii</p><p class="culture-card__handle"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm25.jpeg" alt="Warsh and Sada Baby in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Warsh & Sada Baby</p><p class="culture-card__handle"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/sadababy" target="_blank" rel="noopener">@sadababy</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm18.JPEG" alt="Daboii and Kiing Rod in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Daboii & Kiing Rod</p><p class="culture-card__handle"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a> <a href="https://instagram.com/kiingrod" target="_blank" rel="noopener">@kiingrod</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm19.JPEG" alt="Kiing Rod in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Kiing Rod</p><p class="culture-card__handle"><a href="https://instagram.com/kiingrod" target="_blank" rel="noopener">@kiingrod</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm16.JPEG" alt="Lil Yee in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lil Yee</p><p class="culture-card__handle"><a href="https://instagram.com/yee" target="_blank" rel="noopener">@yee</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm33.jpeg" alt="ALLBLACK & Warsh in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">ALLBLACK & Warsh</p><p class="culture-card__handle"><a href="https://instagram.com/whoisallblack" target="_blank" rel="noopener">@whoisallblack</a> <a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm13.jpeg" alt="Nef The Pharaoh and Warsh in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Nef The Pharaoh & Warsh</p><p class="culture-card__handle"><a href="https://instagram.com/nefthepharaoh" target="_blank" rel="noopener">@nefthepharaoh</a> <a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm8.jpg" alt="Daboii and Big Sad 1900 in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Daboii & Big Sad 1900</p><p class="culture-card__handle"><a href="https://instagram.com/daboii" target="_blank" rel="noopener">@daboii</a> <a href="https://instagram.com/bigsad1900" target="_blank" rel="noopener">@bigsad1900</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm23.jpeg" alt="Lul Dame 23 in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lul Dame 23</p><p class="culture-card__handle"><a href="https://instagram.com/__luldame23" target="_blank" rel="noopener">@__luldame23</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm14.JPG" alt="YN Jay in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">YN Jay</p><p class="culture-card__handle"><a href="https://instagram.com/ynjay_" target="_blank" rel="noopener">@ynjay_</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm32.jpeg" alt="Warsh & Slimmy B in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Warsh & Slimmy B</p><p class="culture-card__handle"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/nbsslimmyb" target="_blank" rel="noopener">@nbsslimmyb</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm34.jpeg" alt="Warsh & Mickey Singh in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Warsh & Mickey Singh</p><p class="culture-card__handle"><a href="https://instagram.com/kingwarsh" target="_blank" rel="noopener">@kingwarsh</a> <a href="https://instagram.com/iammickeysingh" target="_blank" rel="noopener">@iammickeysingh</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm3.JPG" alt="FredoBagz in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">FredoBagz</p><p class="culture-card__handle"><a href="https://instagram.com/fredobagz4500" target="_blank" rel="noopener">@fredobagz4500</a></p></div></div>
-      </div>
-
-      <div class="lb-row lb-row--three">
-        <div class="culture-card"><img src="images/onhizm17.JPEG" alt="Lil Yee in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lil Yee</p><p class="culture-card__handle"><a href="https://instagram.com/yee" target="_blank" rel="noopener">@yee</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm28.jpeg" alt="EBK Babymaxx in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">EBK Babymaxx</p><p class="culture-card__handle"><a href="https://instagram.com/babymaxxsteppin" target="_blank" rel="noopener">@babymaxxsteppin</a></p></div></div>
-        <div class="culture-card"><img src="images/onhizm11.jpg" alt="Lul Dame 23 in ONHIZM" loading="lazy"><div class="culture-card__overlay"><p class="culture-card__name">Lul Dame 23</p><p class="culture-card__handle"><a href="https://instagram.com/__luldame23" target="_blank" rel="noopener">@__luldame23</a></p></div></div>
-      </div>
-
-    </div>
-  </section>
-
-    <!-- CTA -->
-  <section class="lookbook-cta">
-    <div class="container">
-      <div class="lookbook-cta__inner">
-        <span class="label">Ready?</span>
-        <h2>Shop the Collection</h2>
-        <a href="shop.html" class="btn btn--primary">View All Pieces</a>
-      </div>
-    </div>
   </section>
 
   <!-- Footer -->
@@ -204,8 +155,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <img src="images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
-          <p class="footer__tagline">Premium streetwear. Built different.</p>
+          <img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="footer__logo" loading="lazy">
         </div>
         <div class="footer__col">
           <h4>Shop</h4>
@@ -225,107 +175,12 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 ONHIZM. All rights reserved.</p>
-        <p class="footer__credit"><a href="https://jdlo.site" target="_blank" rel="noopener">Website created by JDLO</a></p>
+        <p class="hk-site-credit"><a class="jdlo-credit" data-jdlo-theme="red" href="https://jdlo.site/"><span class="jdlo-credit__label">Website created by</span> <span class="jdlo-credit__name">JDLO<i class="jdlo-credit__spark jdlo-credit__spark--one" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--two" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--three" aria-hidden="true"></i><i class="jdlo-credit__drip" aria-hidden="true"></i></span></a></p>
       </div>
     </div>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
-    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
-    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">&#8250;</button>
-    <div class="lightbox__content">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="" id="lightboxImg">
-      <div class="lightbox__info">
-        <p class="lightbox__name" id="lightboxName"></p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('header--scrolled', window.scrollY > 60);
-    });
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileNav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-      });
-    });
-
-    // Scroll reveal for cards
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.culture-card').forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = `${(i % 3) * 0.1}s`;
-      observer.observe(el);
-    });
-
-    // Lightbox
-    const cards = Array.from(document.querySelectorAll('.culture-card'));
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightboxImg');
-    const lbName = document.getElementById('lightboxName');
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      const card = cards[index];
-      const img = card.querySelector('img');
-      const name = card.querySelector('.culture-card__name');
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      lbName.textContent = name ? name.textContent : '';
-      lightbox.classList.add('open');
-      document.body.classList.add('no-scroll');
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.classList.remove('no-scroll');
-    }
-
-    function navigate(dir) {
-      currentIndex = (currentIndex + dir + cards.length) % cards.length;
-      openLightbox(currentIndex);
-    }
-
-    cards.forEach((card, i) => {
-      card.addEventListener('click', () => openLightbox(i));
-    });
-
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    document.getElementById('lightboxPrev').addEventListener('click', () => navigate(-1));
-    document.getElementById('lightboxNext').addEventListener('click', () => navigate(1));
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') navigate(-1);
-      if (e.key === 'ArrowRight') navigate(1);
-    });
-  </script>
+  <script src="shopify.js?v=availability-1"></script>
   <script src="sms-gate.js?v=sms-discount-10"></script>
 
 
@@ -336,5 +191,10 @@
     omnisend.push(["track", "$pageViewed"]);
     !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
   </script>
+  <script src="header.js?v=kit-1" defer></script>
+  <script src="wall-data.js?v=kit-1" defer></script>
+  <script src="stock.js?v=kit-1" defer></script>
+  <script src="next-drop.js?v=kit-1" defer></script>
+  <script src="wall.js?v=kit-1" defer></script>
 </body>
 </html>

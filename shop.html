@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(d){var h=d.documentElement;h.classList.add('hk-js');setTimeout(function(){if(!h.classList.contains('hk-ready'))h.classList.remove('hk-js')},3000);try{var c=sessionStorage.getItem('hk-arrive');sessionStorage.removeItem('hk-arrive');if(c&&!matchMedia('(prefers-reduced-motion: reduce)').matches){h.style.setProperty('--hk-arrive',c);h.classList.add('hk-arriving');setTimeout(function(){h.classList.remove('hk-arriving','hk-lifting')},2500)}}catch(e){}})(document);</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Shop All — ONHIZM</title>
+  <title>Shop All | ONHIZM</title>
   <meta name="description" content="Shop ONHIZM limited Bay Area streetwear. Live sizes sync from Shopify, and sold-out pieces are gone for good.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Shop — ONHIZM">
+  <meta property="og:title" content="Shop | ONHIZM">
   <meta property="og:description" content="Browse ONHIZM's current drop. Limited sizes, secure Shopify checkout, no restocks on sold-out pieces.">
   <meta property="og:url" content="https://onhizm.com/shop.html">
-  <meta property="og:image" content="images/blackhoodie1.jpeg">
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&amp;width=1200&amp;height=630&amp;crop=center">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ONHIZM">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shop — ONHIZM">
+  <meta name="twitter:title" content="Shop | ONHIZM">
   <meta name="twitter:description" content="Browse ONHIZM's current drop. Limited sizes, secure Shopify checkout, no restocks on sold-out pieces.">
-  <meta name="twitter:image" content="images/blackhoodie1.jpeg">
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_6559.jpg?v=1786705365&amp;width=1200&amp;height=630&amp;crop=center">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://onhizm.com/shop.html">
@@ -44,49 +45,54 @@
     "sameAs": ["https://www.instagram.com/onhizm"]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/six-caps-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/chivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="images/onhizmlogo.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="pages.css">
-  <link rel="stylesheet" href="sms-gate.css?v=sms-purple-1">
+  <link rel="stylesheet" href="house-kit/tokens.css?v=kit-1">
+  <link rel="stylesheet" href="style.css?v=kit-1">
+  <link rel="stylesheet" href="pages.css?v=kit-1">
+  <link rel="stylesheet" href="sms-gate.css?v=kit-1">
+  <link rel="stylesheet" href="brand.css?v=kit-1">
+  <script src="house-kit/dist/house-motion.iife.min.js" data-auto defer></script>
+  <script src="site-kit.js?v=kit-1" defer></script>
 
 </head>
 <body>
 
   <!-- Header -->
-  <header class="header header--scrolled" id="header">
+  <header class="header" id="header">
     <div class="header__inner">
-      <nav class="header__nav header__nav--left">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="shop.html" class="nav-link nav-link--active">Shop</a>
-        <a href="culture.html" class="nav-link">The Culture</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      <nav class="header__nav header__nav--left" aria-label="Main">
+        <a href="shop.html" class="nav-link" aria-current="page">Shop</a>
+        <a href="culture.html" class="nav-link">Culture</a>
+        <a href="lookbook.html" class="nav-link">Lookbook</a>
         <a href="about.html" class="nav-link">About</a>
       </nav>
-      <a href="index.html" class="header__logo">
-        <img src="images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
-      </a>
-      <nav class="header__nav header__nav--right">
-        <a href="sizing.html" class="nav-link">Sizing</a>
-        <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
-        <a href="#" class="nav-link nav-link--cart">Cart (0)</a>
-      </nav>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="index.html" class="header__logo"><img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="logo-img"></a>
+      <div class="header__right">
+        <nav class="header__nav header__nav--right" aria-label="More">
+          <a href="sizing.html" class="nav-link">Sizing</a>
+          <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        </nav>
+        <a href="shop.html" class="header__shop" aria-current="page">Shop</a>
+        <a href="#" class="nav-link--cart" hidden>Cart (0)</a>
+        <button type="button" class="header__cart">Cart (0)</button>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-nav__link">Home</a>
-    <a href="shop.html" class="mobile-nav__link">Shop</a>
-    <a href="culture.html" class="mobile-nav__link">The Culture</a>
-    <a href="about.html" class="mobile-nav__link">About</a>
-    <a href="sizing.html" class="mobile-nav__link">Sizing</a>
-    <a href="https://www.instagram.com/onhizm" target="_blank" class="mobile-nav__link">Instagram</a>
-    <a href="#" class="mobile-nav__link">Cart (0)</a>
+  <!-- Phone menu -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav__panel" aria-label="Menu">
+      <a href="shop.html" class="mobile-nav__link" aria-current="page">Shop</a>
+      <a href="culture.html" class="mobile-nav__link">Culture</a>
+      <a href="lookbook.html" class="mobile-nav__link">Lookbook</a>
+      <a href="about.html" class="mobile-nav__link">About</a>
+      <a href="sizing.html" class="mobile-nav__link">Sizing</a>
+      <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="mobile-nav__link">Instagram</a>
+      <button type="button" class="mobile-nav__link mobile-nav__link--cart">Cart (0)</button>
+    </nav>
   </div>
 
   <!-- Shop Page -->
@@ -94,8 +100,7 @@
     <div class="container">
       <div class="shop-page__header">
         <div>
-          <span class="label">Collection</span>
-          <h1>All Pieces</h1>
+          <h1 data-reveal="title">All Pieces</h1>
         </div>
         <p class="shop-page__count" id="productCount">11 products</p>
       </div>
@@ -132,10 +137,10 @@
         </a>
 
         <!-- Black Sweatsuit -->
-        <a href="products/black-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants" data-category="sets" data-rank="1" data-price="200" data-available="1">
-          <div class="product-card__badge">Featured Drop</div>
+        <a href="products/black-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="onhizm-full-outfit-jacket-sweatpants" data-category="sets" data-rank="1" data-price="200" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blackhoodie1.jpeg" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+            <img src="images/cards/blackhoodie1-640.webp" width="640" height="960" alt="ONHIZM Black Sweatsuit jacket" loading="lazy" data-gallery="images/blackhoodie1.jpeg|images/blackhoodie.jpeg|images/blackhoodie2.jpeg|images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Black Sweatsuit</h3>
@@ -144,10 +149,10 @@
         </a>
 
         <!-- Baby Blue Sweatsuit -->
-        <a href="products/blue-sweatsuit.html" class="product-card" data-shopify-handle="baby-blue-sweatsuit" data-category="sets" data-rank="2" data-price="200" data-available="0">
+        <a href="products/blue-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="baby-blue-sweatsuit" data-category="sets" data-rank="2" data-price="200" data-available="0">
           <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blue1.jpeg" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
+            <img src="images/cards/blue1-640.webp" width="640" height="960" alt="ONHIZM Baby Blue Sweatsuit" loading="lazy" data-gallery="images/blue1.jpeg|images/blue2.jpeg|images/blue3.jpeg|images/blue4.jpeg|images/blue5.jpeg">
           </div>
           <div class="product-card__info">
             <h3>Baby Blue Sweatsuit</h3>
@@ -156,9 +161,10 @@
         </a>
 
         <!-- ONHIZM Sweatpants -->
-        <a href="products/sweats.html" class="product-card" data-shopify-handle="onhizm-sweatpants" data-category="bottoms" data-rank="3" data-price="120" data-available="1">
+        <a href="products/sweats.html" class="product-card product-card--sold" data-shopify-handle="onhizm-sweatpants" data-category="bottoms" data-rank="3" data-price="100" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
-            <img src="images/blakcsweats1.jpeg" alt="ONHIZM Sweatpants" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
+            <img src="images/cards/blakcsweats1-640.webp" width="640" height="960" alt="ONHIZM Sweatpants" loading="lazy" data-gallery="images/blakcsweats1.jpeg|images/blacksweats2.jpeg|images/blacksweats3.jpeg">
           </div>
           <div class="product-card__info">
             <h3>ONHIZM Sweatpants</h3>
@@ -167,7 +173,8 @@
         </a>
 
         <!-- Grey Sweatsuit -->
-        <a href="products/grey-sweatsuit.html" class="product-card" data-shopify-handle="onhizm-grey-full-outfit-jacket-sweatpants" data-category="sets" data-rank="2" data-price="200" data-available="1">
+        <a href="products/grey-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="onhizm-grey-full-outfit-jacket-sweatpants" data-category="sets" data-rank="2" data-price="200" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3176.jpg?v=1762126654" alt="ONHIZM Grey Sweatsuit" loading="lazy" data-gallery="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3176.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3178.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3166.jpg?v=1762126654|https://cdn.shopify.com/s/files/1/0907/9763/7929/files/IMG_3169.jpg?v=1762126654">
           </div>
@@ -178,7 +185,8 @@
         </a>
 
         <!-- Valentine's -->
-        <a href="products/valentines-sweatsuit.html" class="product-card" data-shopify-handle="valentines-day-collection-limited-drop-full-sweatsuit" data-category="sets" data-rank="2" data-price="200" data-available="1">
+        <a href="products/valentines-sweatsuit.html" class="product-card product-card--sold" data-shopify-handle="valentines-day-collection-limited-drop-full-sweatsuit" data-category="sets" data-rank="2" data-price="200" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946" alt="Valentines Day Collection Full Sweatsuit" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946|images/pinkhoodie.jpeg|images/pinkhoodie2.jpeg|images/pinksweats.jpeg|images/pinksweats2.jpeg">
           </div>
@@ -188,14 +196,13 @@
             <span class="product-card__tag">Pearls & Rhinestones</span>
             <div class="variant-picker">
               <button class="variant-btn variant-btn--active" data-price="$200" data-img="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_8468.jpg?v=1769989643&width=1946">Full Sweatsuit</button>
-              <button class="variant-btn" data-price="$120" data-img="images/pinkhoodie.jpeg">Just Hoodie</button>
-              <button class="variant-btn" data-price="$120" data-img="images/pinksweats.jpeg">Just Sweats</button>
             </div>
           </div>
         </a>
 
         <!-- Camo Classic -->
-        <a href="products/camo-classic.html" class="product-card" data-shopify-handle="camo-classic-jacket-zip-up-jacket" data-category="outerwear" data-rank="4" data-price="120" data-available="1">
+        <a href="products/camo-classic.html" class="product-card product-card--sold" data-shopify-handle="camo-classic-jacket-zip-up-jacket" data-category="outerwear" data-rank="4" data-price="120" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270&width=533" alt="Camo Classic Zip Up Jacket" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2339.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2367.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A2187.jpg?v=1750061297&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/320A1947.jpg?v=1750061297&width=533">
           </div>
@@ -206,7 +213,8 @@
         </a>
 
         <!-- Club Shirt -->
-        <a href="products/club-shirt.html" class="product-card" data-shopify-handle="club-shirt" data-category="tops" data-rank="5" data-price="85" data-available="1">
+        <a href="products/club-shirt.html" class="product-card product-card--sold" data-shopify-handle="club-shirt" data-category="tops" data-rank="5" data-price="110" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/00BC56EC-0B69-4AF0-81E4-34FFE0D5818F.jpg?v=1757815720&width=533" alt="Club Shirt" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/00BC56EC-0B69-4AF0-81E4-34FFE0D5818F.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/C0F1E2E3-C86B-4921-807D-3A0E785F09C4.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/E804C57C-E3BB-4B59-9916-4E4AEC4985AB2.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/5579EA9A-4DA3-45C5-A269-842426DFFFAB.jpg?v=1757815720&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/B80E4E96-5F11-4395-AB13-750AC4B459533.jpg?v=1757815720&width=533">
           </div>
@@ -217,7 +225,8 @@
         </a>
 
         <!-- Shorts -->
-        <a href="products/shorts.html" class="product-card" data-shopify-handle="shorts" data-category="bottoms" data-rank="6" data-price="60" data-available="1">
+        <a href="products/shorts.html" class="product-card product-card--sold" data-shopify-handle="shorts" data-category="bottoms" data-rank="6" data-price="85" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/D7ADBAB6-D7BE-45A7-AD41-979929105FE63.jpg?v=1757816047&width=533" alt="Shorts" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/D7ADBAB6-D7BE-45A7-AD41-979929105FE63.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/B60C5F39-0640-4853-BFB8-30CF5608699D2.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/FD1E6418-98A1-4B08-9BBC-C85BED02FE583.jpg?v=1757816047&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/024F7576-B8DB-4AE6-9811-DDCB7A1BF26F3.jpg?v=1757816048&width=533">
           </div>
@@ -228,7 +237,8 @@
         </a>
 
         <!-- Jersey -->
-        <a href="products/jersey.html" class="product-card" data-shopify-handle="jersey" data-category="tops" data-rank="7" data-price="60" data-available="1">
+        <a href="products/jersey.html" class="product-card product-card--sold" data-shopify-handle="jersey" data-category="tops" data-rank="7" data-price="100" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/5CC8DAE4-AAF4-4AA6-B175-DA553B9E850A.jpg?v=1757816302&width=533" alt="Jersey" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/5CC8DAE4-AAF4-4AA6-B175-DA553B9E850A.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/1AADB8F1-87AA-40EA-AC54-08E6A2BB125E.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/F8729DED-9AF0-42D1-BE8B-B37349F9B153.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/3E14214B-B036-4D1E-A4EF-8B4E01AC4EED2.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/7C4C2ECA-321D-42B3-BB32-E20FE9B06EA32.jpg?v=1757816302&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/38B1D620-DE52-4C9E-B64F-2C092C62429A.jpg?v=1757816302&width=533">
           </div>
@@ -239,7 +249,8 @@
         </a>
 
         <!-- Bay Bridge Tee -->
-        <a href="products/bay-bridge-tee.html" class="product-card" data-shopify-handle="onhizm-bay-bridge-classic-tee" data-category="tops" data-rank="8" data-price="45" data-available="1">
+        <a href="products/bay-bridge-tee.html" class="product-card product-card--sold" data-shopify-handle="onhizm-bay-bridge-classic-tee" data-category="tops" data-rank="8" data-price="80" data-available="0">
+          <div class="product-card__badge product-card__badge--sold">Sold Out</div>
           <div class="product-card__media">
             <img src="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9539.jpg?v=1752704660&width=533" alt="ONHIZM Bay Bridge Classic Tee" loading="lazy" data-gallery="https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9539.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9538.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9544.jpg?v=1752704660&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9540.jpg?v=1752704561&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9541.jpg?v=1752704561&width=533|https://p0kd5k-mn.myshopify.com/cdn/shop/files/IMG_9542.jpg?v=1752704561&width=533">
           </div>
@@ -258,8 +269,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <img src="images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
-          <p class="footer__tagline">Premium streetwear. Built different.</p>
+          <img src="images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="footer__logo" loading="lazy">
         </div>
         <div class="footer__col">
           <h4>Shop</h4>
@@ -279,31 +289,12 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 ONHIZM. All rights reserved.</p>
-        <p class="footer__credit"><a href="https://jdlo.site" target="_blank" rel="noopener">Website created by JDLO</a></p>
+        <p class="hk-site-credit"><a class="jdlo-credit" data-jdlo-theme="red" href="https://jdlo.site/"><span class="jdlo-credit__label">Website created by</span> <span class="jdlo-credit__name">JDLO<i class="jdlo-credit__spark jdlo-credit__spark--one" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--two" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--three" aria-hidden="true"></i><i class="jdlo-credit__drip" aria-hidden="true"></i></span></a></p>
       </div>
     </div>
   </footer>
 
   <script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('header--scrolled', window.scrollY > 60);
-    });
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileNav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-      });
-    });
-
     // Filter + Sort
     const grid = document.getElementById('shopGrid');
     const allCards = Array.from(grid.querySelectorAll('.product-card'));
@@ -366,50 +357,6 @@
       });
     });
 
-    // Auto-rotate color swatches
-    document.querySelectorAll('[data-color-card]').forEach(card => {
-      const swatches = card.querySelectorAll('.color-swatch');
-      if (swatches.length < 2) return;
-      let idx = 0;
-      const rotate = setInterval(() => {
-        idx = (idx + 1) % swatches.length;
-        swatches.forEach(s => s.classList.remove('color-swatch--active'));
-        swatches[idx].classList.add('color-swatch--active');
-        const img = card.querySelector('[data-color-img]');
-        img.src = swatches[idx].dataset.img;
-      }, 3000);
-      swatches.forEach(s => s.addEventListener('click', () => clearInterval(rotate)));
-    });
-
-    // Auto-cycle gallery images
-    document.querySelectorAll('[data-gallery]').forEach(img => {
-      const images = img.dataset.gallery.split('|');
-      if (images.length < 2) return;
-      let idx = 0;
-      const baseOpacity = img.closest('.product-card--sold') ? 0.6 : 1;
-      setInterval(() => {
-        idx = (idx + 1) % images.length;
-        img.style.opacity = 0;
-        setTimeout(() => {
-          img.src = images[idx];
-          img.onload = () => { img.style.opacity = baseOpacity; };
-        }, 400);
-      }, 3000);
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    allCards.forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-      observer.observe(el);
-    });
   </script>
 
   <script src="shopify.js?v=availability-1"></script>
@@ -423,5 +370,7 @@
     omnisend.push(["track", "$pageViewed"]);
     !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
   </script>
+  <script src="header.js?v=kit-1" defer></script>
+  <script src="stock.js?v=kit-1" defer></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(d){var h=d.documentElement;h.classList.add('hk-js');setTimeout(function(){if(!h.classList.contains('hk-ready'))h.classList.remove('hk-js')},3000);try{var c=sessionStorage.getItem('hk-arrive');sessionStorage.removeItem('hk-arrive');if(c&&!matchMedia('(prefers-reduced-motion: reduce)').matches){h.style.setProperty('--hk-arrive',c);h.classList.add('hk-arriving');setTimeout(function(){h.classList.remove('hk-arriving','hk-lifting')},2500)}}catch(e){}})(document);</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Camo Classic Zip Up Jacket — ONHIZM</title>
+  <title>Camo Classic Zip Up Jacket | ONHIZM</title>
   <meta name="description" content="Camo Classic Zip Up Jacket. Premium streetwear by ONHIZM.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Camo Classic Zip Up — ONHIZM">
-  <meta property="og:description" content="Sold out.">
+  <meta property="og:title" content="Camo Classic Zip Up | ONHIZM">
+  <meta property="og:description" content="Camo Classic Zip Up Jacket by ONHIZM.">
   <meta property="og:url" content="https://onhizm.com/products/camo-classic.html">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
   <meta property="og:type" content="product">
@@ -16,8 +17,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Camo Classic Zip Up — ONHIZM">
-  <meta name="twitter:description" content="Sold out.">
+  <meta name="twitter:title" content="Camo Classic Zip Up | ONHIZM">
+  <meta name="twitter:description" content="Camo Classic Zip Up Jacket by ONHIZM.">
   <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852">
 
   <!-- Canonical -->
@@ -29,65 +30,69 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Camo Classic Zip Up",
-    "description": "Sold out.",
+    "description": "Camo Classic Zip Up Jacket by ONHIZM.",
     "brand": { "@type": "Brand", "name": "ONHIZM" },
-    "image": "https://cdn.shopify.com/s/files/1/0907/9763/7929/files/ONHIZMhoodieandsweatpantsset.jpg?v=1776110852",
+    "image": "https://cdn.shopify.com/s/files/1/0907/9763/7929/files/75E36A25-CAEA-4244-BADA-A4FA6FBFCDF5.png?v=1750061270",
     "offers": {
       "@type": "Offer",
       "price": "120",
       "priceCurrency": "USD",
-      "availability": "https://schema.org/OutOfStock",
       "url": "https://onhizm.com/products/camo-classic.html"
     }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/six-caps-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/chivo-wght-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="../images/onhizmlogo.png" type="image/png">
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../pages.css">
-  <link rel="stylesheet" href="../sms-gate.css?v=sms-purple-1">
+  <link rel="stylesheet" href="../house-kit/tokens.css?v=kit-1">
+  <link rel="stylesheet" href="../style.css?v=kit-1">
+  <link rel="stylesheet" href="../pages.css?v=kit-1">
+  <link rel="stylesheet" href="../sms-gate.css?v=kit-1">
+  <link rel="stylesheet" href="../brand.css?v=kit-1">
+  <script src="../house-kit/dist/house-motion.iife.min.js" data-auto defer></script>
+  <script src="../site-kit.js?v=kit-1" defer></script>
 
 </head>
 <body>
 
   <!-- Header -->
-  <header class="header header--scrolled" id="header">
+  <header class="header" id="header">
     <div class="header__inner">
-      <nav class="header__nav header__nav--left">
-        <a href="../index.html" class="nav-link">Home</a>
-        <a href="../shop.html" class="nav-link">Shop</a>
-        <a href="../culture.html" class="nav-link">The Culture</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+      <nav class="header__nav header__nav--left" aria-label="Main">
+        <a href="../shop.html" class="nav-link" aria-current="page">Shop</a>
+        <a href="../culture.html" class="nav-link">Culture</a>
+        <a href="../lookbook.html" class="nav-link">Lookbook</a>
         <a href="../about.html" class="nav-link">About</a>
       </nav>
-      <a href="../index.html" class="header__logo">
-        <img src="../images/onhizmlogo.png" alt="ONHIZM" class="logo-img">
-      </a>
-      <nav class="header__nav header__nav--right">
-        <a href="../sizing.html" class="nav-link">Sizing</a>
-        <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
-        <a href="#" class="nav-link nav-link--cart">Cart (0)</a>
-      </nav>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="../index.html" class="header__logo"><img src="../images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="logo-img"></a>
+      <div class="header__right">
+        <nav class="header__nav header__nav--right" aria-label="More">
+          <a href="../sizing.html" class="nav-link">Sizing</a>
+          <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="nav-link">Instagram</a>
+        </nav>
+        <a href="../shop.html" class="header__shop" aria-current="page">Shop</a>
+        <a href="#" class="nav-link--cart" hidden>Cart (0)</a>
+        <button type="button" class="header__cart">Cart (0)</button>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="../index.html" class="mobile-nav__link">Home</a>
-    <a href="../shop.html" class="mobile-nav__link">Shop</a>
-    <a href="../culture.html" class="mobile-nav__link">The Culture</a>
-    <a href="../about.html" class="mobile-nav__link">About</a>
-    <a href="../sizing.html" class="mobile-nav__link">Sizing</a>
-    <a href="https://www.instagram.com/onhizm" target="_blank" class="mobile-nav__link">Instagram</a>
-    <a href="#" class="mobile-nav__link">Cart (0)</a>
+  <!-- Phone menu -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav__panel" aria-label="Menu">
+      <a href="../shop.html" class="mobile-nav__link" aria-current="page">Shop</a>
+      <a href="../culture.html" class="mobile-nav__link">Culture</a>
+      <a href="../lookbook.html" class="mobile-nav__link">Lookbook</a>
+      <a href="../about.html" class="mobile-nav__link">About</a>
+      <a href="../sizing.html" class="mobile-nav__link">Sizing</a>
+      <a href="https://www.instagram.com/onhizm" target="_blank" rel="noopener" class="mobile-nav__link">Instagram</a>
+      <button type="button" class="mobile-nav__link mobile-nav__link--cart">Cart (0)</button>
+    </nav>
   </div>
 
   <!-- Product Page -->
-  <section class="product-page">
+  <section class="product-page" data-handle="camo-classic-jacket-zip-up-jacket" data-static-sold="1">
     <div class="container">
       <a href="../shop.html" class="product-page__back">&larr; Back to Shop</a>
 
@@ -117,8 +122,8 @@
 
         <div class="product-page__details">
           <span class="product-page__badge product-page__badge--sold">Sold Out</span>
-          <h1 class="product-page__title">Camo Classic Zip Up Jacket</h1>
-          <p class="product-page__price">$120</p>
+          <h1 class="product-page__title" data-reveal="lines">Camo Classic Zip Up Jacket</h1>
+          <p class="product-page__price" data-shopify-handle="camo-classic-jacket-zip-up-jacket">$120</p>
           <p class="product-page__description">Classic camo zip-up jacket with premium detailing. Limited edition piece.</p>
 
           <div class="product-page__sizes">
@@ -131,9 +136,29 @@
             </div>
           </div>
 
-          <button class="btn btn--disabled" disabled>Sold Out</button>
-          <p class="product-soldout-note">Sold out means sold out. This piece is not planned to restock.</p>
+          <button class="btn btn--disabled" id="addToCartBtn" disabled>Sold Out</button>
+          <button type="button" class="btn btn--primary" id="nextDropOpen" aria-expanded="false" hidden>Text me the next drop</button>
+          <div class="next-drop" id="nextDropForm" hidden></div>
+          <p class="product-soldout-note">This size is currently unavailable online. Get notified about the next drop.</p>
+          <div class="pp-size">
+            <h2>Size guide</h2>
+            <table class="pp-size__table"><thead><tr><th scope="col">Size</th><th scope="col">Chest</th><th scope="col">Length</th><th scope="col">Shoulder</th><th scope="col">Sleeve</th></tr></thead><tbody><tr><th scope="row">S</th><td>40</td><td>26</td><td>18</td><td>24</td></tr><tr><th scope="row">M</th><td>42</td><td>27</td><td>19</td><td>25</td></tr><tr><th scope="row">L</th><td>44</td><td>28</td><td>20</td><td>25.5</td></tr><tr><th scope="row">XL</th><td>46</td><td>29</td><td>21</td><td>26</td></tr></tbody></table>
+            <p>In inches. <a href="../sizing.html">Full sizing guide</a></p>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pp-worn">
+    <div class="container">
+      <h2 data-reveal="title">Worn By</h2>
+      <div class="pp-worn__grid">
+        <a class="pp-worn__card" data-page href="../culture.html#p-shordieshordie"><img src="../images/wall/shordieshordie-480.webp" srcset="../images/wall/shordieshordie-480.webp 480w, ../images/wall/shordieshordie-800.webp 800w" sizes="(min-width: 900px) 24vw, 50vw" width="480" height="600" alt="Shordie Shordie with ONHIZM" loading="lazy" decoding="async"><span>Shordie Shordie</span></a>
+        <a class="pp-worn__card" data-page href="../culture.html#p-onhizm22"><img src="../images/wall/onhizm22-480.webp" srcset="../images/wall/onhizm22-480.webp 480w, ../images/wall/onhizm22-800.webp 800w" sizes="(min-width: 900px) 24vw, 50vw" width="480" height="600" alt="ZayBang with ONHIZM" loading="lazy" decoding="async"><span>ZayBang</span></a>
+        <a class="pp-worn__card" data-page href="../culture.html#p-onhizm3"><img src="../images/wall/onhizm3-480.webp" srcset="../images/wall/onhizm3-480.webp 480w, ../images/wall/onhizm3-800.webp 800w" sizes="(min-width: 900px) 24vw, 50vw" width="480" height="600" alt="FredoBagz with ONHIZM" loading="lazy" decoding="async"><span>FredoBagz</span></a>
+        <a class="pp-worn__card" data-page href="../culture.html#p-onhizm11"><img src="../images/wall/onhizm11-480.webp" srcset="../images/wall/onhizm11-480.webp 480w, ../images/wall/onhizm11-800.webp 800w" sizes="(min-width: 900px) 24vw, 50vw" width="480" height="600" alt="Lul Dame 23 with ONHIZM" loading="lazy" decoding="async"><span>Lul Dame 23</span></a>
+        <a class="pp-worn__card" data-page href="../culture.html#p-onhizm25"><img src="../images/wall/onhizm25-480.webp" srcset="../images/wall/onhizm25-480.webp 480w, ../images/wall/onhizm25-800.webp 800w" sizes="(min-width: 900px) 24vw, 50vw" width="480" height="600" alt="Warsh &amp; Sada Baby with ONHIZM" loading="lazy" decoding="async"><span>Warsh &amp; Sada Baby</span></a>
       </div>
     </div>
   </section>
@@ -143,8 +168,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__col">
-          <img src="../images/onhizmlogo.png" alt="ONHIZM" class="footer__logo">
-          <p class="footer__tagline">Premium streetwear. Built different.</p>
+          <img src="../images/onhizm-tag-144.png" width="226" height="144" alt="ONHIZM" class="footer__logo" loading="lazy">
         </div>
         <div class="footer__col">
           <h4>Shop</h4>
@@ -164,30 +188,12 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 ONHIZM. All rights reserved.</p>
-        <p class="footer__credit"><a href="https://jdlo.site" target="_blank" rel="noopener">Website created by JDLO</a></p>
+        <p class="hk-site-credit"><a class="jdlo-credit" data-jdlo-theme="red" href="https://jdlo.site/"><span class="jdlo-credit__label">Website created by</span> <span class="jdlo-credit__name">JDLO<i class="jdlo-credit__spark jdlo-credit__spark--one" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--two" aria-hidden="true"></i><i class="jdlo-credit__spark jdlo-credit__spark--three" aria-hidden="true"></i><i class="jdlo-credit__drip" aria-hidden="true"></i></span></a></p>
       </div>
     </div>
   </footer>
 
   <script>
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('header--scrolled', window.scrollY > 60);
-    });
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileNav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-      });
-    });
     // Size selector
     document.querySelectorAll('.size-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -195,17 +201,6 @@
         btn.classList.add('size-btn--active');
       });
     });
-    // Auto-rotate gallery
-    window.autoRotate = setInterval(() => {
-      const thumbs = document.querySelectorAll('.product-page__thumb');
-      if (thumbs.length < 2) return;
-      const active = document.querySelector('.product-page__thumb--active');
-      const idx = Array.from(thumbs).indexOf(active);
-      const next = (idx + 1) % thumbs.length;
-      thumbs.forEach(t => t.classList.remove('product-page__thumb--active'));
-      thumbs[next].classList.add('product-page__thumb--active');
-      document.querySelector('.product-page__main-img img').src = thumbs[next].querySelector('img').src;
-    }, 3000);
     document.querySelectorAll('.product-page__thumb').forEach(thumb => {
       thumb.addEventListener('click', () => {
         clearInterval(window.autoRotate);
@@ -215,6 +210,8 @@
       });
     });
   </script>
+  <script src="../shopify.js?v=availability-1"></script>
+  <script>initProductPage('camo-classic-jacket-zip-up-jacket');</script>
   <script src="../sms-gate.js?v=sms-discount-10"></script>
 
 
@@ -225,5 +222,9 @@
     omnisend.push(["track", "$pageViewed"]);
     !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
   </script>
+  <script src="../header.js?v=kit-1" defer></script>
+  <script src="../stock.js?v=kit-1" defer></script>
+  <script src="../next-drop.js?v=kit-1" defer></script>
+  <script src="../product.js?v=kit-1" defer></script>
 </body>
 </html>
